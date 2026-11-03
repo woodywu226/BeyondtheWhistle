@@ -21,14 +21,14 @@
   },
   "status_counts": {
     "multiple_clock_type_candidates": 156,
-    "no_clock_type_candidate": 341,
+    "no_clock_type_candidate": 332,
     "noncall_not_in_pbp": 5064,
     "ungraded": 2,
-    "unique_clock_type_candidate_unverified": 1602
+    "unique_clock_type_candidate_unverified": 1611
   },
-  "unique_clock_and_type_candidates": 1602,
+  "unique_clock_and_type_candidates": 1611,
   "ambiguous_candidates": 156,
-  "repeated_l2m_record_keys": 123,
+  "repeated_l2m_record_keys": 121,
   "interpretation": [
     "Metadata agreement checks game/date/home/away, not event-level correctness.",
     "Unique time and event-type candidate is NOT verified same play.",
