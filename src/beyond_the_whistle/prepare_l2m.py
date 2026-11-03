@@ -61,13 +61,16 @@ def audit_csv(data: bytes) -> dict:
         key: sum(not (row.get(key) or "").strip() for row in rows)
         for key in sorted(REQUIRED_FIELDS)
     }
-    unknown_grades = {grade: n for grade, n in counts.items() if grade and grade not in VALID_GRADES}\n    ungradable_count = counts.get("", 0)
+    unknown_grades = {grade: n for grade, n in counts.items() if grade and grade not in VALID_GRADES}
+    ungradable_count = counts.get("", 0)
     return {
         "row_count": len(rows),
         "columns": columns,
-        "column_count": len(columns),\n        "call_type_is_violation_category": True,
+        "column_count": len(columns),
+        "call_type_is_violation_category": True,
         "grade_counts": dict(sorted(counts.items())),
-        "unknown_grade_counts": unknown_grades,\n        "ungradable_decision_count": ungradable_count,
+        "unknown_grade_counts": unknown_grades,
+        "ungradable_decision_count": ungradable_count,
         "season_counts": dict(sorted(by_season.items())),
         "missing_required_values": missing_values,
         "limitations": [
