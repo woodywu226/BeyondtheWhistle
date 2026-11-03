@@ -1,0 +1,44 @@
+name: Probe real NBA data sources
+on:
+  push:
+    paths:
+      - .github/workflows/data_probe.yml
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Inspect L2M and PBP sources
+        run: |
+          python - <<'PY'
+          import csv, json, urllib.request, collections
+          l2m = "https://raw.githubusercontent.com/atlhawksfanatic/L2M/master/1-tidy/L2M/L2M_stats_nba.csv"
+          try:
+              req=urllib.request.Request(l2m,headers={"User-Agent":"Mozilla/5.0"})
+              with urllib.request.urlopen(req,timeout=90) as r:
+                  print("L2M_STATUS", r.status)
+                  rows=csv.DictReader((line.decode('utf-8-sig') for line in r))
+                  print("L2M_FIELDS",repr(rows.fieldnames))
+                  samples=[next(rows) for _ in range(5)]
+                  for row in samples: print("L2M_SAMPLE",json.dumps(row)[:1800])
+                  gids=collections.Counter()
+                  for row in samples:
+                      for k in ("gid","GAME_ID","GameId","game_id"):
+                          if row.get(k): gids[str(row[k])]+=1
+                  print("SAMPLE_GIDS",gids)
+          except Exception as e: print("L2M_ERROR",repr(e))
+          for game_id in ["0022400001","0022300001"]:
+              url=f"https://cdn.nba.com/static/json/liveData/playbyplay/playbyplay_{game_id}.json"
+              try:
+                  req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0"})
+                  with urllib.request.urlopen(req,timeout=30) as r:
+                      doc=json.load(r)
+                  print("PBP_OK",game_id,len(doc.get("game",{}).get("actions",[])))
+                  print("PBP_SAMPLE",repr(doc.get("game",{}).get("actions",[])[:1])[:1400])
+              except Exception as e: print("PBP_ERROR",game_id,repr(e))
+          PY
