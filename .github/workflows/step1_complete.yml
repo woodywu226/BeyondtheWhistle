@@ -72,5 +72,7 @@ jobs:
           git add data/validated/l2m_pbp_2025_candidates.csv data/validated/l2m_pbp_2025_audit.json data/validated/l2m_2025_official_comparison.json data/validated/step1_review_queue_2025.csv
           if ! git diff --cached --quiet; then
             git commit -m "data(step1): reconcile NBA official decisions and play-in PBP coverage"
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}"
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
