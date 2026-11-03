@@ -6,7 +6,7 @@ import pytest
 from beyond_the_whistle.prepare_l2m import audit_csv, prepare
 
 
-SAMPLE = b"season,call_type,GameId\n2025,CC,001\n2025,INC,001\n2024,CNC,002\n"
+SAMPLE = b"season,call_type,decision,period,time,GameId\\n2025,Foul,CC,4,1:00,001\\n2025,Foul,INC,4,1:02,001\\n2024,Travel,CNC,4,0:30,002\\n"
 
 
 def test_audit_counts_and_seasons():
