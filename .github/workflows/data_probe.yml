@@ -41,4 +41,14 @@ jobs:
                   print("PBP_OK",game_id,len(doc.get("game",{}).get("actions",[])))
                   print("PBP_SAMPLE",repr(doc.get("game",{}).get("actions",[])[:1])[:1400])
               except Exception as e: print("PBP_ERROR",game_id,repr(e))
+          try:
+              url="https://raw.githubusercontent.com/ramirobentes/nba_pbp_data/main/pbp-final-2025/data.csv"
+              req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0"})
+              with urllib.request.urlopen(req,timeout=90) as response:
+                  table=csv.DictReader((line.decode("utf-8-sig") for line in response))
+                  print("ALT_PBP_FIELDS",table.fieldnames)
+                  for row in [next(table) for _ in range(3)]:
+                      print("ALT_PBP_SAMPLE",json.dumps(row)[:1600])
+              print("ALT_PBP_SUCCESS")
+          except Exception as e: print("ALT_PBP_ERROR",repr(e))
           PY
