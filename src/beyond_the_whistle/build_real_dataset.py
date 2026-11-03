@@ -200,6 +200,8 @@ def prepare(l2m_rows: list[dict], pbp_rows: list[dict], season: int = 2025) -> t
         "l2m_distinct_games": game_count,
         "pbp_distinct_games_in_source": len(pbp_meta),
         "metadata_consistent_games": valid_games,
+        "game_metadata_coverage_pct": round(100 * valid_games / game_count, 2) if game_count else 0,
+        "missing_pbp_game_ids": sorted(g for g, result in game_checks.items() if not result["pbp_present"]),
         "metadata_validation_counts": checks,
         "l2m_grade_counts": dict(sorted(grades.items())),
         "status_counts": dict(sorted(statuses.items())),
