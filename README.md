@@ -90,3 +90,20 @@ The expectation must integrate multiple possible corrected outcomes (e.g., free 
 ## Research integrity
 
 This is an independent, in-progress research project. Analysis, statistics, academic publication and real-world officiating improvements are **not** claimed until reproduced and independently evaluated. Data rights and NBA site access conditions must be respected.
+
+## Step 1: Play-by-play integration (candidate matching)
+
+Step 1 code has been implemented, but **real NBA game-to-L2M matching is not yet independently validated**. The NBA Stats endpoint may reject requests; no synthetic fixture is presented as authentic NBA results.
+
+```bash
+python -m beyond_the_whistle.ingest_pbp --game-id 0022400001
+python -m beyond_the_whistle.match_events --pbp data/processed/pbp/0022400001.csv
+pytest -q
+ruff check .
+```
+
+To use an already downloaded NBA-format PBP JSON, pass `--input-json /path/to/file.json` to the ingest command. Outputs include normalized event CSV, candidate match CSV and a match-status audit JSON under `data/processed/`. The match script currently operates with one PBP game at a time and retains unmatched L2M rows from other games.
+
+**Crucial correction from Step 0:** In the historical dataset, `call_type` describes the *violation category*; `decision` contains the CC/CNC/IC/INC grades. Blank `decision` is permitted and counted as ungradable. See [Step 1 validation protocol](docs/step1_validation.md).
+
+A **unique temporal candidate is not a verified event match**. INC/CNC remain review-required even if a PBP event shares the timestamp. The source data still needs official spot checks and independent runtime validation before research conclusions.
