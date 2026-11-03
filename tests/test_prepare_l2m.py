@@ -6,7 +6,7 @@ import pytest
 from beyond_the_whistle.prepare_l2m import audit_csv, prepare
 
 
-SAMPLE = b"season,call_type,decision,period,time,GameId\\n2025,Foul,CC,4,1:00,001\\n2025,Foul,INC,4,1:02,001\\n2024,Travel,CNC,4,0:30,002\\n"
+SAMPLE = b"season,call_type,decision,period,time,GameId\n2025,Foul,CC,4,1:00,001\n2025,Foul,INC,4,1:02,001\n2024,Travel,CNC,4,0:30,002\n"
 
 
 def test_audit_counts_and_seasons():
@@ -28,7 +28,7 @@ def test_rejects_empty_file():
 
 
 def test_flags_unexpected_grade():
-    result = audit_csv(b"season,call_type\n2025,UNKNOWN\n")
+    result = audit_csv(b"season,call_type,decision,period,time\n2025,Foul,UNKNOWN,4,1:02\n")
     assert result["unknown_grade_counts"] == {"UNKNOWN": 1}
 
 
