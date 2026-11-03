@@ -33,4 +33,16 @@ jobs:
                 print("RESULT",kind,gid,"HTTP",e.code,e.read(120)[:120])
               except Exception as e:
                 print("RESULT",kind,gid,"ERROR",repr(e)[:220])
+          for date in ("20250415","20250418"):
+            url=f"https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates={date}"
+            try:
+              with urllib.request.urlopen(urllib.request.Request(url,headers=ua),timeout=15) as response: data=json.load(response)
+              games=[(x.get("id"),x.get("name")) for x in data.get("events",[])]
+              print("ESPN_DAY",date,games)
+              for eid,name in games:
+                if ("Warriors" in name and "Grizzlies" in name) or ("Heat" in name and "Hawks" in name):
+                  link=f"https://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary?event={eid}"
+                  with urllib.request.urlopen(urllib.request.Request(link,headers=ua),timeout=15) as response: summary=json.load(response)
+                  print("ESPN_SUMMARY",eid,"plays",len(summary.get("plays",[])),"first",str(summary.get("plays",[])[:1])[:500])
+            except Exception as e:print("ESPN_ERROR",date,repr(e))
           PY
