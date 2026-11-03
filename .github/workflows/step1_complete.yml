@@ -37,7 +37,8 @@ jobs:
           assert audit["metadata_consistent_games"] == audit["l2m_distinct_games"], audit
           assert audit["missing_pbp_game_ids"] == [], audit["missing_pbp_game_ids"]
           assert official["attempted_games"] == audit["l2m_distinct_games"]
-          assert official["official_reports_fetched"] >= 400, official["official_reports_fetched"]
+          assert official["official_reports_fetched"] == audit["l2m_distinct_games"], official["official_reports_fetched"]
+          assert official["exactly_matching_games"] == audit["l2m_distinct_games"], official["exactly_matching_games"]
           assert sum(audit["status_counts"].values()) == audit["l2m_rows"]
           with (base / "l2m_pbp_2025_candidates.csv").open() as handle:
               assert len(list(csv.DictReader(handle))) == audit["l2m_rows"]
