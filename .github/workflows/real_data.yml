@@ -34,7 +34,7 @@ jobs:
           x=json.load(open(p))
           assert x['l2m_rows'] > 500, x
           assert x['metadata_consistent_games'] >= 400, x
-assert x['metadata_consistent_games'] / x['l2m_distinct_games'] >= 0.99, x
+          assert x['metadata_consistent_games'] / x['l2m_distinct_games'] >= 0.99, x
           assert sum(x['status_counts'].values()) == x['l2m_rows'], x
           with open('data/validated/l2m_pbp_2025_candidates.csv') as f:
               assert sum(1 for _ in csv.DictReader(f)) == x['l2m_rows']
