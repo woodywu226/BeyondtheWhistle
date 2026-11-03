@@ -33,8 +33,8 @@ Play-by-play may support game-state reconstruction and event matching. It is **n
 Step 0 **does**:
 - download or load source CSV;
 - preserve unmodified source bytes;
-- enforce essential columns `season` and `call_type`;
-- report grade counts, season counts, missingness, unknown grades;
+- enforce essential columns `season`, `decision`, `call_type`, `period`, and `time`;
+- report decision grade counts, season counts, missingness, unknown grades;
 - record provenance and checksum.
 
 Step 0 **does not**:
@@ -51,3 +51,7 @@ Step 0 **does not**:
 3. Cross-check event time, period, grading, violation type, team, and official notes.
 4. Keep a discrepancy log with both original and corrected values.
 5. Publish sample coverage and match quality before fitting any models.
+
+## Step 1 schema correction
+
+The upstream `call_type` is the infraction type, while `decision` is the correctness classification. Blank `decision` entries represent ungradable/unknown official assessments. Use `decision` in all grade frequency calculations. The PBP integration is a conservative timestamp candidate generator, not a manually adjudicated ground-truth event mapping.
