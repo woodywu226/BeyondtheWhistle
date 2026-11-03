@@ -20,7 +20,7 @@ SOURCE_URL = (
     "master/1-tidy/L2M/L2M_stats_nba.csv"
 )
 VALID_GRADES = {"CC", "CNC", "IC", "INC"}
-REQUIRED_FIELDS = {"season", "call_type"}
+REQUIRED_FIELDS = {"season", "decision", "call_type", "period", "time"}
 MAX_BYTES = 80_000_000
 
 
@@ -55,19 +55,19 @@ def audit_csv(data: bytes) -> dict:
     rows = list(reader)
     if not rows:
         raise ValueError("Source CSV contains no data rows")
-    counts = Counter((row.get("call_type") or "").strip().upper() for row in rows)
+    counts = Counter((row.get("decision") or "").strip().upper() for row in rows)
     by_season = Counter((row.get("season") or "").strip() for row in rows)
     missing_values = {
         key: sum(not (row.get(key) or "").strip() for row in rows)
         for key in sorted(REQUIRED_FIELDS)
     }
-    unknown_grades = {grade: n for grade, n in counts.items() if grade not in VALID_GRADES}
+    unknown_grades = {grade: n for grade, n in counts.items() if grade and grade not in VALID_GRADES}\n    ungradable_count = counts.get("", 0)
     return {
         "row_count": len(rows),
         "columns": columns,
-        "column_count": len(columns),
+        "column_count": len(columns),\n        "call_type_is_violation_category": True,
         "grade_counts": dict(sorted(counts.items())),
-        "unknown_grade_counts": unknown_grades,
+        "unknown_grade_counts": unknown_grades,\n        "ungradable_decision_count": ungradable_count,
         "season_counts": dict(sorted(by_season.items())),
         "missing_required_values": missing_values,
         "limitations": [
