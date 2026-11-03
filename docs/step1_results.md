@@ -1,63 +1,49 @@
-# Step 1: Real NBA L2M–play-by-play integration results
+# Step 1 — 2024–25 NBA L2M and play-by-play validation
 
-**Status:** 2024–25 full regular-season/playoff game-level integration complete; missing play-in games and manual event-level verification remain open.
+**Status:** All 2024–25 L2M reports have been independently reconciled against the NBA's official JSON; game-level PBP coverage is complete. **Individual-event PBP links have not undergone independent film adjudication.**
 
-## Independent public data sources
+## Sources
 
-1. [atlhawksfanatic/L2M](https://github.com/atlhawksfanatic/L2M/blob/master/1-tidy/L2M/L2M_stats_nba.csv): community-structured NBA L2M adjudications, with `decision` (CC/CNC/IC/INC), game ID, clock, period, date and teams. Not independently audited against every official report.
-2. [shufinskiy/nba_data](https://github.com/shufinskiy/nba_data): 2024–25 regular-season `cdnnba_2024.tar.xz` and playoff `cdnnba_po_2024.tar.xz`, derived from NBA CDN play-by-play. They contain action number, clock, type, game ID, team and score.
-3. [NBA official L2M archive](https://official.nba.com/2024-25-nba-officiating-last-two-minute-reports/): primary definition and source for future per-event spot checks.
+- Official NBA L2M: `https://official.nba.com/l2m/json/{game_id}.json`, referenced from [NBA 2024–25 L2M index](https://official.nba.com/2024-25-nba-officiating-last-two-minute-reports/).
+- Historical structured L2M: [atlhawksfanatic/L2M](https://github.com/atlhawksfanatic/L2M), `1-tidy/L2M/L2M_stats_nba.csv`.
+- Regular-season and playoff play-by-play: [shufinskiy/nba_data](https://github.com/shufinskiy/nba_data), `cdnnba_2024.tar.xz` and `cdnnba_po_2024.tar.xz`.
+- Two missing 2025 play-in games: ESPN event `401766459` (MEM @ GSW, April 15), and `401766462` (MIA @ ATL, April 18).
 
-Source URLs and SHA256 checksums are saved in the audit JSON, allowing exact provenance checks even if upstream data changes.
+All downloaded source files are identified by SHA-256 in `data/validated/l2m_pbp_2025_audit.json`.
 
-## Actual 2024–25 data results
+## Reproducible results
 
-| Property | Observed |
+| Validation | Actual result |
 | --- | ---: |
-| PBP games across regular season and playoffs | 1,314 |
-| L2M report games | 423 |
-| L2M records | 7,165 |
-| Game ID, local ET game date, home/away agreement | 421 games (99.53%) |
-| Games unavailable from chosen PBP archives | 2 |
-| Unmatched records from these games | 53 |
-| CC / CNC / IC / INC | 2,033 / 4,801 / 66 / 263 |
-| Ungraded | 2 |
-| Unique time-and-type candidates (not definitive) | 1,599 |
-| Multiple compatible candidates | 156 |
-| No compatible candidate | 329 |
-| Documented noncalls requiring separate review | 5,026 |
+| L2M games | 423 |
+| L2M graded/ungraded records | 7,165 |
+| Available PBP games: regular season + play-in + playoffs | 1,316 |
+| Games with matching Game ID, Eastern game date, home/away | **423 / 423 (100%)** |
+| Official L2M JSON reports independently retrieved | **423 / 423 (100%)** |
+| Official vs historical report multiset matching, by game | **423 / 423** |
+| Official vs historical records matching period, clock, type, grade | **7,165 / 7,165** |
+| CC / CNC / IC / INC / ungraded | 2,033 / 4,801 / 66 / 263 / 2 |
 
-The two uncovered games are **NBA Play-In** games: `0052400121` and `0052400201`. They are not included in the regular-season and playoff archives used for this build. The missing games do not invalidate the 421 game-level metadata matches; they do prevent a claim of 100% L2M game coverage.
+The comparison preserves duplicate event keys as a **multiset**, rather than deduplicating events sharing a timestamp. It compares normalized period, period clock (tenth of a second), category text, and decision label. Six early false mismatches were caused solely by equivalent missing-value encodings: `NA` vs `N/A` in four call types and `NA` vs empty decision in two entries. No actual official grade disagreement remained. The upstream CSV was **not modified**.
 
-## Definition of a candidate match
+## PBP linking — statuses are candidates, NOT certified matches
 
-For each **called** L2M record (CC or IC), we require:
-- identical normalized 10-digit game ID;
-- identical quarter or overtime period;
-- compatible PBP action category (foul or turnover/violation);
-- period clock difference no greater than one second;
-- source game date and home/away team consistency.
+The derived `l2m_pbp_2025_candidates.csv` records the outcome for each L2M item. Candidate logic requires matching Game ID, period, one-second clock proximity, and compatible *broad* event type. We do **not** claim that the same player or incident was established by these checks.
 
-Exactly one compatible event yields `unique_clock_type_candidate_unverified`. Zero or multiple compatible events are not treated as matched. We do **not** claim confirmed identical player involvement, exact violation subtype, correct possession, or full official-report verification for these candidate links.
+- `unique_clock_type_candidate_unverified`: exactly one plausible PBP event, not independently video confirmed.
+- `multiple_clock_type_candidates`: several plausible events; ambiguous.
+- `no_clock_type_candidate`: no compatible recorded event; may be semantic/time discrepancy.
+- `noncall_not_in_pbp`: CNC/INC; there is normally no corresponding whistle for PBP to join.
+- `ungraded`: neither a correct nor incorrect ruling label.
 
-For **CNC** and **INC**, the play was not whistled by definition. Play-by-play generally lacks an identifiable officiating action for such events, so the status remains `noncall_not_in_pbp`; these cannot be inferred to be correctly or incorrectly *matched* by temporal proximity.
+**The 4,801 CNC and 263 INC instances are official rulings, not PBP whistle records.** Their error impact cannot be inferred simply by selecting the nearest recorded play. Nothing in this project computes a comprehensive league-wide referee error percentage.
 
-## Scientific limitations
+See `data/validated/l2m_pbp_2025_audit.json` for the precise candidate distribution after all data sources were integrated.
 
-- Historical NBA L2M reports select only qualifying close games and notable noncalls. The sample cannot represent all NBA refereeing.
-- The official `decision` label describes the league's retrospective assessment, but scraping and transformations can introduce errors.
-- Some game periods may contain multiple actions at the same timestamp. Clock-only matches are insufficient.
-- PBP event categories can differ from the nuanced report violation subtype.
-- 123 duplicated *reduced* record-key combinations do **not** necessarily indicate duplicate original source rows; several legitimate actions can share clock/type.
-- No individual-official blame or error rate is identified.
-- No win probability model, counterfactual correction, or policy-effect estimate has been fitted.
+## Research boundary
 
-## Minimum additional work before Step 2
+**Completed:** Public data acquisition; official L2M consistency and game metadata validation; source provenance; conservative PBP candidate mapping; reproducible unit tests and CI.
 
-1. Acquire missing play-in games or explicitly exclude them from the primary cohort.
-2. Manually validate a stratified sample of CC, IC, CNC and INC against current official L2M reports and accessible game footage, recording discrepancies.
-3. For called events, use player/team and detailed violation text to disambiguate same-clock cases; do not automatically assume high match confidence.
-4. Resolve matchup and possession state with explicit error labels; distinguish corrected calls from corrected noncalls.
-5. Publish event-match precision from a **manually adjudicated reference sample**, not from automated candidate counts.
+**Still requiring separate human research:** Stratified, independent video review of event-level candidate matches, including player/possession/violation verification, error logging, and at least two reviewers for agreement assessment. Official-label matching does **not** substitute for independent video-based confirmation or for a causal counterfactual.
 
-**Interpretation:** Step 1 demonstrates extensive real-data acquisition and metadata consistency (421/423 L2M games), but it is **not** a complete verified event-level linkage.
+Step 2 can proceed on play-by-play game states to train win probabilities. Step 3 **must gate counterfactual officiating analyses** on independently checked events and clearly declared assumptions.

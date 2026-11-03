@@ -1,136 +1,98 @@
 # Beyond the Whistle
 
-**Quantifying Avoidable Win-Probability Harm from NBA Officiating Errors**
+**Quantifying avoidable win-probability harm from NBA officiating errors**
 
-> **Status: Step 0 — research design and data preparation scaffolding.** No NBA records have been independently validated in this repository; no win-probability model or empirical error-impact result is claimed.
+Research question: *How much competitive harm is attributable to confirmed officiating errors in close NBA games, and which interventions could reduce that harm without substantially disrupting game flow?*
 
-## Research question
+> **Status: Step 1 official-source and game-level data validation complete (2024–25); event-level film adjudication remains open.** No win-probability model, counterfactual causal result or policy effectiveness claim has been produced.
 
-How much competitive harm might be attributable to **confirmed** officiating errors in close NBA games, and which interventions could reduce that harm without substantially disrupting game flow?
+## Verified 2024–25 data
 
-This project distinguishes an ordinary win-probability change following a whistle from the **counterfactual impact of an incorrect officiating decision**.
+| Metric | Result |
+| --- | ---: |
+| NBA L2M-eligible games | **423** |
+| Historical L2M decisions | **7,165** |
+| Public PBP games (regular + play-in + postseason) | **1,316** |
+| L2M games agreeing on ID, date, home and away across PBP | **423/423** |
+| Individual NBA official L2M JSON reports independently obtained | **423/423** |
+| Report records matching official period, time, call type and grade | **7,165/7,165** |
 
-## Scope and important limitations
+Decision counts: **CC: 2,033 · CNC: 4,801 · IC: 66 · INC: 263 · ungraded: 2.**
 
-**Primary sample:** games with official NBA Last Two Minute (L2M) reports, under the eligibility rules applicable to each season. Recent NBA reports cover games within **three points at any point in the final two minutes of Q4**, including applicable overtime. These reports assess whistles and **notable**, not exhaustive, non-whistles.
+The historical dataset was reconciled directly against the NBA's current official report JSON. Six apparent discrepancies were only missing-value formatting differences (`NA` versus `N/A` or empty); no official decision-label conflict remained. Raw source values are retained unchanged. Full evidence and limitations are documented in [Step 1 results](docs/step1_results.md).
 
-The original broader proposal — **last five minutes of Q4, within ten points** — is a *future extension* requiring additional video annotation; the official L2M dataset cannot label those first three minutes.
+**Two Play-In games successfully added:** `0052400121` (Grizzlies @ Warriors), `0052400201` (Heat @ Hawks), using independently available ESPN play-by-play. This closes the earlier 421/423 coverage gap.
 
-Grades: **CC** (Correct Call), **CNC** (Correct Non-Call), **IC** (Incorrect Call), **INC** (Incorrect Non-Call). Counts of CNC are selected, so simple incorrect / all-graded ratios should **not** be presented as comprehensive officiating error rates. A crew listing does not identify the specific referee responsible.
+### Important: what the 100% figure does *not* mean
 
-## Step 0: data preparation
+- The official L2M decision grades have been confirmed against the NBA's own official JSON. This is not a new, independently conducted video adjudication.
+- Play-by-play has no reliable whistle event for **CNC** and **INC** by definition. They must not be assigned a fabricated PBP event number.
+- A clock-and-type candidate for CC/IC is not necessarily the same incident; automated candidate links still require independent video or additional event evidence.
+- The source covers qualifying *late-game* contests and selectively recorded notable non-calls. A raw CC/CNC/IC/INC ratio is **not** a league-wide referee error rate.
+- Referee crew membership alone does not identify the specific official making a decision.
 
-This repository currently contains a reproducible **source preparation and QA utility**, not a validated dataset. The historical source is the community-maintained [atlhawksfanatic/L2M dataset](https://github.com/atlhawksfanatic/L2M), cross-referenced against the [NBA's official L2M archive](https://official.nba.com/2025-26-nba-officiating-last-two-minute-reports/). Please review [data provenance](docs/data_sources.md) before analysis.
+## Reproduce the full Step 1 pipeline
 
-### Quick start
-
-Requires **Python 3.10+**.
+Requires Python **3.10+** and Internet access to the data providers:
 
 ```bash
 git clone https://github.com/woodywu226/BeyondtheWhistle.git
 cd BeyondtheWhistle
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
-python -m pip install -e ".[dev]"
-pytest -q
-python -m beyond_the_whistle.prepare_l2m
-```
-
-The last command attempts to download the upstream historical CSV (network access required). For an existing local copy:
-
-```bash
-python -m beyond_the_whistle.prepare_l2m --input /path/to/L2M_stats_nba.csv
-```
-
-Outputs, created only **after successful execution**:
-- `data/raw/l2m_source.csv` — preserved original source bytes (gitignored)
-- `data/processed/l2m_audit.json` — URL/path, retrieval UTC timestamp, SHA-256, source schema, grade/season counts, missing values, warnings (gitignored)
-
-The script **does not** fabricate missing seasons, fill in ungraded events, download play-by-play, or claim NBA-official validation. Upstream file/column changes can cause the downloader to fail; inspect the error and source before adapting.
-
-### Project structure
-
-```text
-src/beyond_the_whistle/prepare_l2m.py  # source download + schema audit
-tests/test_prepare_l2m.py              # synthetic-data unit tests
-docs/data_sources.md                   # URLs, eligibility, provenance, limits
-docs/research_protocol.md              # study design and milestones
-data/raw/                               # local inputs (ignored)
-data/processed/                         # local QA outputs (ignored)
-pyproject.toml                          # Python package configuration
-```
-
-## Planned methods (not yet implemented)
-
-1. **Step 1:** validate source records against official reports; ingest and match NBA play-by-play events; assess coverage.
-2. **Step 2:** train and calibrate temporally validated game-state win-probability models.
-3. **Step 3:** reconstruct corrected game states for a *restricted set of interpretable errors*, then simulate downstream outcomes and quantify uncertainty.
-4. **Step 4:** evaluate contextual error patterns with appropriate denominators, avoiding unsupported individual-referee attribution.
-5. **Step 5:** compare **hypothetical** replay/training strategies under interruption-time constraints; do not describe simulations as field-proven policy impacts.
-
-## Methodological distinction
-
-For an affected team's winning probability, the intended target for a reconstructable event is:
-
-```text
-Estimated effect = WP(observed state)
-                 - E[WP(corrected state) | pre-decision information, assumptions]
-```
-
-The expectation must integrate multiple possible corrected outcomes (e.g., free throws and ensuing possession). It should carry uncertainty, and is **not identifiable purely from a single observed play** without modeling assumptions.
-
-## References
-
-- [NBA 2025–26 official L2M reports](https://official.nba.com/2025-26-nba-officiating-last-two-minute-reports/)
-- [NBA 2017 eligibility change announcement](https://www.nba.com/news/nba-changes-last-two-minute-reports-2017-18)
-- [atlhawksfanatic/L2M historical dataset](https://github.com/atlhawksfanatic/L2M)
-- [Pelechrinis (2023), implicit biases in refereeing](https://doi.org/10.1038/s41598-023-31799-y)
-- [Duma & Benaharon (2026), Referee Impact Metric](https://arxiv.org/abs/2605.17845)
-
-## Research integrity
-
-This is an independent, in-progress research project. Analysis, statistics, academic publication and real-world officiating improvements are **not** claimed until reproduced and independently evaluated. Data rights and NBA site access conditions must be respected.
-
-## Step 1: Play-by-play integration (candidate matching)
-
-Step 1 code has been implemented, but **real NBA game-to-L2M matching is not yet independently validated**. The NBA Stats endpoint may reject requests; no synthetic fixture is presented as authentic NBA results.
-
-```bash
-python -m beyond_the_whistle.ingest_pbp --game-id 0022400001
-python -m beyond_the_whistle.match_events --pbp data/processed/pbp/0022400001.csv
-pytest -q
-ruff check .
-```
-
-To use an already downloaded NBA-format PBP JSON, pass `--input-json /path/to/file.json` to the ingest command. Outputs include normalized event CSV, candidate match CSV and a match-status audit JSON under `data/processed/`. The match script currently operates with one PBP game at a time and retains unmatched L2M rows from other games.
-
-**Crucial correction from Step 0:** In the historical dataset, `call_type` describes the *violation category*; `decision` contains the CC/CNC/IC/INC grades. Blank `decision` is permitted and counted as ungradable. See [Step 1 validation protocol](docs/step1_validation.md).
-
-A **unique temporal candidate is not a verified event match**. INC/CNC remain review-required even if a PBP event shares the timestamp. The source data still needs official spot checks and independent runtime validation before research conclusions.
-
-## Real 2024-25 data integration — Step 1
-
-**Cross-source game metadata QA completed; event-level adjudication remains unverified.**
-
-The tracked [2024–25 candidate table](data/validated/l2m_pbp_2025_candidates.csv) and [audit JSON](data/validated/l2m_pbp_2025_audit.json) are produced by a real-data workflow, not synthetic fixtures:
-
-- **NBA L2M:** 7,165 records from 423 games; grade counts CC 2,033, CNC 4,801, IC 66, INC 263, two ungraded.
-- **NBA PBP:** 1,314 games from 2024–25 regular-season and playoff CDN action archives.
-- **Game metadata:** 421 / 423 L2M games (99.53%) are present with matching date and home/away teams.
-- **Gap:** 53 L2M records across two 2025 play-in games (`0052400121`, `0052400201`) have no corresponding game in the regular-season/playoff archives; these are explicitly *unmatched*.
-- **Event-level candidates:** 1,599 single clock-and-event-type candidates (**not officially or manually confirmed**), 156 multiple candidates, 329 without a matching candidate, 5,026 documented non-calls not aligned to PBP, and two ungraded records.
-
-The matching is deliberately conservative; the unique-candidate figure is **not** an event-level accuracy rate. A PBP event with the same clock and broad type may be a different event. Incorrect non-calls (INC) and correct non-calls (CNC) cannot reliably be matched to an on-court whistle from PBP alone.
-
-### Reproduce the real-data build
-
-```bash
+python3 -m venv .venv
+source .venv/bin/activate
 python -m pip install -e ".[dev]"
 pytest -q
 ruff check .
-python -m beyond_the_whistle.build_archive_dataset --season 2025
+python -m beyond_the_whistle.finalize_step1 --official-workers 4
 ```
 
-This downloads the source L2M CSV and public compressed CDN play-by-play archives, verifies cross-source game metadata, and regenerates the derived match-key CSV and JSON audit. Raw files are not republished. Review [Step 1 findings and limitations](docs/step1_results.md) before using the data for any scientific claim.
+The last command downloads the historical L2M CSV, NBA CDN regular-season/playoff archives, two ESPN Play-In summaries and all 423 official NBA L2M JSON reports. A source outage or access restriction is treated as an error and reported, not silently filled with invented data.
 
-**Step 1 boundary:** game-level integration is largely validated; the study still requires manual official-report/video sampling, unambiguous event-level adjudication, and (if complete coverage is required) play-in PBP before moving to win-probability causal analyses.
+The generated, versioned research outputs are:
+
+- [L2M–PBP candidate keys](data/validated/l2m_pbp_2025_candidates.csv)
+- [Source / event mapping audit JSON](data/validated/l2m_pbp_2025_audit.json)
+- [Official comparison for all 423 games](data/validated/l2m_2025_official_comparison.json)
+- [Data validation methodology and limitations](docs/step1_results.md)
+
+Original large source downloads are not redistributed. The audit includes source URLs and SHA-256 identifiers for provenance.
+
+## Research workflow
+
+| Stage | Goal | Status |
+| --- | --- | --- |
+| Step 0 | Research protocol, source inventory, package setup, unit tests | Implemented |
+| Step 1 | Real L2M / PBP source integration and official report reconciliation | **Complete at game-level and official-label level** |
+| Step 1 research QA | Video-confirmed same-event matching and reviewer agreement | **Not yet done** |
+| Step 2 | Temporal, calibrated game-state win-probability baseline | Planned |
+| Step 3 | Counterfactual corrected-event simulation with uncertainty | Planned |
+| Step 4 | Context-adjusted officiating error patterns and fairness | Planned |
+| Step 5 | Scenario-based low-disruption intervention optimization | Planned |
+
+The study initially focuses on official L2M reports. Extending the analysis to **the final five minutes of Q4 with a margin of ten points or fewer** would require newly annotated video, because NBA's L2M reports do not label that full window.
+
+## Project structure
+
+```text
+src/beyond_the_whistle/
+  prepare_l2m.py             # upstream CSV schema and provenance checks
+  build_archive_dataset.py   # historical NBA CDN action archive parsing
+  build_real_dataset.py      # score-clock, match-key and metadata audits
+  finalize_step1.py          # official NBA report reconciliation and play-in backfill
+  ingest_pbp.py              # alternative NBA play-by-play JSON ingestion
+  match_events.py            # conservative temporal candidates
+tests/                       # deterministic unit tests
+data/validated/              # limited derived data and source-reconciliation results
+docs/                        # study protocol, sources and validation notes
+.github/workflows/           # test and data-reconciliation CI
+```
+
+## References and data rights
+
+- [NBA's official 2024–25 L2M reports](https://official.nba.com/2024-25-nba-officiating-last-two-minute-reports/)
+- [Historical L2M project (atlhawksfanatic)](https://github.com/atlhawksfanatic/L2M)
+- [NBA play-by-play archives (shufinskiy)](https://github.com/shufinskiy/nba_data)
+- [Pelechrinis (2023): implicit officiating biases](https://doi.org/10.1038/s41598-023-31799-y)
+- [Duma & Benaharon (2026): Referee Impact Metric](https://arxiv.org/abs/2605.17845)
+
+This is an independent research project in progress. The published labels are NBA retrospectives; no changes to NBA officiating practice or causal effects have been experimentally demonstrated.

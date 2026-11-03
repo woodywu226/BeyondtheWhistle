@@ -1,0 +1,78 @@
+name: Step 1 complete source reconciliation
+on:
+  push:
+    paths:
+      - src/beyond_the_whistle/finalize_step1.py
+      - src/beyond_the_whistle/review_queue.py
+      - src/beyond_the_whistle/build_real_dataset.py
+      - tests/test_finalize_step1.py
+      - tests/test_review_queue.py
+      - .github/workflows/step1_complete.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install and test code
+        run: |
+          python -m pip install -e ".[dev]"
+          pytest -q
+          ruff check .
+      - name: Reconcile 2024-25 L2M against NBA official reports and all available PBP
+        run: python -m beyond_the_whistle.finalize_step1 --official-workers 4
+      - name: Gate game-level coverage and materialized counts
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+          base = Path("data/validated")
+          audit = json.loads((base / "l2m_pbp_2025_audit.json").read_text())
+          official = json.loads((base / "l2m_2025_official_comparison.json").read_text())
+          assert audit["l2m_rows"] == 7165, audit["l2m_rows"]
+          assert audit["metadata_consistent_games"] == audit["l2m_distinct_games"], audit
+          assert audit["missing_pbp_game_ids"] == [], audit["missing_pbp_game_ids"]
+          assert official["attempted_games"] == audit["l2m_distinct_games"]
+          assert official["official_reports_fetched"] == audit["l2m_distinct_games"], official["official_reports_fetched"]
+          assert official["exactly_matching_games"] == audit["l2m_distinct_games"], official["exactly_matching_games"]
+          assert sum(audit["status_counts"].values()) == audit["l2m_rows"]
+          with (base / "l2m_pbp_2025_candidates.csv").open() as handle:
+              assert len(list(csv.DictReader(handle))) == audit["l2m_rows"]
+          print("STEP1 SOURCE QA PASS", {
+              "games": audit["l2m_distinct_games"],
+              "official_fetched": official["official_reports_fetched"],
+              "official_exact": official["exactly_matching_games"],
+              "official_disagreements": len(official["differences"]),
+              "official_fetch_failures": len(official["fetch_or_parse_failures"]),
+          })
+          PY
+      - name: Generate unadjudicated 48-event review queue
+        run: |
+          python -m beyond_the_whistle.review_queue --per-grade 12
+          python - <<'PY'
+          import csv
+          from collections import Counter
+          with open("data/validated/step1_review_queue_2025.csv") as stream:
+              rows = list(csv.DictReader(stream))
+          assert Counter(r["decision"] for r in rows) == {"CC": 12, "IC": 12, "CNC": 12, "INC": 12}
+          assert all(not row["same_event_verified"] and not row["reviewer_decision"] for row in rows)
+          print("VIDEO REVIEW QUEUE: 48 unadjudicated real NBA events, 12 per grade.")
+          PY
+      - name: Commit reproducible audit and candidate dataset
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/validated/l2m_pbp_2025_candidates.csv data/validated/l2m_pbp_2025_audit.json data/validated/l2m_2025_official_comparison.json data/validated/step1_review_queue_2025.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "data(step1): reconcile NBA official decisions and play-in PBP coverage"
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
