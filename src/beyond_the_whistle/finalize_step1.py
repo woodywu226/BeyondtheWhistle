@@ -20,8 +20,15 @@ from pathlib import Path
 
 from beyond_the_whistle.build_archive_dataset import ARCHIVE_BASE, ARCHIVES, read_archive
 from beyond_the_whistle.build_real_dataset import (
-    L2M_URL, MATCH_FIELDS, clean, download, normalize_id, parse_clock, parse_period,
-    prepare, read_csv_bytes,
+    L2M_URL,
+    MATCH_FIELDS,
+    clean,
+    download,
+    normalize_id,
+    parse_clock,
+    parse_period,
+    prepare,
+    read_csv_bytes,
 )
 
 OFFICIAL_URL = "https://official.nba.com/l2m/json/{gid}.json"
@@ -44,9 +51,9 @@ def fetch_json(url: str, attempts: int = 3) -> dict:
             ) as response:
                 payload = json.load(response)
             if not isinstance(payload, dict):
-                raise ValueError("Expected JSON object")
+                raise TypeError("Expected JSON object")
             return payload
-        except (OSError, ValueError, json.JSONDecodeError) as exc:
+        except (OSError, ValueError, TypeError) as exc:
             error = exc
             if attempt + 1 < attempts:
                 time.sleep(0.75 * (attempt + 1))
@@ -79,7 +86,7 @@ def compare_official(gid: str, records: list[dict], payload: dict) -> dict:
     if not isinstance(payload.get("game"), list) or len(payload["game"]) != 1:
         raise ValueError("Official response missing one-row game metadata")
     if not isinstance(payload.get("l2m"), list):
-        raise ValueError("Official response missing L2M list")
+        raise TypeError("Official response missing L2M list")
     game_id = normalize_id(payload["game"][0].get("GameId", ""))
     if game_id != gid:
         raise ValueError(f"Official game ID mismatch: {game_id} != {gid}")
@@ -109,7 +116,7 @@ def official_audit(l2m: list[dict], workers: int = 4) -> dict:
         gid, rows = item
         try:
             return compare_official(gid, rows, fetch_json(OFFICIAL_URL.format(gid=gid)))
-        except (RuntimeError, ValueError, KeyError) as exc:
+        except (RuntimeError, ValueError, TypeError, KeyError) as exc:
             return {"game_id": gid, "error": str(exc)[:280]}
 
     verified = []
