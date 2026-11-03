@@ -68,7 +68,9 @@ def normalize_grade(value: str) -> str:
 
 
 def normalize_label(value: str) -> str:
-    return re.sub(r"\s+", " ", html.unescape(str(value or "")).strip()).casefold()
+    cleaned = re.sub(r"\s+", " ", html.unescape(str(value or "")).strip()).casefold()
+    # The community CSV spells the official N/A category as NA.
+    return "n/a" if cleaned in {"na", "n/a", "none"} else cleaned
 
 
 def canonical_l2m(record: dict, official: bool) -> tuple:
