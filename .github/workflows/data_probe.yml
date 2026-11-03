@@ -51,4 +51,22 @@ jobs:
                       print("ALT_PBP_SAMPLE",json.dumps(row)[:1600])
               print("ALT_PBP_SUCCESS")
           except Exception as e: print("ALT_PBP_ERROR",repr(e))
+          import tarfile, tempfile, os
+          source="https://raw.githubusercontent.com/shufinskiy/nba_data/main/datasets/cdnnba_2025.tar.xz"
+          try:
+              with urllib.request.urlopen(urllib.request.Request(source,headers={"User-Agent":"Mozilla/5.0"}),timeout=90) as resp:
+                  binary=resp.read(35_000_000)
+              print("ARCHIVE_BYTES",len(binary))
+              with tempfile.NamedTemporaryFile(suffix=".tar.xz") as f:
+                  f.write(binary);f.flush()
+                  with tarfile.open(f.name,"r:xz") as tar:
+                      members=tar.getmembers()
+                      print("ARCHIVE_MEMBERS",len(members), [(m.name,m.size) for m in members[:8]])
+                      for m in members:
+                          if m.isfile():
+                              stream=tar.extractfile(m)
+                              print("ARCHIVE_FIRST_FILE_NAME",m.name)
+                              print("ARCHIVE_FIRST_FILE_BYTES",stream.read(1200)[:1200])
+                              break
+          except Exception as e: print("ARCHIVE_ERROR",repr(e))
           PY
