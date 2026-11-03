@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - src/beyond_the_whistle/build_archive_dataset.py
+      - src/beyond_the_whistle/build_real_dataset.py
       - tests/test_real_dataset.py
       - .github/workflows/real_data.yml
 permissions:
@@ -32,7 +33,8 @@ jobs:
           p='data/validated/l2m_pbp_2025_audit.json'
           x=json.load(open(p))
           assert x['l2m_rows'] > 500, x
-          assert x['metadata_consistent_games'] >= 250, x
+          assert x['metadata_consistent_games'] >= 400, x
+assert x['metadata_consistent_games'] / x['l2m_distinct_games'] >= 0.99, x
           assert sum(x['status_counts'].values()) == x['l2m_rows'], x
           with open('data/validated/l2m_pbp_2025_candidates.csv') as f:
               assert sum(1 for _ in csv.DictReader(f)) == x['l2m_rows']
