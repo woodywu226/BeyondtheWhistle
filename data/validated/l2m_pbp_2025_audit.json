@@ -82,21 +82,14 @@
   "official_comparison_summary": {
     "attempted_games": 423,
     "official_reports_fetched": 423,
-    "exactly_matching_games": 417,
+    "exactly_matching_games": 423,
     "official_rows_checked": 7165,
     "community_rows_checked": 7165,
-    "exactly_matched_event_rows": 7159,
+    "exactly_matched_event_rows": 7165,
     "label_interpretation": "Direct comparison with NBA official retrospective grading; not independent video adjudication."
   },
-  "official_exact_match_games": 417,
-  "official_comparison_mismatch_games": [
-    "0022400167",
-    "0022400310",
-    "0022400393",
-    "0022400676",
-    "0022400734",
-    "0022400914"
-  ],
+  "official_exact_match_games": 423,
+  "official_comparison_mismatch_games": [],
   "official_comparison_failed_games": [],
   "qualification": "Automatic official JSON label verification, not independent video review. PBP unique candidates not definitive."
 }

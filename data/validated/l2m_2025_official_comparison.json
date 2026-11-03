@@ -1,66 +1,11 @@
 {
   "attempted_games": 423,
   "official_reports_fetched": 423,
-  "exactly_matching_games": 417,
+  "exactly_matching_games": 423,
   "official_rows_checked": 7165,
   "community_rows_checked": 7165,
-  "exactly_matched_event_rows": 7159,
-  "differences": [
-    {
-      "game_id": "0022400167",
-      "official_count": 17,
-      "community_count": 17,
-      "matching_rows": 16,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
-    },
-    {
-      "game_id": "0022400310",
-      "official_count": 13,
-      "community_count": 13,
-      "matching_rows": 12,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
-    },
-    {
-      "game_id": "0022400393",
-      "official_count": 12,
-      "community_count": 12,
-      "matching_rows": 11,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
-    },
-    {
-      "game_id": "0022400676",
-      "official_count": 14,
-      "community_count": 14,
-      "matching_rows": 13,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
-    },
-    {
-      "game_id": "0022400734",
-      "official_count": 14,
-      "community_count": 14,
-      "matching_rows": 13,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
-    },
-    {
-      "game_id": "0022400914",
-      "official_count": 13,
-      "community_count": 13,
-      "matching_rows": 12,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
-    }
-  ],
+  "exactly_matched_event_rows": 7165,
+  "differences": [],
   "fetch_or_parse_failures": [],
   "game_level_results": [
     {
@@ -598,10 +543,10 @@
       "game_id": "0022400167",
       "official_count": 17,
       "community_count": 17,
-      "matching_rows": 16,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
+      "matching_rows": 17,
+      "missing_from_community": 0,
+      "extra_in_community": 0,
+      "exact_multiset_match": true
     },
     {
       "game_id": "0022400169",
@@ -1057,10 +1002,10 @@
       "game_id": "0022400310",
       "official_count": 13,
       "community_count": 13,
-      "matching_rows": 12,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
+      "matching_rows": 13,
+      "missing_from_community": 0,
+      "extra_in_community": 0,
+      "exact_multiset_match": true
     },
     {
       "game_id": "0022400311",
@@ -1282,10 +1227,10 @@
       "game_id": "0022400393",
       "official_count": 12,
       "community_count": 12,
-      "matching_rows": 11,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
+      "matching_rows": 12,
+      "missing_from_community": 0,
+      "extra_in_community": 0,
+      "exact_multiset_match": true
     },
     {
       "game_id": "0022400394",
@@ -2092,10 +2037,10 @@
       "game_id": "0022400676",
       "official_count": 14,
       "community_count": 14,
-      "matching_rows": 13,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
+      "matching_rows": 14,
+      "missing_from_community": 0,
+      "extra_in_community": 0,
+      "exact_multiset_match": true
     },
     {
       "game_id": "0022400681",
@@ -2299,10 +2244,10 @@
       "game_id": "0022400734",
       "official_count": 14,
       "community_count": 14,
-      "matching_rows": 13,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
+      "matching_rows": 14,
+      "missing_from_community": 0,
+      "extra_in_community": 0,
+      "exact_multiset_match": true
     },
     {
       "game_id": "0022400740",
@@ -2803,10 +2748,10 @@
       "game_id": "0022400914",
       "official_count": 13,
       "community_count": 13,
-      "matching_rows": 12,
-      "missing_from_community": 1,
-      "extra_in_community": 1,
-      "exact_multiset_match": false
+      "matching_rows": 13,
+      "missing_from_community": 0,
+      "extra_in_community": 0,
+      "exact_multiset_match": true
     },
     {
       "game_id": "0022400915",
