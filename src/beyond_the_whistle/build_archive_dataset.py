@@ -20,7 +20,6 @@ from beyond_the_whistle.build_real_dataset import (
     L2M_URL,
     MATCH_FIELDS,
     download,
-    parse_clock,
     parse_period,
     prepare,
     read_csv_bytes,
