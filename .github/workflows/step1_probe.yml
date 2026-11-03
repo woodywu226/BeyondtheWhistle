@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Probe NBA official L2M JSON and Play-In play-by-play
         run: |
-          python - <<'PY'
+          PYTHONPATH=src python - <<'PY'
           import json,urllib.request,urllib.error
           ua={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36","Referer":"https://official.nba.com/","Accept":"application/json, text/html;q=0.9, */*;q=0.8"}
           for gid in ("0052400121","0052400201","0022400064"):
