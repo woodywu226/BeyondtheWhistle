@@ -2,7 +2,6 @@ import hashlib
 import json
 
 import pytest
-
 from beyond_the_whistle.prepare_l2m import audit_csv, prepare
 
 
