@@ -153,8 +153,9 @@ def read_espn_play_in(gid: str, payload: dict) -> tuple[list[dict], dict]:
     away = next((p for p in participants if p.get("homeAway") == "away"), None)
     if home is None or away is None:
         raise ValueError("ESPN home/away teams unavailable")
-    h = home["team"]["abbreviation"]
-    a = away["team"]["abbreviation"]
+    aliases = {"GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS", "UTAH": "UTA"}
+    h = aliases.get(home["team"]["abbreviation"], home["team"]["abbreviation"])
+    a = aliases.get(away["team"]["abbreviation"], away["team"]["abbreviation"])
     if (h, a) != (settings["home"], settings["away"]):
         raise ValueError(f"ESPN team mismatch for {gid}: {(h, a)}")
     actions = payload.get("plays")
