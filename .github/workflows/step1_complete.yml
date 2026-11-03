@@ -3,7 +3,10 @@ on:
   push:
     paths:
       - src/beyond_the_whistle/finalize_step1.py
+      - src/beyond_the_whistle/review_queue.py
+      - src/beyond_the_whistle/build_real_dataset.py
       - tests/test_finalize_step1.py
+      - tests/test_review_queue.py
       - .github/workflows/step1_complete.yml
   workflow_dispatch:
 permissions:
@@ -50,11 +53,23 @@ jobs:
               "official_fetch_failures": len(official["fetch_or_parse_failures"]),
           })
           PY
+      - name: Generate unadjudicated 48-event review queue
+        run: |
+          python -m beyond_the_whistle.review_queue --per-grade 12
+          python - <<'PY'
+          import csv
+          from collections import Counter
+          with open("data/validated/step1_review_queue_2025.csv") as stream:
+              rows = list(csv.DictReader(stream))
+          assert Counter(r["decision"] for r in rows) == {"CC": 12, "IC": 12, "CNC": 12, "INC": 12}
+          assert all(not row["same_event_verified"] and not row["reviewer_decision"] for row in rows)
+          print("VIDEO REVIEW QUEUE: 48 unadjudicated real NBA events, 12 per grade.")
+          PY
       - name: Commit reproducible audit and candidate dataset
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/validated/l2m_pbp_2025_candidates.csv data/validated/l2m_pbp_2025_audit.json data/validated/l2m_2025_official_comparison.json
+          git add data/validated/l2m_pbp_2025_candidates.csv data/validated/l2m_pbp_2025_audit.json data/validated/l2m_2025_official_comparison.json data/validated/step1_review_queue_2025.csv
           if ! git diff --cached --quiet; then
             git commit -m "data(step1): reconcile NBA official decisions and play-in PBP coverage"
             git push origin "HEAD:${GITHUB_REF_NAME}"
