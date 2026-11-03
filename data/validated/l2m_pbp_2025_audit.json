@@ -4,6 +4,11 @@
   "l2m_distinct_games": 423,
   "pbp_distinct_games_in_source": 1314,
   "metadata_consistent_games": 421,
+  "game_metadata_coverage_pct": 99.53,
+  "missing_pbp_game_ids": [
+    "0052400121",
+    "0052400201"
+  ],
   "metadata_validation_counts": {
     "pbp_present": 421,
     "date_agrees": 421,
