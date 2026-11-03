@@ -72,7 +72,7 @@ def category(text: str) -> str:
     value = text.lower().strip()
     if value.startswith("foul"):
         return "foul"
-    if any(x in value for x in ("violation", "travel", "out of bounds", "out-of-bounds",
+    if any(x in value for x in ("violation", "turnover", "travel", "out of bounds", "out-of-bounds",
                                  "double dribble", "goaltend", "basket interference")):
         return "violation_or_turnover"
     return "other"
