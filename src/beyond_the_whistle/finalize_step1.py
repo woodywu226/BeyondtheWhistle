@@ -62,6 +62,8 @@ def fetch_json(url: str, attempts: int = 3) -> dict:
 
 def normalize_grade(value: str) -> str:
     cleaned = str(value or "").strip().upper().rstrip("*")
+    if cleaned in {"", "NA", "N/A", "NONE", "UNDETECTABLE"}:
+        return ""
     return {"NCC": "CNC", "NCI": "INC"}.get(cleaned, cleaned)
 
 
