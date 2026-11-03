@@ -45,4 +45,13 @@ jobs:
                   with urllib.request.urlopen(urllib.request.Request(link,headers=ua),timeout=15) as response: summary=json.load(response)
                   print("ESPN_SUMMARY",eid,"plays",len(summary.get("plays",[])),"first",str(summary.get("plays",[])[:1])[:500])
             except Exception as e:print("ESPN_ERROR",date,repr(e))
+          from collections import Counter
+          from beyond_the_whistle.finalize_step1 import canonical_l2m,OFFICIAL_URL,fetch_json
+          from beyond_the_whistle.build_real_dataset import read_csv_bytes,download,L2M_URL
+          gids={"0022400167","0022400310","0022400393","0022400676","0022400734","0022400914"}
+          source=read_csv_bytes(download(L2M_URL),{"gid","decision","call_type","period","time"})
+          for gid in sorted(gids):
+            ours=Counter(canonical_l2m(x,False) for x in source if x.get("gid")==gid and x.get("season")=="2025")
+            off=Counter(canonical_l2m(x,True) for x in fetch_json(OFFICIAL_URL.format(gid=gid))["l2m"])
+            print("DIFF",gid,"ours_extra",list((ours-off).items()),"official_extra",list((off-ours).items()))
           PY
