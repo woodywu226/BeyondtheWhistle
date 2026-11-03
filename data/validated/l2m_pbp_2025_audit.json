@@ -2,18 +2,15 @@
   "season_end_year": 2025,
   "l2m_rows": 7165,
   "l2m_distinct_games": 423,
-  "pbp_distinct_games_in_source": 1314,
-  "metadata_consistent_games": 421,
-  "game_metadata_coverage_pct": 99.53,
-  "missing_pbp_game_ids": [
-    "0052400121",
-    "0052400201"
-  ],
+  "pbp_distinct_games_in_source": 1316,
+  "metadata_consistent_games": 423,
+  "game_metadata_coverage_pct": 100.0,
+  "missing_pbp_game_ids": [],
   "metadata_validation_counts": {
-    "pbp_present": 421,
-    "date_agrees": 421,
-    "home_agrees": 421,
-    "away_agrees": 421
+    "pbp_present": 423,
+    "date_agrees": 423,
+    "home_agrees": 423,
+    "away_agrees": 423
   },
   "l2m_grade_counts": {
     "BLANK": 2,
@@ -23,14 +20,13 @@
     "INC": 263
   },
   "status_counts": {
-    "missing_pbp_game": 53,
     "multiple_clock_type_candidates": 156,
-    "no_clock_type_candidate": 329,
-    "noncall_not_in_pbp": 5026,
+    "no_clock_type_candidate": 341,
+    "noncall_not_in_pbp": 5064,
     "ungraded": 2,
-    "unique_clock_type_candidate_unverified": 1599
+    "unique_clock_type_candidate_unverified": 1602
   },
-  "unique_clock_and_type_candidates": 1599,
+  "unique_clock_and_type_candidates": 1602,
   "ambiguous_candidates": 156,
   "repeated_l2m_record_keys": 123,
   "interpretation": [
@@ -40,7 +36,7 @@
     "L2M is selectively eligible and does not represent all close games.",
     "This is not a referee accuracy estimate or causal effect estimate."
   ],
-  "source_data_scope": "2024-25 regular season and playoffs",
+  "source_data_scope": "2024-25 regular season, play-in, playoffs",
   "l2m_upstream": "https://raw.githubusercontent.com/atlhawksfanatic/L2M/master/1-tidy/L2M/L2M_stats_nba.csv",
   "l2m_sha256": "825c560528338f7227da274d50c3fc729088fe4190b473a7ccf714fde66d880b",
   "pbp_archives": [
@@ -63,5 +59,44 @@
       "games_with_date": 84
     }
   ],
-  "coverage_limitation": "This covers source-available records and checks metadata; clock/type candidates still need manual event verification."
+  "play_in_espn_pbp": [
+    {
+      "game_id": "0052400121",
+      "espn_event_id": "401766459",
+      "actions_available": 517,
+      "retained_clutch_actions": 6,
+      "game_date": "2025-04-15",
+      "home": "GSW",
+      "away": "MEM"
+    },
+    {
+      "game_id": "0052400201",
+      "espn_event_id": "401766462",
+      "actions_available": 484,
+      "retained_clutch_actions": 17,
+      "game_date": "2025-04-18",
+      "home": "ATL",
+      "away": "MIA"
+    }
+  ],
+  "official_comparison_summary": {
+    "attempted_games": 423,
+    "official_reports_fetched": 423,
+    "exactly_matching_games": 417,
+    "official_rows_checked": 7165,
+    "community_rows_checked": 7165,
+    "exactly_matched_event_rows": 7159,
+    "label_interpretation": "Direct comparison with NBA official retrospective grading; not independent video adjudication."
+  },
+  "official_exact_match_games": 417,
+  "official_comparison_mismatch_games": [
+    "0022400167",
+    "0022400310",
+    "0022400393",
+    "0022400676",
+    "0022400734",
+    "0022400914"
+  ],
+  "official_comparison_failed_games": [],
+  "qualification": "Automatic official JSON label verification, not independent video review. PBP unique candidates not definitive."
 }
