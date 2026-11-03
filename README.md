@@ -107,3 +107,30 @@ To use an already downloaded NBA-format PBP JSON, pass `--input-json /path/to/fi
 **Crucial correction from Step 0:** In the historical dataset, `call_type` describes the *violation category*; `decision` contains the CC/CNC/IC/INC grades. Blank `decision` is permitted and counted as ungradable. See [Step 1 validation protocol](docs/step1_validation.md).
 
 A **unique temporal candidate is not a verified event match**. INC/CNC remain review-required even if a PBP event shares the timestamp. The source data still needs official spot checks and independent runtime validation before research conclusions.
+
+## Real 2024-25 data integration — Step 1
+
+**Cross-source game metadata QA completed; event-level adjudication remains unverified.**
+
+The tracked [2024–25 candidate table](data/validated/l2m_pbp_2025_candidates.csv) and [audit JSON](data/validated/l2m_pbp_2025_audit.json) are produced by a real-data workflow, not synthetic fixtures:
+
+- **NBA L2M:** 7,165 records from 423 games; grade counts CC 2,033, CNC 4,801, IC 66, INC 263, two ungraded.
+- **NBA PBP:** 1,314 games from 2024–25 regular-season and playoff CDN action archives.
+- **Game metadata:** 421 / 423 L2M games (99.53%) are present with matching date and home/away teams.
+- **Gap:** 53 L2M records across two 2025 play-in games (`0052400121`, `0052400201`) have no corresponding game in the regular-season/playoff archives; these are explicitly *unmatched*.
+- **Event-level candidates:** 1,599 single clock-and-event-type candidates (**not officially or manually confirmed**), 156 multiple candidates, 329 without a matching candidate, 5,026 documented non-calls not aligned to PBP, and two ungraded records.
+
+The matching is deliberately conservative; the unique-candidate figure is **not** an event-level accuracy rate. A PBP event with the same clock and broad type may be a different event. Incorrect non-calls (INC) and correct non-calls (CNC) cannot reliably be matched to an on-court whistle from PBP alone.
+
+### Reproduce the real-data build
+
+```bash
+python -m pip install -e ".[dev]"
+pytest -q
+ruff check .
+python -m beyond_the_whistle.build_archive_dataset --season 2025
+```
+
+This downloads the source L2M CSV and public compressed CDN play-by-play archives, verifies cross-source game metadata, and regenerates the derived match-key CSV and JSON audit. Raw files are not republished. Review [Step 1 findings and limitations](docs/step1_results.md) before using the data for any scientific claim.
+
+**Step 1 boundary:** game-level integration is largely validated; the study still requires manual official-report/video sampling, unambiguous event-level adjudication, and (if complete coverage is required) play-in PBP before moving to win-probability causal analyses.
