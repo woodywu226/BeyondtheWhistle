@@ -64,7 +64,7 @@ Original large source downloads are not redistributed. The audit includes source
 | Step 0 | Research protocol, source inventory, package setup, unit tests | Implemented |
 | Step 1 | Real L2M / PBP source integration and official report reconciliation | **Complete at game-level and official-label level** |
 | Step 1 research QA | Video-confirmed same-event matching and reviewer agreement | **Not yet done** |
-| Step 2 | Temporal, calibrated game-state win-probability baseline | Planned |
+| Step 2 | Temporally held-out game-state win-probability baseline | **Trained and evaluated (Step 2.2)** |
 | Step 3 | Counterfactual corrected-event simulation with uncertainty | Planned |
 | Step 4 | Context-adjusted officiating error patterns and fairness | Planned |
 | Step 5 | Scenario-based low-disruption intervention optimization | Planned |
@@ -120,4 +120,32 @@ ruff check .
 python -m beyond_the_whistle.wp_dataset
 ```
 
-A successful Step 2.1 establishes a leakage-aware **model-ready dataset**, **not** a calibrated winning-probability model. **Step 2.2** will train and evaluate the WP baseline using validation data for model selection and holding out the 2024–25 test season.
+A successful Step 2.1 establishes a leakage-aware **model-ready dataset**, **not** a calibrated winning-probability model. **Step 2.2** has now trained and evaluated a WP baseline on the untouched 2024–25 season; see below.
+
+
+## Step 2.2 — Calibrated win-probability baseline (trained)
+
+**Completed with real 2024–25 held-out testing.** Models were trained on 2021–22 and 2022–23 games, selected on 738 games of 2023–24, probability-calibrated on a *different* 492 games of 2023–24, and tested on **31,429 states from 1,229 games** of 2024–25.
+
+The selected **Histogram Gradient Boosting** baseline outperformed Logistic Regression slightly on the pre-specified game-balanced 2023–24 selection Brier metric. Final held-out results:
+
+| 2024–25 test | Brier ↓ | Game-balanced Brier ↓ | Log Loss ↓ | ROC-AUC ↑ |
+| --- | ---: | ---: | ---: | ---: |
+| Constant training home-win frequency | 0.24843 | 0.24835 | 0.69001 | 0.5000 |
+| Selected model, raw probabilities | **0.08978** | **0.08518** | **0.28166** | 0.9504 |
+| Selected model, Platt-calibrated | 0.09041 | 0.08564 | 0.28542 | 0.9504 |
+
+**Negative result worth reporting:** Platt calibration slightly **worsened** the held-out Brier and Log Loss. We retain both outputs and do not use the test season to reselect the model.
+
+The crucial late-and-close subset (<=120 seconds remaining, score margin <=5) contained 1,667 states across 450 games; calibrated state Brier was **0.13491** and AUC **0.89486**. The model predicts **post-action** state win probability; using it to estimate a wrong call's effect still requires independent event verification and pre-decision state reconstruction.
+
+See [Step 2.2 protocol](docs/step2_2_model.md), [actual results](docs/step2_2_results.md), [full metrics JSON](models/win_probability/wp_model_report.json), [2024–25 predictions](models/win_probability/wp_test_predictions.csv), [10-bin calibration data](models/win_probability/wp_test_calibration.csv) and [saved fitted model](models/win_probability/wp_baseline.joblib).
+
+```bash
+python -m pip install -e ".[dev,ml]"
+pytest -q
+ruff check .
+python -m beyond_the_whistle.wp_model
+```
+
+**Next:** Step 2.3 examines clutch calibration stability, game-cluster confidence intervals, and richer contemporaneous state features before attempting the Step 3 counterfactual officiating analysis.

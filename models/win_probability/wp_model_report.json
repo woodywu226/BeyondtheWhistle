@@ -1,0 +1,110 @@
+{
+  "status": "trained_calibrated_and_evaluated_out_of_time",
+  "selected_model": "hist_gradient_boosting",
+  "model_candidates": [
+    {
+      "name": "hist_gradient_boosting",
+      "selection_metrics": {
+        "states": 18898,
+        "games": 738,
+        "brier": 0.09123867875702502,
+        "log_loss": 0.2831816462041627,
+        "game_balanced_brier": 0.08700208209147693,
+        "game_balanced_log_loss": 0.2712887967534695,
+        "observed_home_win_rate": 0.5626521325007937,
+        "mean_predicted_probability": 0.5624228668789691,
+        "auc": 0.9487974550346037
+      }
+    },
+    {
+      "name": "logistic",
+      "selection_metrics": {
+        "states": 18898,
+        "games": 738,
+        "brier": 0.0912964658560348,
+        "log_loss": 0.2840768402573478,
+        "game_balanced_brier": 0.08713223868687624,
+        "game_balanced_log_loss": 0.2726451578844177,
+        "observed_home_win_rate": 0.5626521325007937,
+        "mean_predicted_probability": 0.5632985180489839,
+        "auc": 0.948633456242818
+      }
+    }
+  ],
+  "validation": {
+    "model_selection_games": 738,
+    "calibration_games": 492,
+    "game_overlap": 0,
+    "selection": "First 60% of sorted 2023-24 game IDs",
+    "calibration": "Remaining 40%; logistic sigmoid Platt scaling on raw-model log odds"
+  },
+  "training_seasons": [
+    2021,
+    2022
+  ],
+  "test_season": 2024,
+  "features": [
+    "period",
+    "seconds_remaining",
+    "home_score",
+    "away_score",
+    "home_margin",
+    "seconds_into_period",
+    "score_total",
+    "margin_per_sqrt_minute"
+  ],
+  "test_metrics": {
+    "constant_train_home_rate": {
+      "states": 31429,
+      "games": 1229,
+      "brier": 0.2484283491629721,
+      "log_loss": 0.6900076355715127,
+      "game_balanced_brier": 0.24834845985845996,
+      "game_balanced_log_loss": 0.6898470279404115,
+      "observed_home_win_rate": 0.5437016767953164,
+      "mean_predicted_probability": 0.5620915032679736,
+      "auc": 0.5
+    },
+    "uncalibrated": {
+      "states": 31429,
+      "games": 1229,
+      "brier": 0.08977897642735441,
+      "log_loss": 0.2816645442665133,
+      "game_balanced_brier": 0.0851783644537869,
+      "game_balanced_log_loss": 0.267948414382165,
+      "observed_home_win_rate": 0.5437016767953164,
+      "mean_predicted_probability": 0.5457398059100446,
+      "auc": 0.9504030474162369
+    },
+    "calibrated": {
+      "states": 31429,
+      "games": 1229,
+      "brier": 0.0904051753993152,
+      "log_loss": 0.28541625459619024,
+      "game_balanced_brier": 0.08564410831183385,
+      "game_balanced_log_loss": 0.27076610191308975,
+      "observed_home_win_rate": 0.5437016767953164,
+      "mean_predicted_probability": 0.5302046526082622,
+      "auc": 0.9504030474162369
+    },
+    "late_close_calibrated": {
+      "states": 1667,
+      "games": 450,
+      "brier": 0.1349115476937246,
+      "log_loss": 0.4148515601753811,
+      "game_balanced_brier": 0.09927176511087349,
+      "game_balanced_log_loss": 0.3153483018194279,
+      "observed_home_win_rate": 0.504499100179964,
+      "mean_predicted_probability": 0.47286494039222005,
+      "auc": 0.894856664929621
+    }
+  },
+  "limitations": [
+    "Snapshots from the same game are dependent; game-balanced Brier is primary",
+    "Models predict post-play home win probability, not officiating causal effects",
+    "Possession, lineups, timeouts and referee context not included",
+    "Test season not used in model choice or calibration"
+  ],
+  "model_sha256": "c27889d14676144882596c66efaa6c6ede1f674b352ce7509fbf62167e37e449",
+  "dataset_sha256": "e12abfc7e71ed28e085e32ce0352f29334c775fa4429cc1bec647c211c159fed"
+}

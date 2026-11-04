@@ -1,0 +1,73 @@
+name: Step 2.2 NBA WP model
+on:
+  push:
+    paths:
+      - src/beyond_the_whistle/wp_model.py
+      - tests/test_wp_model.py
+      - pyproject.toml
+      - .github/workflows/step2_2.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  train-evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install machine-learning dependencies and test
+        run: |
+          python -m pip install -e ".[dev,ml]"
+          pytest -q
+          ruff check .
+      - name: Train calibrate and evaluate real NBA states
+        run: python -m beyond_the_whistle.wp_model
+      - name: Validate untouched test metrics and calibration artifacts
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          import math
+          from pathlib import Path
+
+          output = Path("models/win_probability")
+          report = json.loads((output / "wp_model_report.json").read_text())
+          m = report["test_metrics"]
+          assert report["status"] == "trained_calibrated_and_evaluated_out_of_time"
+          assert report["validation"]["game_overlap"] == 0
+          assert report["test_season"] == 2024
+          assert report["selected_model"] in ("logistic", "hist_gradient_boosting")
+          assert m["calibrated"]["states"] == 31429
+          assert m["calibrated"]["games"] == 1229
+          assert m["calibrated"]["game_balanced_brier"] < m["constant_train_home_rate"]["game_balanced_brier"]
+          assert m["calibrated"]["auc"] > 0.7
+          with (output / "wp_test_predictions.csv").open() as stream:
+              predictions = list(csv.DictReader(stream))
+          with (output / "wp_test_calibration.csv").open() as stream:
+              bins = list(csv.DictReader(stream))
+          assert len(predictions) == 31429
+          assert len(bins) == 10
+          assert sum(int(row["states"]) for row in bins) == 31429
+          assert all(0 < float(r["predicted_home_win"]) < 1 for r in predictions)
+          assert (output / "wp_baseline.joblib").stat().st_size > 500
+          print("STEP 2.2 HOLDOUT PASS", {
+              "selected_model": report["selected_model"],
+              "test_game_balanced_brier": m["calibrated"]["game_balanced_brier"],
+              "test_log_loss": m["calibrated"]["log_loss"],
+              "test_auc": m["calibrated"]["auc"],
+          })
+          PY
+      - name: Commit verified model and held-out evaluation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add models/win_probability/wp_baseline.joblib models/win_probability/wp_model_report.json models/win_probability/wp_test_predictions.csv models/win_probability/wp_test_calibration.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "data(step2.2): trained model and held-out 2024-25 evaluation"
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
