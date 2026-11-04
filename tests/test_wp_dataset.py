@@ -12,7 +12,6 @@ from beyond_the_whistle.wp_dataset import (
     validate,
 )
 
-
 FIELDS = [
     "gameId", "period", "clock", "actionType", "subType",
     "orderNumber", "actionNumber", "scoreHome", "scoreAway",
