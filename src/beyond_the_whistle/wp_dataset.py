@@ -105,12 +105,6 @@ def extract_states(csv_content: bytes, season: int, bucket_seconds: int = 30) ->
             if previous is None or state["order"] > previous["order"]:
                 game["snapshots"][key] = state
     result = []
-    last_event_examples = [
-        {"game": gid, "period": g["last"]["period"],
-         "remaining": g["last"]["seconds_remaining"],
-         "action_type": g["last"]["action_type"], "sub_type": g["last"]["sub_type"]}
-        for gid, g in sorted(games.items())[:5] if g["last"]
-    ]
     excluded = Counter()
     home_winners = 0
     included_games = 0
@@ -119,7 +113,7 @@ def extract_states(csv_content: bytes, season: int, bucket_seconds: int = 30) ->
         if final is None or final["period"] < 4:
             excluded["missing_final_period"] += 1
             continue
-        if (final["seconds_remaining"] > 0.01 or final["action_type"] != "period"
+        if (final["seconds_remaining"] > 0.01 or final["action_type"] not in {"period", "game"}
             or final["sub_type"] != "end"):
             excluded["unverified_final_buzzer"] += 1
             continue
@@ -147,7 +141,6 @@ def extract_states(csv_content: bytes, season: int, bucket_seconds: int = 30) ->
         "raw_actions": inputs, "invalid_actions": invalid,
         "games_observed": len(games), "games_in_dataset": included_games,
         "excluded_games": dict(sorted(excluded.items())),
-        "terminal_examples": last_event_examples,
         "states_created": len(result), "home_winner_games": home_winners,
     }
 
