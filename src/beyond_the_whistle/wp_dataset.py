@@ -146,7 +146,8 @@ def extract_states(csv_content: bytes, season: int, bucket_seconds: int = 30) ->
         "season_start_year": season, "split": SPLITS[season],
         "raw_actions": inputs, "invalid_actions": invalid,
         "games_observed": len(games), "games_in_dataset": included_games,
-        "excluded_games": dict(sorted(excluded.items())),\n        "terminal_examples": last_event_examples,
+        "excluded_games": dict(sorted(excluded.items())),
+        "terminal_examples": last_event_examples,
         "states_created": len(result), "home_winner_games": home_winners,
     }
 
