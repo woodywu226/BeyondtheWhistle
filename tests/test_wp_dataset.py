@@ -100,3 +100,18 @@ def test_single_member_archive():
 def test_input_schema_validation():
     with pytest.raises(ValueError, match="Missing NBA CDN fields"):
         extract_states(b"gameId,period\n1,4\n", 2024)
+
+
+def test_real_nba_cdn_game_end_marker_is_accepted():
+    """Historical CDN final action uses game/end rather than period/end."""
+    text = fixture_csv().decode().replace(",period,end,40,40,", ",game,end,40,40,")
+    states, audit = extract_states(text.encode(), 2021)
+    assert audit["games_in_dataset"] == 1
+    assert len(states) == 2
+
+
+def test_incomplete_final_clock_cannot_create_a_label():
+    text = fixture_csv().decode().replace("PT00M00.00S", "PT00M02.00S")
+    states, audit = extract_states(text.encode(), 2021)
+    assert states == []
+    assert audit["excluded_games"]["unverified_final_buzzer"] == 1
