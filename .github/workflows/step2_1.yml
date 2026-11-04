@@ -1,0 +1,66 @@
+name: Step 2.1 real NBA state dataset
+on:
+  push:
+    paths:
+      - src/beyond_the_whistle/wp_dataset.py
+      - tests/test_wp_dataset.py
+      - .github/workflows/step2_1.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install and check code
+        run: |
+          python -m pip install -e ".[dev]"
+          pytest -q
+          ruff check .
+      - name: Build real NBA chronological Q4/OT data
+        run: python -m beyond_the_whistle.wp_dataset
+      - name: Verify actual train, validation and test splits
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from collections import Counter
+          from pathlib import Path
+          folder = Path("data/win_probability")
+          summary = json.loads((folder / "wp_q4_manifest.json").read_text())
+          with (folder / "wp_q4_states_2021_2024.csv").open() as handle:
+              records = list(csv.DictReader(handle))
+          assert summary["rows"] == len(records) and summary["rows"] > 60000
+          assert summary["games"] > 3500, summary["games"]
+          assert all(v["games"] >= 900 for v in summary["splits"].values())
+          assert len(summary["sources"]) == 4
+          for split in ("train", "validation", "test"):
+              subset = [r for r in records if r["split"] == split]
+              assert subset and len({r["home_win"] for r in subset}) == 2
+          seen = {}
+          for row in records:
+              gid = row["game_id"]
+              split = row["split"]
+              if gid in seen:
+                  assert seen[gid] == split
+              seen[gid] = split
+              assert float(row["seconds_remaining"]) > 0
+              assert int(row["home_score"]) - int(row["away_score"]) == int(row["home_margin"])
+          print("STEP 2.1 DATA QUALITY PASS", summary["rows"], summary["games"], summary["splits"])
+          PY
+      - name: Commit audited model-ready dataset and manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/win_probability/wp_q4_states_2021_2024.csv data/win_probability/wp_q4_manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data(step2.1): publish time-split NBA Q4 states and source manifest"
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
