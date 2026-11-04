@@ -4,7 +4,7 @@
 
 Research question: *How much competitive harm is attributable to confirmed officiating errors in close NBA games, and which interventions could reduce that harm without substantially disrupting game flow?*
 
-> **Status: Step 1 official-source and game-level data validation complete (2024–25); event-level film adjudication remains open.** No win-probability model, counterfactual causal result or policy effectiveness claim has been produced.
+> **Status: Step 1 complete at official-label/game level; Step 2.1 historical win-probability state dataset built and validated. Event-level film adjudication and win-probability model training remain open.** No win-probability model, counterfactual causal result or policy effectiveness claim has been produced.
 
 ## Verified 2024–25 data
 
@@ -96,3 +96,28 @@ docs/                        # study protocol, sources and validation notes
 - [Duma & Benaharon (2026): Referee Impact Metric](https://arxiv.org/abs/2605.17845)
 
 This is an independent research project in progress. The published labels are NBA retrospectives; no changes to NBA officiating practice or causal effects have been experimentally demonstrated.
+
+## Step 2.1 — Leakage-safe win-probability dataset
+
+**Status: Implemented and tested on real NBA play-by-play.** Dataset construction, **not** model fitting or calibration.
+
+Four NBA **regular-season** archives (2021–22 through 2024–25) yielded **125,812** post-action Q4/OT states across **4,907** valid games. The 30-second clock-bucket sampler selects at most one latest recorded state in each game/period/bucket. The target `home_win` is determined from a separately verified terminal game-end score.
+
+| Partition | Seasons | Games | States |
+| --- | --- | ---: | ---: |
+| Train | 2021–22, 2022–23 | 2,448 | 62,901 |
+| Validation | 2023–24 | 1,230 | 31,482 |
+| Test | 2024–25 | 1,229 | 31,429 |
+
+**13 games excluded** for missing terminal game-end markers (12 from 2021–22 and one from 2024–25); they are not assigned unverified final outcomes. The training-only feature whitelist is `period`, `seconds_remaining`, `home_score`, `away_score`, `home_margin`, `seconds_into_period`. Game IDs and splits are metadata, **not predictors**.
+
+Artifacts: [full Q4 state table](data/win_probability/wp_q4_states_2021_2024.csv), [provenance and split audit](data/win_probability/wp_q4_manifest.json), [dataset construction and leakage methodology](docs/step2_1_dataset.md).
+
+```bash
+python -m pip install -e ".[dev]"
+pytest -q
+ruff check .
+python -m beyond_the_whistle.wp_dataset
+```
+
+A successful Step 2.1 establishes a leakage-aware **model-ready dataset**, **not** a calibrated winning-probability model. **Step 2.2** will train and evaluate the WP baseline using validation data for model selection and holding out the 2024–25 test season.
