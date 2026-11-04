@@ -1,0 +1,111 @@
+{
+  "rows": 125812,
+  "games": 4907,
+  "features": [
+    "period",
+    "seconds_remaining",
+    "home_score",
+    "away_score",
+    "home_margin",
+    "seconds_into_period"
+  ],
+  "label": "home_win",
+  "splits": {
+    "test": {
+      "games": 1229,
+      "states": 31429
+    },
+    "train": {
+      "games": 2448,
+      "states": 62901
+    },
+    "validation": {
+      "games": 1230,
+      "states": 31482
+    }
+  },
+  "train_seasons": [
+    2021,
+    2022
+  ],
+  "validation_seasons": [
+    2023
+  ],
+  "test_seasons": [
+    2024
+  ],
+  "sampling_rule": "Latest post-action state per period and 30-second time-remaining bucket in Q4/OT",
+  "leakage_guards": [
+    "Final winner is label only; not a predictor",
+    "No final-buzzer states; only observed post-action score and game clock",
+    "Games are partitioned by chronologically separated season",
+    "Missing terminal game-end actions are excluded instead of guessing winners",
+    "Correlated observations from one game remain within one split"
+  ],
+  "limitations": [
+    "Play-in and playoff games excluded; regular seasons only",
+    "No possession inferred without reliable contemporaneous evidence",
+    "Multiple states from the same game are statistically dependent",
+    "Dataset generation does not train or validate a model"
+  ],
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/shufinskiy/nba_data/main/datasets/cdnnba_2021.tar.xz",
+      "sha256": "0c116aff50b829de70902023f108ee78c0f44bec569521ebf1fa292e01bda28f",
+      "season_start_year": 2021,
+      "split": "train",
+      "raw_actions": 691875,
+      "invalid_actions": 0,
+      "games_observed": 1230,
+      "games_in_dataset": 1218,
+      "excluded_games": {
+        "unverified_final_buzzer": 12
+      },
+      "states_created": 31176,
+      "home_winner_games": 662
+    },
+    {
+      "url": "https://raw.githubusercontent.com/shufinskiy/nba_data/main/datasets/cdnnba_2022.tar.xz",
+      "sha256": "de895e3474365fc14b028f514eb0f8c9c1503b95d3f1a5aef5a408305ddfb41f",
+      "season_start_year": 2022,
+      "split": "train",
+      "raw_actions": 679732,
+      "invalid_actions": 0,
+      "games_observed": 1230,
+      "games_in_dataset": 1230,
+      "excluded_games": {},
+      "states_created": 31725,
+      "home_winner_games": 714
+    },
+    {
+      "url": "https://raw.githubusercontent.com/shufinskiy/nba_data/main/datasets/cdnnba_2023.tar.xz",
+      "sha256": "33d49fefc809f73d5d6cbad6d1d6690e0df6c89fe2b5a4d814ecc9ea4df6101b",
+      "season_start_year": 2023,
+      "split": "validation",
+      "raw_actions": 674937,
+      "invalid_actions": 0,
+      "games_observed": 1230,
+      "games_in_dataset": 1230,
+      "excluded_games": {},
+      "states_created": 31482,
+      "home_winner_games": 668
+    },
+    {
+      "url": "https://raw.githubusercontent.com/shufinskiy/nba_data/main/datasets/cdnnba_2024.tar.xz",
+      "sha256": "35a82e6b29821adb22b8474dea8c51e08847d8e00690d1d5ffde7d000e0087d1",
+      "season_start_year": 2024,
+      "split": "test",
+      "raw_actions": 686008,
+      "invalid_actions": 0,
+      "games_observed": 1230,
+      "games_in_dataset": 1229,
+      "excluded_games": {
+        "unverified_final_buzzer": 1
+      },
+      "states_created": 31429,
+      "home_winner_games": 669
+    }
+  ],
+  "generated_at_utc": "2026-11-04T14:47:52.603197+00:00",
+  "dataset_sha256": "e12abfc7e71ed28e085e32ce0352f29334c775fa4429cc1bec647c211c159fed"
+}
