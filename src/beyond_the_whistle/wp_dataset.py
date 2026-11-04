@@ -109,7 +109,7 @@ def extract_states(csv_content: bytes, season: int, bucket_seconds: int = 30) ->
         {"game": gid, "period": g["last"]["period"],
          "remaining": g["last"]["seconds_remaining"],
          "action_type": g["last"]["action_type"], "sub_type": g["last"]["sub_type"]}
-        for gid, g in list(sorted(games.items()))[:5] if g["last"]
+        for gid, g in sorted(games.items())[:5] if g["last"]
     ]
     excluded = Counter()
     home_winners = 0
