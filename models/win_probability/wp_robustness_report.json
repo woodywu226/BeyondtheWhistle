@@ -1,0 +1,1129 @@
+{
+  "status": "complete_diagnostic_only_no_retraining",
+  "scope": "Frozen Step 2.2 model / 2024-25 out-of-time Q4/OT test games",
+  "frozen_dataset_sha256": "e12abfc7e71ed28e085e32ce0352f29334c775fa4429cc1bec647c211c159fed",
+  "frozen_model_sha256": "c27889d14676144882596c66efaa6c6ede1f674b352ce7509fbf62167e37e449",
+  "bootstrap_games_as_clusters": true,
+  "bootstrap_replicates": 1000,
+  "seed": 226,
+  "strata": {
+    "all_q4_and_ot": {
+      "states": 31429,
+      "games": 1229,
+      "raw": {
+        "states": 31429,
+        "games": 1229,
+        "brier": 0.08977897642735441,
+        "log_loss": 0.2816645442665133,
+        "game_balanced_brier": 0.0851783644537869,
+        "game_balanced_log_loss": 0.267948414382165,
+        "observed_home_win_rate": 0.5437016767953164,
+        "mean_predicted_probability": 0.5457398059100446,
+        "auc": 0.9504030474162369,
+        "ece_10_bin_state": 0.008480408981097644,
+        "ece_10_bin_game_balanced": 0.00901935790830657
+      },
+      "platt": {
+        "states": 31429,
+        "games": 1229,
+        "brier": 0.0904051753993152,
+        "log_loss": 0.28541625459619024,
+        "game_balanced_brier": 0.08564410831183385,
+        "game_balanced_log_loss": 0.27076610191308975,
+        "observed_home_win_rate": 0.5437016767953164,
+        "mean_predicted_probability": 0.5302046526082622,
+        "auc": 0.9504030474162369,
+        "ece_10_bin_state": 0.019217333939836427,
+        "ece_10_bin_game_balanced": 0.016592373084400105
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0006261989719607841,
+        "game_balanced_brier": 0.0004657438580469436,
+        "log_loss": 0.0037517103296769716
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 1229,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.0851783644537869,
+            "ci95_lower": 0.07707368607618648,
+            "ci95_upper": 0.09354395967757129
+          },
+          "calibrated_brier": {
+            "point": 0.08564410831183385,
+            "ci95_lower": 0.07718639323247208,
+            "ci95_upper": 0.09423665220335002
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0004657438580469396,
+            "ci95_lower": -0.0007479576283939118,
+            "ci95_upper": 0.0016226806945849124
+          },
+          "raw_log_loss": {
+            "point": 0.267948414382165,
+            "ci95_lower": 0.24531027115372028,
+            "ci95_upper": 0.2920059967331588
+          },
+          "calibrated_log_loss": {
+            "point": 0.27076610191308975,
+            "ci95_lower": 0.2453593542793465,
+            "ci95_upper": 0.2972973001195127
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.002817687530924756,
+            "ci95_lower": -0.0010296935366633892,
+            "ci95_upper": 0.006421043145010004
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "q4_only": {
+      "states": 30725,
+      "games": 1229,
+      "raw": {
+        "states": 30725,
+        "games": 1229,
+        "brier": 0.08799089419101445,
+        "log_loss": 0.2769481536436877,
+        "game_balanced_brier": 0.08799089419101444,
+        "game_balanced_log_loss": 0.2769481536436877,
+        "observed_home_win_rate": 0.5443449959316518,
+        "mean_predicted_probability": 0.5469153454733624,
+        "auc": 0.9522372773862908,
+        "ece_10_bin_state": 0.009115764252504356,
+        "ece_10_bin_game_balanced": 0.009115764252504294
+      },
+      "platt": {
+        "states": 30725,
+        "games": 1229,
+        "brier": 0.08855626824311716,
+        "log_loss": 0.2806314471936698,
+        "game_balanced_brier": 0.08855626824311716,
+        "game_balanced_log_loss": 0.28063144719366984,
+        "observed_home_win_rate": 0.5443449959316518,
+        "mean_predicted_probability": 0.5318040147348425,
+        "auc": 0.9522372773862908,
+        "ece_10_bin_state": 0.018726345302290885,
+        "ece_10_bin_game_balanced": 0.018726345302290934
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0005653740521027045,
+        "game_balanced_brier": 0.0005653740521027184,
+        "log_loss": 0.003683293549982092
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 1229,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.08799089419101445,
+            "ci95_lower": 0.07927102852869478,
+            "ci95_upper": 0.09673609903069123
+          },
+          "calibrated_brier": {
+            "point": 0.08855626824311714,
+            "ci95_lower": 0.07966824980933557,
+            "ci95_upper": 0.09788460461946177
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0005653740521027055,
+            "ci95_lower": -0.0006551675011470389,
+            "ci95_upper": 0.0017284861330222954
+          },
+          "raw_log_loss": {
+            "point": 0.27694815364368763,
+            "ci95_lower": 0.25264020854791486,
+            "ci95_upper": 0.3037215475151518
+          },
+          "calibrated_log_loss": {
+            "point": 0.28063144719366984,
+            "ci95_lower": 0.25273192082761947,
+            "ci95_upper": 0.3095200230895977
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.0036832935499821313,
+            "ci95_lower": -0.00033979803864014787,
+            "ci95_upper": 0.007430942864316861
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "overtime": {
+      "states": 704,
+      "games": 60,
+      "raw": {
+        "states": 704,
+        "games": 60,
+        "brier": 0.1678170825517085,
+        "log_loss": 0.4875041776277588,
+        "game_balanced_brier": 0.1649849022821989,
+        "game_balanced_log_loss": 0.4803474270842513,
+        "observed_home_win_rate": 0.515625,
+        "mean_predicted_probability": 0.4944351850535977,
+        "auc": 0.8227583755442993,
+        "ece_10_bin_state": 0.04010051711829986,
+        "ece_10_bin_game_balanced": 0.04412910562561894
+      },
+      "platt": {
+        "states": 704,
+        "games": 60,
+        "brier": 0.1710978918399185,
+        "log_loss": 0.49424183334965927,
+        "game_balanced_brier": 0.16820296295630685,
+        "game_balanced_log_loss": 0.4866082338472503,
+        "observed_home_win_rate": 0.515625,
+        "mean_predicted_probability": 0.46040294616056615,
+        "auc": 0.8227583755442993,
+        "ece_10_bin_state": 0.05522205383943376,
+        "ece_10_bin_game_balanced": 0.055486140299777165
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.003280809288210007,
+        "game_balanced_brier": 0.0032180606741079587,
+        "log_loss": 0.006737655721900493
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 60,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.16498490228219892,
+            "ci95_lower": 0.14155850300236472,
+            "ci95_upper": 0.18856759333212642
+          },
+          "calibrated_brier": {
+            "point": 0.16820296295630685,
+            "ci95_lower": 0.1423719723342544,
+            "ci95_upper": 0.19611043591660965
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0032180606741079682,
+            "ci95_lower": -0.00457223156815179,
+            "ci95_upper": 0.011807157216686234
+          },
+          "raw_log_loss": {
+            "point": 0.48034742708425143,
+            "ci95_lower": 0.42453443506582006,
+            "ci95_upper": 0.5359007416740005
+          },
+          "calibrated_log_loss": {
+            "point": 0.48660823384725055,
+            "ci95_lower": 0.4237114965106051,
+            "ci95_upper": 0.5534219393686455
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.006260806762999031,
+            "ci95_lower": -0.011973669537343443,
+            "ci95_upper": 0.027235862959004153
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "clock_0_30": {
+      "states": 1313,
+      "games": 1229,
+      "raw": {
+        "states": 1313,
+        "games": 1229,
+        "brier": 0.016210443626921964,
+        "log_loss": 0.05174602994964065,
+        "game_balanced_brier": 0.009941031895162983,
+        "game_balanced_log_loss": 0.03484325624915394,
+        "observed_home_win_rate": 0.543031226199543,
+        "mean_predicted_probability": 0.5409980616364711,
+        "auc": 0.99783894343151,
+        "ece_10_bin_state": 0.004491426232258211,
+        "ece_10_bin_game_balanced": 0.003304026178712704
+      },
+      "platt": {
+        "states": 1313,
+        "games": 1229,
+        "brier": 0.016568733516303228,
+        "log_loss": 0.052036718871511116,
+        "game_balanced_brier": 0.010153747828448727,
+        "game_balanced_log_loss": 0.03484770505099065,
+        "observed_home_win_rate": 0.543031226199543,
+        "mean_predicted_probability": 0.5378539956710292,
+        "auc": 0.99783894343151,
+        "ece_10_bin_state": 0.007721877612947974,
+        "ece_10_bin_game_balanced": 0.005361780507231555
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0003582898893812643,
+        "game_balanced_brier": 0.0002127159332857443,
+        "log_loss": 0.00029068892187046613
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 1229,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.009941031895162981,
+            "ci95_lower": 0.006990383375563364,
+            "ci95_upper": 0.01349057449413276
+          },
+          "calibrated_brier": {
+            "point": 0.010153747828448727,
+            "ci95_lower": 0.007023528425287226,
+            "ci95_upper": 0.013757125565920287
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0002127159332857451,
+            "ci95_lower": -0.00016155397018274945,
+            "ci95_upper": 0.0006314987204911964
+          },
+          "raw_log_loss": {
+            "point": 0.03484325624915394,
+            "ci95_lower": 0.023308937905508295,
+            "ci95_upper": 0.04966026921921746
+          },
+          "calibrated_log_loss": {
+            "point": 0.03484770505099065,
+            "ci95_lower": 0.022113091326989995,
+            "ci95_upper": 0.051445661506032365
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 4.448801836714911e-06,
+            "ci95_lower": -0.001507081941928104,
+            "ci95_upper": 0.0019080039856787748
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "clock_30_60": {
+      "states": 1422,
+      "games": 1212,
+      "raw": {
+        "states": 1422,
+        "games": 1212,
+        "brier": 0.044310094988526325,
+        "log_loss": 0.14338148628546105,
+        "game_balanced_brier": 0.03472965046875657,
+        "game_balanced_log_loss": 0.11310308867123556,
+        "observed_home_win_rate": 0.5492264416315049,
+        "mean_predicted_probability": 0.5440022692559513,
+        "auc": 0.9873457166199581,
+        "ece_10_bin_state": 0.009511344604257366,
+        "ece_10_bin_game_balanced": 0.008960691228723946
+      },
+      "platt": {
+        "states": 1422,
+        "games": 1212,
+        "brier": 0.04512611567019003,
+        "log_loss": 0.1469496689420549,
+        "game_balanced_brier": 0.035127646777674215,
+        "game_balanced_log_loss": 0.11404916467969754,
+        "observed_home_win_rate": 0.5492264416315049,
+        "mean_predicted_probability": 0.5364431799161805,
+        "auc": 0.9873457166199581,
+        "ece_10_bin_state": 0.016418514708274608,
+        "ece_10_bin_game_balanced": 0.013679325348412832
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0008160206816637053,
+        "game_balanced_brier": 0.0003979963089176461,
+        "log_loss": 0.0035681826565938657
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 1212,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.03472965046875657,
+            "ci95_lower": 0.02875464466136765,
+            "ci95_upper": 0.0414583549832113
+          },
+          "calibrated_brier": {
+            "point": 0.035127646777674215,
+            "ci95_lower": 0.028780140570240826,
+            "ci95_upper": 0.04218352910546703
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0003979963089176476,
+            "ci95_lower": -0.00041568677380052676,
+            "ci95_upper": 0.001302627067575819
+          },
+          "raw_log_loss": {
+            "point": 0.11310308867123556,
+            "ci95_lower": 0.0962002230761436,
+            "ci95_upper": 0.13196424379445704
+          },
+          "calibrated_log_loss": {
+            "point": 0.11404916467969754,
+            "ci95_lower": 0.09560587499272696,
+            "ci95_upper": 0.1338879875725455
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.0009460760084619914,
+            "ci95_lower": -0.0016414342711172007,
+            "ci95_upper": 0.003801844738232605
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "clock_60_120": {
+      "states": 2587,
+      "games": 1229,
+      "raw": {
+        "states": 2587,
+        "games": 1229,
+        "brier": 0.05702885642668093,
+        "log_loss": 0.18116400202580962,
+        "game_balanced_brier": 0.04658101936464348,
+        "game_balanced_log_loss": 0.1496556069183833,
+        "observed_home_win_rate": 0.5384615384615384,
+        "mean_predicted_probability": 0.536166749450556,
+        "auc": 0.9797509923390584,
+        "ece_10_bin_state": 0.011868329694220041,
+        "ece_10_bin_game_balanced": 0.013013118026917483
+      },
+      "platt": {
+        "states": 2587,
+        "games": 1229,
+        "brier": 0.05791342330379997,
+        "log_loss": 0.1847555250692829,
+        "game_balanced_brier": 0.0470225189190677,
+        "game_balanced_log_loss": 0.15101507624007354,
+        "observed_home_win_rate": 0.5384615384615384,
+        "mean_predicted_probability": 0.5264366288279405,
+        "auc": 0.9797509923390584,
+        "ece_10_bin_state": 0.019696072375074612,
+        "ece_10_bin_game_balanced": 0.01726333503931238
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0008845668771190404,
+        "game_balanced_brier": 0.0004414995544242198,
+        "log_loss": 0.003591523043473266
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 1229,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.04658101936464348,
+            "ci95_lower": 0.03950191779287643,
+            "ci95_upper": 0.053584779511122824
+          },
+          "calibrated_brier": {
+            "point": 0.0470225189190677,
+            "ci95_lower": 0.039704590653379244,
+            "ci95_upper": 0.05444583202630099
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.000441499554424227,
+            "ci95_lower": -0.00048653929863292034,
+            "ci95_upper": 0.001413797867381491
+          },
+          "raw_log_loss": {
+            "point": 0.14965560691838334,
+            "ci95_lower": 0.12951666901951053,
+            "ci95_upper": 0.17046023076184505
+          },
+          "calibrated_log_loss": {
+            "point": 0.15101507624007354,
+            "ci95_lower": 0.12875918985863977,
+            "ci95_upper": 0.17398144369361007
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.0013594693216901997,
+            "ci95_lower": -0.0016595118106585733,
+            "ci95_upper": 0.0049148196873941225
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "clock_120_300": {
+      "states": 7793,
+      "games": 1229,
+      "raw": {
+        "states": 7793,
+        "games": 1229,
+        "brier": 0.08197047523728936,
+        "log_loss": 0.2552182514165341,
+        "game_balanced_brier": 0.07095040120517623,
+        "game_balanced_log_loss": 0.22423276450905266,
+        "observed_home_win_rate": 0.5434364172975747,
+        "mean_predicted_probability": 0.540248789203787,
+        "auc": 0.9591392229825466,
+        "ece_10_bin_state": 0.012823193956401155,
+        "ece_10_bin_game_balanced": 0.007472887442937268
+      },
+      "platt": {
+        "states": 7793,
+        "games": 1229,
+        "brier": 0.08324471859790214,
+        "log_loss": 0.2603835185587074,
+        "game_balanced_brier": 0.07189377397870195,
+        "game_balanced_log_loss": 0.22806173582648842,
+        "observed_home_win_rate": 0.5434364172975747,
+        "mean_predicted_probability": 0.5265066771386797,
+        "auc": 0.9591392229825466,
+        "ece_10_bin_state": 0.024091202994150174,
+        "ece_10_bin_game_balanced": 0.01773538488312903
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.001274243360612784,
+        "game_balanced_brier": 0.0009433727735257136,
+        "log_loss": 0.005165267142173302
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 1229,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.07095040120517622,
+            "ci95_lower": 0.06237516402046511,
+            "ci95_upper": 0.07935413437674307
+          },
+          "calibrated_brier": {
+            "point": 0.07189377397870195,
+            "ci95_lower": 0.06299899352082612,
+            "ci95_upper": 0.08104088920547023
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0009433727735257256,
+            "ci95_lower": -0.00017957184311100918,
+            "ci95_upper": 0.0020385147348645663
+          },
+          "raw_log_loss": {
+            "point": 0.22423276450905272,
+            "ci95_lower": 0.20002143668015357,
+            "ci95_upper": 0.2476321817712389
+          },
+          "calibrated_log_loss": {
+            "point": 0.22806173582648842,
+            "ci95_lower": 0.201308288845367,
+            "ci95_upper": 0.25484599779448264
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.003828971317435724,
+            "ci95_lower": 3.245368351046375e-05,
+            "ci95_upper": 0.00791201200895015
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "clock_over_300": {
+      "states": 18314,
+      "games": 1229,
+      "raw": {
+        "states": 18314,
+        "games": 1229,
+        "brier": 0.106532740934775,
+        "log_loss": 0.3343353087474403,
+        "game_balanced_brier": 0.10647188572780764,
+        "game_balanced_log_loss": 0.33425378571537484,
+        "observed_home_win_rate": 0.5441738560663973,
+        "mean_predicted_probability": 0.5499034882080615,
+        "auc": 0.9303846362250723,
+        "ece_10_bin_state": 0.014242490844934744,
+        "ece_10_bin_game_balanced": 0.013952834639461634
+      },
+      "platt": {
+        "states": 18314,
+        "games": 1229,
+        "brier": 0.10685115517717478,
+        "log_loss": 0.3377705318940443,
+        "game_balanced_brier": 0.10681045472061766,
+        "game_balanced_log_loss": 0.33774342001389585,
+        "observed_home_win_rate": 0.5441738560663973,
+        "mean_predicted_probability": 0.5312776801872113,
+        "auc": 0.9303846362250723,
+        "ece_10_bin_state": 0.019405404781785495,
+        "ece_10_bin_game_balanced": 0.01952999847373838
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0003184142423997838,
+        "game_balanced_brier": 0.00033856899281002606,
+        "log_loss": 0.0034352231466040495
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 1229,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.10647188572780764,
+            "ci95_lower": 0.09649619185595489,
+            "ci95_upper": 0.11659769393193652
+          },
+          "calibrated_brier": {
+            "point": 0.10681045472061768,
+            "ci95_lower": 0.09647717012928973,
+            "ci95_upper": 0.11780053064251333
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.00033856899281002807,
+            "ci95_lower": -0.0011683625185546515,
+            "ci95_upper": 0.0017935001769475592
+          },
+          "raw_log_loss": {
+            "point": 0.33425378571537484,
+            "ci95_lower": 0.3055413887736417,
+            "ci95_upper": 0.3646881368723396
+          },
+          "calibrated_log_loss": {
+            "point": 0.33774342001389585,
+            "ci95_lower": 0.3054057703110937,
+            "ci95_upper": 0.3714882020115075
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.0034896342985209637,
+            "ci95_lower": -0.0014866708186130446,
+            "ci95_upper": 0.00814401812650808
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "margin_0_2": {
+      "states": 4624,
+      "games": 536,
+      "raw": {
+        "states": 4624,
+        "games": 536,
+        "brier": 0.23466742820011943,
+        "log_loss": 0.6591980061624645,
+        "game_balanced_brier": 0.21665159185241623,
+        "game_balanced_log_loss": 0.6194982736324769,
+        "observed_home_win_rate": 0.5067041522491349,
+        "mean_predicted_probability": 0.509675973962653,
+        "auc": 0.6336875557010042,
+        "ece_10_bin_state": 0.02063856868404147,
+        "ece_10_bin_game_balanced": 0.052637173561503554
+      },
+      "platt": {
+        "states": 4624,
+        "games": 536,
+        "brier": 0.23711318849397006,
+        "log_loss": 0.665290737836673,
+        "game_balanced_brier": 0.2180338391687387,
+        "game_balanced_log_loss": 0.6230997911635023,
+        "observed_home_win_rate": 0.5067041522491349,
+        "mean_predicted_probability": 0.46548451052347173,
+        "auc": 0.6336875557010042,
+        "ece_10_bin_state": 0.04779017916271319,
+        "ece_10_bin_game_balanced": 0.05951398190454362
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0024457602938506295,
+        "game_balanced_brier": 0.0013822473163224713,
+        "log_loss": 0.00609273167420854
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 536,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.21665159185241625,
+            "ci95_lower": 0.21071816855716802,
+            "ci95_upper": 0.22295328573677944
+          },
+          "calibrated_brier": {
+            "point": 0.2180338391687387,
+            "ci95_lower": 0.2113746310242613,
+            "ci95_upper": 0.22563288928782912
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0013822473163224473,
+            "ci95_lower": -0.002070165150720654,
+            "ci95_upper": 0.004834337220410909
+          },
+          "raw_log_loss": {
+            "point": 0.619498273632477,
+            "ci95_lower": 0.6054405567531601,
+            "ci95_upper": 0.6350229766177727
+          },
+          "calibrated_log_loss": {
+            "point": 0.6230997911635023,
+            "ci95_lower": 0.6076413837921198,
+            "ci95_upper": 0.6415896993338098
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.003601517531025375,
+            "ci95_lower": -0.003983823220682348,
+            "ci95_upper": 0.011168330595225722
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "margin_3_5": {
+      "states": 4850,
+      "games": 674,
+      "raw": {
+        "states": 4850,
+        "games": 674,
+        "brier": 0.18121806965856227,
+        "log_loss": 0.5372524701262003,
+        "game_balanced_brier": 0.16121345688287678,
+        "game_balanced_log_loss": 0.49142592790433876,
+        "observed_home_win_rate": 0.4995876288659794,
+        "mean_predicted_probability": 0.520188289987319,
+        "auc": 0.797480827279976,
+        "ece_10_bin_state": 0.03480903094765123,
+        "ece_10_bin_game_balanced": 0.037713622041048375
+      },
+      "platt": {
+        "states": 4850,
+        "games": 674,
+        "brier": 0.18215893763309485,
+        "log_loss": 0.5414729864098065,
+        "game_balanced_brier": 0.16057683592403438,
+        "game_balanced_log_loss": 0.4916651401820322,
+        "observed_home_win_rate": 0.4995876288659794,
+        "mean_predicted_probability": 0.48917621020741786,
+        "auc": 0.797480827279976,
+        "ece_10_bin_state": 0.04918957435430322,
+        "ece_10_bin_game_balanced": 0.03014846864170184
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0009408679745325776,
+        "game_balanced_brier": -0.0006366209588423988,
+        "log_loss": 0.004220516283606202
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 674,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.16121345688287678,
+            "ci95_lower": 0.1501923842279341,
+            "ci95_upper": 0.1732907218745178
+          },
+          "calibrated_brier": {
+            "point": 0.16057683592403438,
+            "ci95_lower": 0.14852830898934288,
+            "ci95_upper": 0.17390891571949377
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": -0.0006366209588423839,
+            "ci95_lower": -0.002737346134889632,
+            "ci95_upper": 0.0015292416620375229
+          },
+          "raw_log_loss": {
+            "point": 0.4914259279043387,
+            "ci95_lower": 0.46504823110514987,
+            "ci95_upper": 0.5211132663940365
+          },
+          "calibrated_log_loss": {
+            "point": 0.4916651401820322,
+            "ci95_lower": 0.4615049695808734,
+            "ci95_upper": 0.5237500010788646
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.0002392122776934902,
+            "ci95_lower": -0.00564971348749616,
+            "ci95_upper": 0.006223362192423815
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "margin_6_10": {
+      "states": 6773,
+      "games": 830,
+      "raw": {
+        "states": 6773,
+        "games": 830,
+        "brier": 0.0952792136777026,
+        "log_loss": 0.32238194481473526,
+        "game_balanced_brier": 0.11054446216794103,
+        "game_balanced_log_loss": 0.35898393950490226,
+        "observed_home_win_rate": 0.530783995275358,
+        "mean_predicted_probability": 0.5304467819741568,
+        "auc": 0.9279614456481496,
+        "ece_10_bin_state": 0.014621454965398304,
+        "ece_10_bin_game_balanced": 0.02743213113215712
+      },
+      "platt": {
+        "states": 6773,
+        "games": 830,
+        "brier": 0.09568036867812545,
+        "log_loss": 0.3269777958580588,
+        "game_balanced_brier": 0.11203792659617536,
+        "game_balanced_log_loss": 0.36742553689974755,
+        "observed_home_win_rate": 0.530783995275358,
+        "mean_predicted_probability": 0.5142554814096589,
+        "auc": 0.9279614456481496,
+        "ece_10_bin_state": 0.020324640921940747,
+        "ece_10_bin_game_balanced": 0.041873546067591014
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0004011550004228426,
+        "game_balanced_brier": 0.001493464428234323,
+        "log_loss": 0.004595851043323551
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 830,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.11054446216794103,
+            "ci95_lower": 0.0960217687565596,
+            "ci95_upper": 0.1261151313121656
+          },
+          "calibrated_brier": {
+            "point": 0.11203792659617536,
+            "ci95_lower": 0.09701854095454626,
+            "ci95_upper": 0.12848187422242494
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0014934644282343355,
+            "ci95_lower": 7.17466332852722e-05,
+            "ci95_upper": 0.0030011151926916677
+          },
+          "raw_log_loss": {
+            "point": 0.3589839395049023,
+            "ci95_lower": 0.3183014948402404,
+            "ci95_upper": 0.40060609361127475
+          },
+          "calibrated_log_loss": {
+            "point": 0.36742553689974755,
+            "ci95_lower": 0.32209686871928317,
+            "ci95_upper": 0.4134015356583272
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.008441597394845204,
+            "ci95_lower": 0.0026574531370850293,
+            "ci95_upper": 0.014786917996846536
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "margin_over_10": {
+      "states": 15182,
+      "games": 903,
+      "raw": {
+        "states": 15182,
+        "games": 903,
+        "brier": 0.013985476884130056,
+        "log_loss": 0.06686444400703047,
+        "game_balanced_brier": 0.03862148643041,
+        "game_balanced_log_loss": 0.15224050829092692,
+        "observed_home_win_rate": 0.5748254511922013,
+        "mean_predicted_probability": 0.5717089576863404,
+        "auc": 0.9945420149207961,
+        "ece_10_bin_state": 0.0033407416211402416,
+        "ece_10_bin_game_balanced": 0.020714577016826215
+      },
+      "platt": {
+        "states": 15182,
+        "games": 903,
+        "brier": 0.014057363288862194,
+        "log_loss": 0.06937679479071895,
+        "game_balanced_brier": 0.0394111420316632,
+        "game_balanced_log_loss": 0.16304166932426897,
+        "observed_home_win_rate": 0.5748254511922013,
+        "mean_predicted_probability": 0.5701386283145133,
+        "auc": 0.9945420149207961,
+        "ece_10_bin_state": 0.005227755064715362,
+        "ece_10_bin_game_balanced": 0.02661535893715771
+      },
+      "delta_platt_minus_raw": {
+        "brier": 7.18864047321386e-05,
+        "game_balanced_brier": 0.0007896556012532002,
+        "log_loss": 0.0025123507836884856
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 903,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.03862148643041,
+            "ci95_lower": 0.028123389822250863,
+            "ci95_upper": 0.05008059337930226
+          },
+          "calibrated_brier": {
+            "point": 0.0394111420316632,
+            "ci95_lower": 0.028670516025959696,
+            "ci95_upper": 0.05130924684526529
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0007896556012532028,
+            "ci95_lower": 0.0003462679470449458,
+            "ci95_upper": 0.0013064986814901407
+          },
+          "raw_log_loss": {
+            "point": 0.15224050829092692,
+            "ci95_lower": 0.11181281444027315,
+            "ci95_upper": 0.1954939559737767
+          },
+          "calibrated_log_loss": {
+            "point": 0.16304166932426897,
+            "ci95_lower": 0.11770184465095136,
+            "ci95_upper": 0.21049982558883357
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.010801161033342046,
+            "ci95_lower": 0.005590707057936977,
+            "ci95_upper": 0.01684357839882978
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "l2m_close_margin_5": {
+      "states": 1667,
+      "games": 450,
+      "raw": {
+        "states": 1667,
+        "games": 450,
+        "brier": 0.13258002180251438,
+        "log_loss": 0.4052734318047599,
+        "game_balanced_brier": 0.09852145491895448,
+        "game_balanced_log_loss": 0.3127838674169789,
+        "observed_home_win_rate": 0.504499100179964,
+        "mean_predicted_probability": 0.49597741549799385,
+        "auc": 0.894856664929621,
+        "ece_10_bin_state": 0.02393403311551247,
+        "ece_10_bin_game_balanced": 0.024746668466693503
+      },
+      "platt": {
+        "states": 1667,
+        "games": 450,
+        "brier": 0.1349115476937246,
+        "log_loss": 0.4148515601753811,
+        "game_balanced_brier": 0.09927176511087349,
+        "game_balanced_log_loss": 0.3153483018194279,
+        "observed_home_win_rate": 0.504499100179964,
+        "mean_predicted_probability": 0.47286494039222005,
+        "auc": 0.894856664929621,
+        "ece_10_bin_state": 0.046431549280562444,
+        "ece_10_bin_game_balanced": 0.034161816103102496
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0023315258912102177,
+        "game_balanced_brier": 0.0007503101919190125,
+        "log_loss": 0.00957812837062122
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 450,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.09852145491895448,
+            "ci95_lower": 0.0861458151097024,
+            "ci95_upper": 0.11064629161028074
+          },
+          "calibrated_brier": {
+            "point": 0.09927176511087349,
+            "ci95_lower": 0.08614119536266014,
+            "ci95_upper": 0.11167118760130712
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0007503101919189943,
+            "ci95_lower": -0.0012352727163128388,
+            "ci95_upper": 0.002700223783550059
+          },
+          "raw_log_loss": {
+            "point": 0.3127838674169789,
+            "ci95_lower": 0.2793349918147732,
+            "ci95_upper": 0.34778340943750474
+          },
+          "calibrated_log_loss": {
+            "point": 0.3153483018194279,
+            "ci95_lower": 0.2769487310537384,
+            "ci95_upper": 0.3522648942602304
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.002564434402449077,
+            "ci95_lower": -0.004055218779277662,
+            "ci95_upper": 0.008785967866784868
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "last_30s_margin_3": {
+      "states": 243,
+      "games": 214,
+      "raw": {
+        "states": 243,
+        "games": 214,
+        "brier": 0.08753149763194751,
+        "log_loss": 0.264480943296786,
+        "game_balanced_brier": 0.07845472242967257,
+        "game_balanced_log_loss": 0.24266297225253694,
+        "observed_home_win_rate": 0.4773662551440329,
+        "mean_predicted_probability": 0.4670060693096744,
+        "auc": 0.9404357860439858,
+        "ece_10_bin_state": 0.022606209586414867,
+        "ece_10_bin_game_balanced": 0.022428417435144333
+      },
+      "platt": {
+        "states": 243,
+        "games": 214,
+        "brier": 0.08950887375791111,
+        "log_loss": 0.27331162904443884,
+        "game_balanced_brier": 0.07951042206676827,
+        "game_balanced_log_loss": 0.250201472481845,
+        "observed_home_win_rate": 0.4773662551440329,
+        "mean_predicted_probability": 0.4512155269057546,
+        "auc": 0.9404357860439858,
+        "ece_10_bin_state": 0.044543076288749525,
+        "ece_10_bin_game_balanced": 0.03545868269177595
+      },
+      "delta_platt_minus_raw": {
+        "brier": 0.0019773761259636036,
+        "game_balanced_brier": 0.0010556996370957028,
+        "log_loss": 0.008830685747652833
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 214,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.07845472242967257,
+            "ci95_lower": 0.06033173663226439,
+            "ci95_upper": 0.09937162058983515
+          },
+          "calibrated_brier": {
+            "point": 0.07951042206676827,
+            "ci95_lower": 0.06056931768454012,
+            "ci95_upper": 0.10113788519256571
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 0.0010556996370957113,
+            "ci95_lower": -0.002398150847905273,
+            "ci95_upper": 0.0042499258653459215
+          },
+          "raw_log_loss": {
+            "point": 0.24266297225253694,
+            "ci95_lower": 0.1793008276795694,
+            "ci95_upper": 0.32654871813823605
+          },
+          "calibrated_log_loss": {
+            "point": 0.25020147248184493,
+            "ci95_lower": 0.1823899497628106,
+            "ci95_upper": 0.3445825471707095
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.007538500229308,
+            "ci95_lower": -0.0027921228424347684,
+            "ci95_upper": 0.02036921162046021
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    },
+    "l2m_margin_over_5": {
+      "states": 3655,
+      "games": 1007,
+      "raw": {
+        "states": 3655,
+        "games": 1007,
+        "brier": 0.0029592401605649955,
+        "log_loss": 0.017759637002472895,
+        "game_balanced_brier": 0.006624029616966059,
+        "game_balanced_log_loss": 0.03307204902218202,
+        "observed_home_win_rate": 0.559781121751026,
+        "mean_predicted_probability": 0.5592806322856586,
+        "auc": 0.9992430165849842,
+        "ece_10_bin_state": 0.0016043448888633598,
+        "ece_10_bin_game_balanced": 0.0014955626253202873
+      },
+      "platt": {
+        "states": 3655,
+        "games": 1007,
+        "brier": 0.002968142180959765,
+        "log_loss": 0.017425891561086367,
+        "game_balanced_brier": 0.0066942308787510995,
+        "game_balanced_log_loss": 0.03427065602065742,
+        "observed_home_win_rate": 0.559781121751026,
+        "mean_predicted_probability": 0.5588646241589388,
+        "auc": 0.9992430165849842,
+        "ece_10_bin_state": 0.0009164975920872599,
+        "ece_10_bin_game_balanced": 0.0037069761343782696
+      },
+      "delta_platt_minus_raw": {
+        "brier": 8.902020394769509e-06,
+        "game_balanced_brier": 7.020126178504046e-05,
+        "log_loss": -0.0003337454413865279
+      },
+      "cluster_bootstrap": {
+        "method": "Paired percentile game-cluster bootstrap; per-game mean losses",
+        "games": 1007,
+        "replicates": 1000,
+        "random_seed": 226,
+        "metrics": {
+          "raw_brier": {
+            "point": 0.006624029616966059,
+            "ci95_lower": 0.002670286965811705,
+            "ci95_upper": 0.011661255614343067
+          },
+          "calibrated_brier": {
+            "point": 0.0066942308787511,
+            "ci95_lower": 0.0026500700807733546,
+            "ci95_upper": 0.011823046605497843
+          },
+          "delta_brier_cal_minus_raw": {
+            "point": 7.020126178504139e-05,
+            "ci95_lower": -1.7398985775016613e-05,
+            "ci95_upper": 0.0001947675519365218
+          },
+          "raw_log_loss": {
+            "point": 0.03307204902218201,
+            "ci95_lower": 0.01612020917740633,
+            "ci95_upper": 0.05432186244348124
+          },
+          "calibrated_log_loss": {
+            "point": 0.03427065602065742,
+            "ci95_lower": 0.015434764991147125,
+            "ci95_upper": 0.057876503145697415
+          },
+          "delta_log_loss_cal_minus_raw": {
+            "point": 0.0011986069984754025,
+            "ci95_lower": -0.0009595464454674932,
+            "ci95_upper": 0.003957080802188591
+          }
+        },
+        "interpretation": "Intervals are conditional on the held-out cohort and fixed model."
+      }
+    }
+  },
+  "warnings": [
+    "This is post-hoc test-season diagnostic analysis; do not tune on these findings.",
+    "Ten-bin ECE is resolution-dependent and may hide within-bin miscalibration.",
+    "Cluster bootstrap conditions on observed test games, without retraining the model.",
+    "Game-balanced strata reweight participating games equally within each subset.",
+    "Post-action win probabilities are not counterfactual officiating effects.",
+    "Tiny subgroups and high-confidence bins may have unstable estimates."
+  ]
+}
