@@ -9,7 +9,6 @@ import argparse
 import csv
 import hashlib
 import json
-from collections import defaultdict
 from pathlib import Path
 
 import joblib
@@ -104,7 +103,8 @@ def game_cluster_intervals(rows: list[dict], raw: np.ndarray,
     games = sorted(set(ids))
     if len(games) < 3:
         raise ValueError("At least three independent game clusters required")
-    codes = np.array([games.index(g) for g in ids], dtype=int)
+    game_codes = {game_id: idx for idx, game_id in enumerate(games)}
+    codes = np.array([game_codes[g] for g in ids], dtype=int)
     n = len(games)
     counts = np.bincount(codes, minlength=n)
     y = np.array([int(r["home_win"]) for r in rows], dtype=float)
