@@ -4,7 +4,7 @@
 
 Research question: *How much competitive harm is attributable to confirmed officiating errors in close NBA games, and which interventions could reduce that harm without substantially disrupting game flow?*
 
-> **Status: Step 1 complete at official-label/game level; Step 2.1 historical win-probability state dataset built and validated. Event-level film adjudication and win-probability model training remain open.** No win-probability model, counterfactual causal result or policy effectiveness claim has been produced.
+> **Status: Step 1 official L2M report reconciliation complete; Step 2.1 time-split dataset complete; Step 2.2 NBA win-probability model trained; Step 2.3 real-season clutch robustness and game-cluster uncertainty audit complete.** Independent event-level film adjudication and counterfactual causal modeling remain open. No measured officiating causal effects or policy effectiveness claims have been produced.
 
 ## Verified 2024–25 data
 
@@ -64,7 +64,7 @@ Original large source downloads are not redistributed. The audit includes source
 | Step 0 | Research protocol, source inventory, package setup, unit tests | Implemented |
 | Step 1 | Real L2M / PBP source integration and official report reconciliation | **Complete at game-level and official-label level** |
 | Step 1 research QA | Video-confirmed same-event matching and reviewer agreement | **Not yet done** |
-| Step 2 | Temporally held-out game-state win-probability baseline | **Trained and evaluated (Step 2.2)** |
+| Step 2 | Temporal win-probability baseline and robustness testing | **Step 2.3 completed; clutch limitations documented** |
 | Step 3 | Counterfactual corrected-event simulation with uncertainty | Planned |
 | Step 4 | Context-adjusted officiating error patterns and fairness | Planned |
 | Step 5 | Scenario-based low-disruption intervention optimization | Planned |
@@ -149,3 +149,27 @@ python -m beyond_the_whistle.wp_model
 ```
 
 **Next:** Step 2.3 examines clutch calibration stability, game-cluster confidence intervals, and richer contemporaneous state features before attempting the Step 3 counterfactual officiating analysis.
+
+
+## Step 2.3 — Clutch calibration and game-cluster robustness
+
+**Implemented and evaluated without refitting the frozen Step 2.2 model.** We independently audited the full 2024–25 held-out season with **1,000 paired, whole-game bootstrap resamples** (rather than treating 31,429 within-game states as independent).
+
+| 2024–25 subgroup | Games | States | Raw game-balanced Brier ↓ | Platt game-balanced Brier ↓ |
+| --- | ---: | ---: | ---: | ---: |
+| All Q4 and OT | 1,229 | 31,429 | **0.08518** | 0.08564 |
+| Final 120 seconds, margin ≤5 | 450 | 1,667 | **0.09852** | 0.09927 |
+| Final 30 seconds, margin ≤3 | 214 | 243 | **0.07845** | 0.07951 |
+| Overtime | 60 | 704 | **0.16498** | 0.16820 |
+| Any clock, margin 0–2 | 536 | 4,624 | **0.21665** | 0.21803 |
+
+The overall Platt-minus-raw game-balanced Brier difference was **+0.000466**, with paired game-cluster bootstrap 95% interval **[−0.000748, +0.001623]**. The interval spans zero, so we **cannot** establish that Platt scaling meaningfully worsens overall Brier despite its worse point estimate. In truly close games (margin ≤2), calibration and discrimination require more detailed model-state research. We do **not** tune models using held-out test subgroup results.
+
+Audited artifacts: [full diagnostics, CIs and calibration](models/win_probability/wp_robustness_report.json), [summary scores](models/win_probability/wp_strata_summary.csv), [10-bin reliability by strata](models/win_probability/wp_strata_reliability.csv), [publication-oriented interpretation](docs/step2_3_results.md), [reproducible audit source](src/beyond_the_whistle/wp_robustness.py).
+
+```bash
+python -m pip install -e ".[dev,ml]"
+python -m beyond_the_whistle.wp_robustness --bootstrap 1000
+```
+
+**Next:** recover trustworthy pre-decision possession, free-throw, timeout and bonus states, and verify individual L2M incidents against source video before considering causal counterfactual officiating harm.
