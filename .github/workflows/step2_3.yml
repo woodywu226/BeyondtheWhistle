@@ -1,0 +1,72 @@
+name: Step 2.3 NBA WP robustness audit
+on:
+  push:
+    paths:
+      - src/beyond_the_whistle/wp_robustness.py
+      - tests/test_wp_robustness.py
+      - .github/workflows/step2_3.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install and validate
+        run: |
+          python -m pip install -e ".[dev,ml]"
+          pytest -q
+          ruff check .
+      - name: Evaluate frozen model, game-cluster confidence intervals and reliability
+        run: python -m beyond_the_whistle.wp_robustness --bootstrap 1000
+      - name: Validate real NBA model robustness outputs
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+          target = Path("models/win_probability")
+          audit = json.loads((target / "wp_robustness_report.json").read_text())
+          previous = json.loads((target / "wp_model_report.json").read_text())
+          assert audit["status"] == "complete_diagnostic_only_no_retraining"
+          assert audit["bootstrap_replicates"] == 1000
+          assert audit["frozen_model_sha256"] == previous["model_sha256"]
+          all_rows = audit["strata"]["all_q4_and_ot"]
+          clutch = audit["strata"]["l2m_close_margin_5"]
+          assert all_rows["states"] == 31429
+          assert all_rows["games"] == 1229
+          assert clutch["states"] == 1667
+          assert clutch["games"] == 450
+          assert all_rows["cluster_bootstrap"]["games"] == 1229
+          for name in ("raw_brier", "calibrated_brier", "delta_brier_cal_minus_raw"):
+              ci = all_rows["cluster_bootstrap"]["metrics"][name]
+              assert ci["ci95_lower"] <= ci["point"] <= ci["ci95_upper"]
+          with (target / "wp_strata_summary.csv").open() as f:
+              summary = list(csv.DictReader(f))
+          with (target / "wp_strata_reliability.csv").open() as f:
+              bins = list(csv.DictReader(f))
+          assert len(summary) >= 10
+          assert len(bins) >= 200
+          assert all(0 <= float(r["raw_ece"]) <= 1 for r in summary)
+          print("STEP 2.3 ROBUSTNESS PASS", {
+              "full_game_brier": all_rows["platt"]["game_balanced_brier"],
+              "clutch_game_brier": clutch["platt"]["game_balanced_brier"],
+              "platt_minus_raw_brier": all_rows["delta_platt_minus_raw"]["game_balanced_brier"],
+          })
+          PY
+      - name: Save real NBA stratified diagnostics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add models/win_probability/wp_robustness_report.json models/win_probability/wp_strata_summary.csv models/win_probability/wp_strata_reliability.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "data(step2.3): commit NBA clutch calibration and game-bootstrap results"
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
