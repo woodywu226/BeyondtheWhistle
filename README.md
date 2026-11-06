@@ -4,7 +4,7 @@
 
 Research question: *How much competitive harm is attributable to confirmed officiating errors in close NBA games, and which interventions could reduce that harm without substantially disrupting game flow?*
 
-> **Status: Step 1 official L2M report reconciliation complete; Step 2.1 time-split dataset complete; Step 2.2 NBA win-probability model trained; Step 2.3 real-season clutch robustness and game-cluster uncertainty audit complete.** Independent event-level film adjudication and counterfactual causal modeling remain open. No measured officiating causal effects or policy effectiveness claims have been produced.
+> **Status: Step 1 official L2M report reconciliation complete; Step 2.1 time-split dataset complete; Step 2.2 NBA win-probability model trained; Step 2.3 real-season clutch robustness and game-cluster uncertainty audit complete; Step 2.4 frozen, validated post-action inference interface implemented.** Independent event-level film adjudication and counterfactual causal modeling remain open. No measured officiating causal effects or policy effectiveness claims have been produced.
 
 ## Verified 2024–25 data
 
@@ -64,7 +64,7 @@ Original large source downloads are not redistributed. The audit includes source
 | Step 0 | Research protocol, source inventory, package setup, unit tests | Implemented |
 | Step 1 | Real L2M / PBP source integration and official report reconciliation | **Complete at game-level and official-label level** |
 | Step 1 research QA | Video-confirmed same-event matching and reviewer agreement | **Not yet done** |
-| Step 2 | Temporal win-probability baseline and robustness testing | **Step 2.3 completed; clutch limitations documented** |
+| Step 2 | Temporal WP dataset, model, robustness, safe frozen inference and handoff | **Complete as predictive baseline; NOT a causal officiating model** |
 | Step 3 | Counterfactual corrected-event simulation with uncertainty | Planned |
 | Step 4 | Context-adjusted officiating error patterns and fairness | Planned |
 | Step 5 | Scenario-based low-disruption intervention optimization | Planned |
@@ -148,7 +148,7 @@ ruff check .
 python -m beyond_the_whistle.wp_model
 ```
 
-**Next:** Step 2.3 examines clutch calibration stability, game-cluster confidence intervals, and richer contemporaneous state features before attempting the Step 3 counterfactual officiating analysis.
+**Step 2.3 completed:** See [real-game clutch reliability and bootstrap confidence intervals](docs/step2_3_results.md). Step 2.4 adds a frozen inference contract and research handoff; see below.
 
 
 ## Step 2.3 — Clutch calibration and game-cluster robustness
@@ -173,3 +173,21 @@ python -m beyond_the_whistle.wp_robustness --bootstrap 1000
 ```
 
 **Next:** recover trustworthy pre-decision possession, free-throw, timeout and bonus states, and verify individual L2M incidents against source video before considering causal counterfactual officiating harm.
+
+
+## Step 2.4 — Frozen inference interface and Step 2 acceptance
+
+**Step 2 is complete as a scientifically documented *post-action win-probability baseline*.** Model improvements for referee counterfactuals (especially possession, foul/bonus, timeouts and **pre-decision state alignment**) remain an explicit Step 3 prerequisite, not a falsely completed feature of the current model.
+
+Predict a hypothetical Q4 game state with the unchanged trained model:
+
+```bash
+python -m pip install -e ".[dev,ml]"
+python -m beyond_the_whistle.wp_inference \
+  --period 4 --seconds-remaining 60 --home-score 105 --away-score 103
+# Inspect uncalibrated model instead: add --probability-version raw
+```
+
+The CLI enforces period/clock/score/feature-schema sanity checks and emits post-action probabilities **clearly marked as noncausal**. It deliberately does not pretend to simulate the effects of correct referee decisions. Step 2 CI checks the unchanged historical dataset and model SHA-256 digests, earlier measured metrics, saved robustness artifacts and deterministic inference output.
+
+See [Step 2 completion, model card and Step 3 go/no-go research gate](docs/step2_complete.md), [inference implementation](src/beyond_the_whistle/wp_inference.py), and [completion acceptance workflow](.github/workflows/step2_complete.yml).
