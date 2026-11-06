@@ -26,7 +26,7 @@ class GameState:
 
     def validate(self) -> None:
         if isinstance(self.period, bool) or not isinstance(self.period, int):
-            raise ValueError("period must be an integer")
+            raise TypeError("period must be an integer")
         if self.period < 4 or self.period > 20:
             raise ValueError("Model only supports Q4 and overtime periods up to 20")
         if (isinstance(self.seconds_remaining, bool)
