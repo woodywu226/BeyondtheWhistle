@@ -1,0 +1,67 @@
+name: Step 2 Completion Acceptance
+on:
+  push:
+    paths:
+      - src/beyond_the_whistle/wp_inference.py
+      - tests/test_wp_inference.py
+      - docs/step2_complete.md
+      - .github/workflows/step2_complete.yml
+      - models/win_probability/wp_baseline.joblib
+      - models/win_probability/wp_model_report.json
+      - models/win_probability/wp_robustness_report.json
+  pull_request:
+    paths:
+      - src/beyond_the_whistle/wp_inference.py
+      - tests/test_wp_inference.py
+      - docs/step2_complete.md
+      - .github/workflows/step2_complete.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies, test and lint
+        run: |
+          python -m pip install -e ".[dev,ml]"
+          pytest -q
+          ruff check .
+      - name: Verify frozen Step 2.1-2.3 artifacts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          target = Path("models/win_probability")
+          model_report = json.loads((target / "wp_model_report.json").read_text())
+          robustness = json.loads((target / "wp_robustness_report.json").read_text())
+          dataset = Path("data/win_probability/wp_q4_states_2021_2024.csv")
+          model = target / "wp_baseline.joblib"
+          assert hashlib.sha256(dataset.read_bytes()).hexdigest() == model_report["dataset_sha256"]
+          assert hashlib.sha256(model.read_bytes()).hexdigest() == model_report["model_sha256"]
+          assert robustness["frozen_model_sha256"] == model_report["model_sha256"]
+          assert robustness["frozen_dataset_sha256"] == model_report["dataset_sha256"]
+          assert robustness["strata"]["all_q4_and_ot"]["games"] == 1229
+          assert robustness["strata"]["all_q4_and_ot"]["states"] == 31429
+          assert robustness["strata"]["l2m_close_margin_5"]["games"] == 450
+          assert robustness["bootstrap_replicates"] == 1000
+          print("STEP 2 frozen dataset, model and robustness reports checked")
+          PY
+      - name: Validate frozen prediction CLI is a noncausal post-action interface
+        run: |
+          python -m beyond_the_whistle.wp_inference --period 4 --seconds-remaining 60 --home-score 105 --away-score 103 > /tmp/prediction.json
+          python - <<'PY'
+          import json
+          pred = json.load(open("/tmp/prediction.json", encoding="utf-8"))
+          assert 0 < pred["home_win_probability"] < 1
+          assert abs(pred["home_win_probability"] + pred["away_win_probability"] - 1) < 1e-12
+          assert pred["prediction_timing"] == "post_action"
+          assert pred["causal_officiating_effect"] is False
+          assert pred["probability_version"] == "platt"
+          print("STEP 2 INFERENCE PASS")
+          PY
