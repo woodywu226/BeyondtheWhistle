@@ -1,8 +1,8 @@
 # Beyond the Whistle
 
-**Quantifying avoidable win-probability harm from NBA officiating errors**
+**Studying NBA officiating under public scrutiny and its potential consequences**
 
-Research question: *How much competitive harm is attributable to confirmed officiating errors in close NBA games, and which interventions could reduce that harm without substantially disrupting game flow?*
+The primary pilot compares whistle frequency and independently assessed accuracy around the final two minutes of regulation. The broader study asks how decisions vary across teams and players, whether comparable contact is officiated differently for stars, and how often verified errors imply a material change in modeled win probability. See the [research protocol](docs/research_protocol.md).
 
 > **Status: Step 1 official L2M report reconciliation complete; Step 2.1 time-split dataset complete; Step 2.2 NBA win-probability model trained; Step 2.3 real-season clutch robustness and game-cluster uncertainty audit complete; Step 2.4 frozen, validated post-action inference interface implemented.** Independent event-level film adjudication and counterfactual causal modeling remain open. No measured officiating causal effects or policy effectiveness claims have been produced.
 
@@ -65,11 +65,11 @@ Original large source downloads are not redistributed. The audit includes source
 | Step 1 | Real L2M / PBP source integration and official report reconciliation | **Complete at game-level and official-label level** |
 | Step 1 research QA | Video-confirmed same-event matching and reviewer agreement | **Not yet done** |
 | Step 2 | Temporal WP dataset, model, robustness, safe frozen inference and handoff | **Complete as predictive baseline; NOT a causal officiating model** |
-| Step 3 | Counterfactual corrected-event simulation with uncertainty | Planned |
-| Step 4 | Context-adjusted officiating error patterns and fairness | Planned |
-| Step 5 | Scenario-based low-disruption intervention optimization | Planned |
+| Step 3 | Independent video pilot comparing matched Q4 windows before and after 2:00 | Planned |
+| Step 4 | Opportunity-adjusted team, player and star-status comparisons | Planned |
+| Step 5 | Rule-supported win-probability scenarios for verified errors | Planned |
 
-The study initially focuses on official L2M reports. Extending the analysis to **the final five minutes of Q4 with a margin of ten points or fewer** would require newly annotated video, because NBA's L2M reports do not label that full window.
+The [48-case L2M queue](data/validated/step1_review_queue_2025.csv) is available for calibration. The formal pilot requires new, independently reviewed video from both sides of 2:00. Whistle frequency and accuracy are separate outcomes. A difference across the boundary alone cannot identify the effect of public scrutiny because tactics and game state also change late in games.
 
 ## Project structure
 
