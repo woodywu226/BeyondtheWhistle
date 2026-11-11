@@ -64,6 +64,9 @@ inputs, and track missing context for a future model.
 
 ## Full 2024–25 review
 
+The [possession model pilot](out_of_bounds_possession_win_probability.md) adds
+exploratory estimates for 14 out-of-bounds cases in this inventory.
+
 The [review inputs](../data/validated/ic_review_2024_25.json) identify each
 official report, affected teams or players where supplied, clip reference, and
 original play-by-play candidate status. The [results CSV](../data/validated/ic_wp_2024_25.csv)
