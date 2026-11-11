@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -79,14 +80,76 @@ def compare_scenarios(bundle: dict, case: dict, records: dict[str, dict], versio
     }
 
 
+def score_review(bundle: dict, review: dict, records: dict[str, dict], version: str) -> list[dict]:
+    """Return one auditable row per official IC, including cases without estimates."""
+    entries = review["records"]
+    ids = [entry["l2m_record"] for entry in entries]
+    if len(ids) != len(set(ids)) or set(ids) != records.keys():
+        raise ValueError("Review must contain each official IC record exactly once")
+
+    rows = []
+    for entry in entries:
+        rid = entry["l2m_record"]
+        record = records[rid]
+        if entry["game_id"] != record["game_id"]:
+            raise ValueError(f"Review game mismatch for record {rid}")
+        row = {
+            "l2m_record": rid,
+            "game_id": record["game_id"],
+            "period": record["period"],
+            "clock": record["clock"],
+            "home_team": entry["home_team"],
+            "away_team": entry["away_team"],
+            "official_call_type": entry["official_call_type"],
+            "pbp_match_status": record["status"],
+            "pbp_candidate_action": record["pbp_event_num"],
+            "official_report": entry["official_report"],
+            "video_review": entry["video_review"],
+            "disposition": entry["disposition"],
+            "reason": entry.get("reason", ""),
+            "probability_version": version,
+            "affected_team": "",
+            "observed_wp_pct": "",
+            "min_delta_pp": "",
+            "max_delta_pp": "",
+        }
+        if "case" in entry:
+            case = entry["case"]
+            if case.get("hypothetical") is True or str(case["l2m_record"]) != rid:
+                raise ValueError(f"Review case must use its corresponding official record {rid}")
+            result = compare_scenarios(bundle, case, records, version)
+            low, high = result["delta_range_percentage_points"]
+            row.update(
+                affected_team=row[f"{case['affected_team']}_team"],
+                observed_wp_pct=round(100 * result["observed_win_probability"], 6),
+                min_delta_pp=round(low, 6),
+                max_delta_pp=round(high, 6),
+            )
+        elif not row["reason"]:
+            raise ValueError(f"Unscored record {rid} requires a reason")
+        rows.append(row)
+    return rows
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--candidates", type=Path, default=CANDIDATES)
     parser.add_argument("--model", type=Path, default=MODEL)
     parser.add_argument("--probability-version", choices=("raw", "platt"), default="platt")
-    parser.add_argument("--case", type=Path, help="JSON file with observed and corrected states")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--case", type=Path, help="JSON file with observed and corrected states")
+    mode.add_argument("--review", type=Path, help="Full IC review JSON. Writes a coverage CSV")
     args = parser.parse_args()
     records = load_incorrect_calls(args.candidates)
+    if args.review is not None:
+        review = json.loads(args.review.read_text(encoding="utf-8"))
+        rows = score_review(
+            load_trusted_bundle(args.model), review, records, args.probability_version,
+        )
+        writer = csv.DictWriter(sys.stdout, fieldnames=list(rows[0]), lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+        return
     if args.case is None:
         result = {
             "official_incorrect_calls": len(records),

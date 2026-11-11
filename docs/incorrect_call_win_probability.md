@@ -10,8 +10,8 @@ require their own incident reconstruction.
 The 2024–25 candidate table contains 66 official IC records across 60 games.
 Of these, 43 have one unverified clock-and-type candidate in play-by-play,
 19 have no compatible candidate, and four have multiple candidates. These
-counts describe matching coverage. The two worked cases below use official
-report and play-by-play evidence. Independent video review is pending.
+counts describe matching coverage. All 66 entries were matched to an official
+IC by game, period and report clock. Independent video review is pending.
 
 ```bash
 python -m pip install -e ".[dev,ml]"
@@ -61,6 +61,50 @@ The baseline can score resolved score-clock states. If two branches differ only
 in possession, bonus, or pending free throws, the current model assigns the same
 probability to both. Use only resolved scenarios with defensible score-clock
 inputs, and track missing context for a future model.
+
+## Full 2024–25 review
+
+The [review inputs](../data/validated/ic_review_2024_25.json) identify each
+official report, affected teams or players where supplied, clip reference, and
+original play-by-play candidate status. The [results CSV](../data/validated/ic_wp_2024_25.csv)
+covers all 66 records.
+
+| Disposition | Cases |
+| --- | ---: |
+| Existing score and clock scenarios | 2 |
+| Fixed-clock sensitivity to points from awarded free throws | 18 |
+| Requires a possession or restart comparison | 29 |
+| Requires further case reconstruction | 14 |
+| Requires individual foul and lineup context | 3 |
+| **Total** | **66** |
+
+For the 18 free-throw cases, the foul and selected free-throw action IDs
+were checked against the season or postseason NBA play-by-play archive.
+The scenarios hold the clock and other points fixed and remove the points
+actually scored on the awarded attempts. A made field goal already on the
+scoreboard remains in the scenario. For example, in IC 4987 Cleveland led
+119–117 before two Portland free throws tied it with 1.1 seconds remaining.
+The calibrated Cleveland probability is 49.47% at 119–119 and 99.81%
+at 119–117, a **50.34 percentage-point score sensitivity**. The actual
+no-whistle sequence, rebounds and possession remain uncertain.
+
+Some score changes return an identical probability because the frozen
+model can assign the same probability to nearby states. Cases whose
+main consequence involves possession, restart, continuation or a foul
+charged to a different player have blank estimates unless an explicit
+score scenario was reconstructed. The scored subset is selected by
+what the model and source evidence support. Its estimates cannot be
+extrapolated to the entire season.
+
+Reproduce the CSV from the case inputs using the frozen bundle and
+scikit-learn 1.9.1:
+
+```bash
+python -m beyond_the_whistle.wp_incorrect_call \
+  --review data/validated/ic_review_2024_25.json > data/validated/ic_wp_2024_25.csv
+```
+
+Use `--probability-version raw` to compare uncalibrated estimates.
 
 ## First two real-game cases
 

@@ -1,0 +1,1749 @@
+{
+  "season": "2024–25",
+  "play_by_play_sources": [
+    {
+      "name": "cdnnba_2024.tar.xz",
+      "sha256": "35a82e6b29821adb22b8474dea8c51e08847d8e00690d1d5ffde7d000e0087d1"
+    },
+    {
+      "name": "cdnnba_po_2024.tar.xz",
+      "sha256": "065798b27908f9e16d8f9b6f19f429d0a798d98ce67aad116c9c9b7786f801f7"
+    }
+  ],
+  "records": [
+    {
+      "l2m_record": "67",
+      "game_id": "0022400071",
+      "home_team": "LAC",
+      "away_team": "PHX",
+      "game_date": "October 23, 2024",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Devin Booker",
+      "official_disadvantaged_player": "Ivica Zubac",
+      "official_report": "https://official.nba.com/l2m/json/0022400071.json",
+      "official_clip_id": "2185",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "700",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Foul removed and Booker avoids his sixth foul. No awarded free throws. Lineup and live-play consequences require reconstruction."
+    },
+    {
+      "l2m_record": "173",
+      "game_id": "0022400087",
+      "home_team": "DEN",
+      "away_team": "LAC",
+      "game_date": "October 26, 2024",
+      "official_call_type": "Foul: Offensive",
+      "official_committing_player": "James Harden",
+      "official_disadvantaged_player": "Aaron Gordon",
+      "official_report": "https://official.nba.com/l2m/json/0022400087.json",
+      "official_clip_id": "2122",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "625",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "267",
+      "game_id": "0022400106",
+      "home_team": "NYK",
+      "away_team": "CLE",
+      "game_date": "October 28, 2024",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Donovan Mitchell",
+      "official_disadvantaged_player": "Mikal Bridges",
+      "official_report": "https://official.nba.com/l2m/json/0022400106.json",
+      "official_clip_id": "2125",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "293",
+      "game_id": "0022400109",
+      "home_team": "SAS",
+      "away_team": "HOU",
+      "game_date": "October 28, 2024",
+      "official_call_type": "Foul: Loose Ball",
+      "official_committing_player": "Jeremy Sochan",
+      "official_disadvantaged_player": "Jalen Green",
+      "official_report": "https://official.nba.com/l2m/json/0022400109.json",
+      "official_clip_id": "2153",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "664",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Foul should switch from Sochan to Green. Reconstruct the corrected bonus, shooter and restart before estimating."
+    },
+    {
+      "l2m_record": "330",
+      "game_id": "0022400103",
+      "home_team": "ATL",
+      "away_team": "WAS",
+      "game_date": "October 28, 2024",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Kyshawn George",
+      "official_disadvantaged_player": "Jalen Johnson",
+      "official_report": "https://official.nba.com/l2m/json/0022400103.json",
+      "official_clip_id": "2163",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "679",
+      "video_review": "pending",
+      "disposition": "scored_existing_scenarios",
+      "case": {
+        "l2m_record": "330",
+        "game_id": "0022400103",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400103.json (official clip reference 2163)",
+        "verification_notes": "Official Q4 IC at 41.9 s identifies George and Johnson. NBA CDN play-by-play action 679 identifies the same players, foul, and clock. Johnson made both free throws (681–682). Independent video review pending.",
+        "rule_reference": "NBA L2M ruling for game 0022400103 at Q4 41.9 s. The league classified the contact as incidental.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 41.9,
+          "home_score": 114,
+          "away_score": 118
+        },
+        "alternatives": [
+          {
+            "assumption": "No foul. Atlanta scores no points on the drive. Compare immediately at the foul clock, holding time fixed to isolate the score difference.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 41.9,
+              "home_score": 112,
+              "away_score": 118
+            }
+          },
+          {
+            "assumption": "No foul. Atlanta completes the drive for two points. Compare at the same clock under a fixed-clock sensitivity assumption.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 41.9,
+              "home_score": 114,
+              "away_score": 118
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "374",
+      "game_id": "0022400113",
+      "home_team": "BKN",
+      "away_team": "DEN",
+      "game_date": "October 29, 2024",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Jamal Murray",
+      "official_disadvantaged_player": "Cam Thomas",
+      "official_report": "https://official.nba.com/l2m/json/0022400113.json",
+      "official_clip_id": "2227",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "378",
+      "game_id": "0022400119",
+      "home_team": "IND",
+      "away_team": "BOS",
+      "game_date": "October 30, 2024",
+      "official_call_type": "Turnover: Traveling",
+      "official_committing_player": "Pascal Siakam",
+      "official_disadvantaged_player": "Celtics",
+      "official_report": "https://official.nba.com/l2m/json/0022400119.json",
+      "official_clip_id": "2139",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "683",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Replace traveling with a defensive foul. Bonus, penalty and restart remain to be reconstructed."
+    },
+    {
+      "l2m_record": "621",
+      "game_id": "0022400158",
+      "home_team": "BKN",
+      "away_team": "MEM",
+      "game_date": "November 04, 2024",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Nic Claxton",
+      "official_disadvantaged_player": "Zach Edey",
+      "official_report": "https://official.nba.com/l2m/json/0022400158.json",
+      "official_clip_id": "2165",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "863",
+      "game_id": "0022400200",
+      "home_team": "LAC",
+      "away_team": "TOR",
+      "game_date": "November 09, 2024",
+      "official_call_type": "Violation: Kicked Ball",
+      "official_committing_player": "Ivica Zubac",
+      "official_disadvantaged_player": "Raptors",
+      "official_report": "https://official.nba.com/l2m/json/0022400200.json",
+      "official_clip_id": "2098",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "634",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "944",
+      "game_id": "0022400205",
+      "home_team": "PHI",
+      "away_team": "CHA",
+      "game_date": "November 10, 2024",
+      "official_call_type": "Foul: Loose Ball",
+      "official_committing_player": "Seth Curry",
+      "official_disadvantaged_player": "Guerschon Yabusele",
+      "official_report": "https://official.nba.com/l2m/json/0022400205.json",
+      "official_clip_id": "2253",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "716",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "1108",
+      "game_id": "0022400223",
+      "home_team": "MIL",
+      "away_team": "DET",
+      "game_date": "November 13, 2024",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Giannis Antetokounmpo",
+      "official_disadvantaged_player": "Ronald Holland II",
+      "official_report": "https://official.nba.com/l2m/json/0022400223.json",
+      "official_clip_id": "2214",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "637",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Both observed free throws missed. Corrected live-ball timing and possession after the block are unresolved."
+    },
+    {
+      "l2m_record": "1109",
+      "game_id": "0022400217",
+      "home_team": "ORL",
+      "away_team": "IND",
+      "game_date": "November 13, 2024",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Jalen Suggs",
+      "official_disadvantaged_player": "Bennedict Mathurin",
+      "official_report": "https://official.nba.com/l2m/json/0022400217.json",
+      "official_clip_id": "2090",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "640",
+      "video_review": "pending",
+      "disposition": "requires_player_foul_context",
+      "reason": "The report assigns the foul to a different defender on the same team. Evaluate personal-foul count, disqualification and substitution context."
+    },
+    {
+      "l2m_record": "1219",
+      "game_id": "0022400231",
+      "home_team": "NOP",
+      "away_team": "LAL",
+      "game_date": "November 16, 2024",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Dalton Knecht",
+      "official_disadvantaged_player": "Pelicans",
+      "official_report": "https://official.nba.com/l2m/json/0022400231.json",
+      "official_clip_id": "2132",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "1241",
+      "game_id": "0022400229",
+      "home_team": "CHA",
+      "away_team": "MIL",
+      "game_date": "November 16, 2024",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Giannis Antetokounmpo",
+      "official_disadvantaged_player": "LaMelo Ball",
+      "official_report": "https://official.nba.com/l2m/json/0022400229.json",
+      "official_clip_id": "2163",
+      "pbp_status": "multiple_clock_type_candidates",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Invalid personal foul. The replacement live-ball sequence and penalty consequences require reconstruction."
+    },
+    {
+      "l2m_record": "1312",
+      "game_id": "0022400239",
+      "home_team": "POR",
+      "away_team": "ATL",
+      "game_date": "November 17, 2024",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Onyeka Okongwu",
+      "official_disadvantaged_player": "Shaedon Sharpe",
+      "official_report": "https://official.nba.com/l2m/json/0022400239.json",
+      "official_clip_id": "2174",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "719",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        721,
+        724
+      ],
+      "observed_free_throw_points": 2,
+      "case": {
+        "l2m_record": "1312",
+        "game_id": "0022400239",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400239.json (official clip reference 2174)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 719 align on period, clock and player. The selected free throws added 2 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400239, Q4 00:18.2.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 18.2,
+          "home_score": 111,
+          "away_score": 108
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 18.2,
+              "home_score": 109,
+              "away_score": 108
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "1441",
+      "game_id": "0022400260",
+      "home_team": "CHA",
+      "away_team": "DET",
+      "game_date": "November 21, 2024",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Wendell Moore Jr.",
+      "official_disadvantaged_player": "Tre Mann",
+      "official_report": "https://official.nba.com/l2m/json/0022400260.json",
+      "official_clip_id": "2143",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "1744",
+      "game_id": "0022400040",
+      "home_team": "CHA",
+      "away_team": "NYK",
+      "game_date": "November 29, 2024",
+      "official_call_type": "Violation: Kicked Ball",
+      "official_committing_player": "Moussa Diabaté",
+      "official_disadvantaged_player": "Knicks",
+      "official_report": "https://official.nba.com/l2m/json/0022400040.json",
+      "official_clip_id": "2150",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "583",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "1948",
+      "game_id": "0022400050",
+      "home_team": "CHA",
+      "away_team": "PHI",
+      "game_date": "December 03, 2024",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Tidjane Salaün",
+      "official_disadvantaged_player": "Tyrese Maxey",
+      "official_report": "https://official.nba.com/l2m/json/0022400050.json",
+      "official_clip_id": "2177",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "2350",
+      "game_id": "0022400376",
+      "home_team": "SAC",
+      "away_team": "LAL",
+      "game_date": "December 21, 2024",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Keegan Murray",
+      "official_disadvantaged_player": "Anthony Davis",
+      "official_report": "https://official.nba.com/l2m/json/0022400376.json",
+      "official_clip_id": "2120",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "2446",
+      "game_id": "0022400399",
+      "home_team": "MEM",
+      "away_team": "LAC",
+      "game_date": "December 23, 2024",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Ivica Zubac",
+      "official_disadvantaged_player": "Jaren Jackson Jr.",
+      "official_report": "https://official.nba.com/l2m/json/0022400399.json",
+      "official_clip_id": "2153",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "742",
+      "video_review": "pending",
+      "disposition": "requires_player_foul_context",
+      "reason": "The report assigns the foul to a different defender on the same team. Evaluate personal-foul count, disqualification and substitution context."
+    },
+    {
+      "l2m_record": "2731",
+      "game_id": "0022400431",
+      "home_team": "GSW",
+      "away_team": "PHX",
+      "game_date": "December 28, 2024",
+      "official_call_type": "Foul: Loose Ball",
+      "official_committing_player": "Bradley Beal",
+      "official_disadvantaged_player": "Dennis Schroder",
+      "official_report": "https://official.nba.com/l2m/json/0022400431.json",
+      "official_clip_id": "2160",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "688",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        690,
+        693
+      ],
+      "observed_free_throw_points": 2,
+      "case": {
+        "l2m_record": "2731",
+        "game_id": "0022400431",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400431.json (official clip reference 2160)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 688 align on period, clock and player. The selected free throws added 2 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400431, Q4 00:12.1.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 12.1,
+          "home_score": 108,
+          "away_score": 105
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 12.1,
+              "home_score": 106,
+              "away_score": 105
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "2737",
+      "game_id": "0022400436",
+      "home_team": "ORL",
+      "away_team": "BKN",
+      "game_date": "December 29, 2024",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Keon Johnson",
+      "official_disadvantaged_player": "Tristan da Silva",
+      "official_report": "https://official.nba.com/l2m/json/0022400436.json",
+      "official_clip_id": "2090",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "636",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Replace a blocking foul with an offensive foul. Check the basket cancellation, restart and possession before scoring."
+    },
+    {
+      "l2m_record": "2847",
+      "game_id": "0022400452",
+      "home_team": "OKC",
+      "away_team": "MIN",
+      "game_date": "December 31, 2024",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Nickeil Alexander-Walker",
+      "official_disadvantaged_player": "Cason Wallace",
+      "official_report": "https://official.nba.com/l2m/json/0022400452.json",
+      "official_clip_id": "2170",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "620",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        622,
+        623
+      ],
+      "observed_free_throw_points": 2,
+      "case": {
+        "l2m_record": "2847",
+        "game_id": "0022400452",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400452.json (official clip reference 2170)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 620 align on period, clock and player. The selected free throws added 2 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400452, Q4 00:20.6.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 20.6,
+          "home_score": 113,
+          "away_score": 105
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 20.6,
+              "home_score": 111,
+              "away_score": 105
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "2959",
+      "game_id": "0022400483",
+      "home_team": "MIL",
+      "away_team": "POR",
+      "game_date": "January 04, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Bobby Portis",
+      "official_disadvantaged_player": "Anfernee Simons",
+      "official_report": "https://official.nba.com/l2m/json/0022400483.json",
+      "official_clip_id": "2114",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "575",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        577
+      ],
+      "observed_free_throw_points": 1,
+      "case": {
+        "l2m_record": "2959",
+        "game_id": "0022400483",
+        "affected_team": "home",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400483.json (official clip reference 2114)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 575 align on period, clock and player. The selected free throws added 1 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400483, Q4 00:23.5.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 23.5,
+          "home_score": 102,
+          "away_score": 103
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 23.5,
+              "home_score": 102,
+              "away_score": 102
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "3130",
+      "game_id": "0022400512",
+      "home_team": "PHI",
+      "away_team": "WAS",
+      "game_date": "January 08, 2025",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Corey Kispert",
+      "official_disadvantaged_player": "Guerschon Yabusele",
+      "official_report": "https://official.nba.com/l2m/json/0022400512.json",
+      "official_clip_id": "2180",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "644",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Continuation should be awarded. Determine shot outcome, value and free-throw entitlement from video."
+    },
+    {
+      "l2m_record": "3258",
+      "game_id": "0022400546",
+      "home_team": "UTA",
+      "away_team": "BKN",
+      "game_date": "January 12, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Isaiah Collier",
+      "official_disadvantaged_player": "Ziaire Williams",
+      "official_report": "https://official.nba.com/l2m/json/0022400546.json",
+      "official_clip_id": "2154",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "664",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        666,
+        667
+      ],
+      "observed_free_throw_points": 2,
+      "case": {
+        "l2m_record": "3258",
+        "game_id": "0022400546",
+        "affected_team": "home",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400546.json (official clip reference 2154)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 664 align on period, clock and player. The selected free throws added 2 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400546, Q4 01:29.0.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 89.0,
+          "home_score": 102,
+          "away_score": 100
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 89.0,
+              "home_score": 102,
+              "away_score": 98
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "3411",
+      "game_id": "0022400561",
+      "home_team": "PHI",
+      "away_team": "NYK",
+      "game_date": "January 15, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "OG Anunoby",
+      "official_disadvantaged_player": "Tyrese Maxey",
+      "official_report": "https://official.nba.com/l2m/json/0022400561.json",
+      "official_clip_id": "2191",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "552",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        554
+      ],
+      "observed_free_throw_points": 1,
+      "case": {
+        "l2m_record": "3411",
+        "game_id": "0022400561",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400561.json (official clip reference 2191)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 552 align on period, clock and player. The selected free throws added 1 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400561, Q4 00:36.2.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 36.2,
+          "home_score": 105,
+          "away_score": 107
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 36.2,
+              "home_score": 104,
+              "away_score": 107
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "3552",
+      "game_id": "0022400601",
+      "home_team": "MEM",
+      "away_team": "MIN",
+      "game_date": "January 20, 2025",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Julius Randle",
+      "official_disadvantaged_player": "Jaren Jackson Jr.",
+      "official_report": "https://official.nba.com/l2m/json/0022400601.json",
+      "official_clip_id": "2169",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "3742",
+      "game_id": "0022400650",
+      "home_team": "BOS",
+      "away_team": "HOU",
+      "game_date": "January 27, 2025",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Fred VanVleet",
+      "official_disadvantaged_player": "Jaylen Brown",
+      "official_report": "https://official.nba.com/l2m/json/0022400650.json",
+      "official_clip_id": "2160",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "639",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "3776",
+      "game_id": "0022400648",
+      "home_team": "CHA",
+      "away_team": "LAL",
+      "game_date": "January 27, 2025",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Anthony Davis",
+      "official_disadvantaged_player": "Mark Williams",
+      "official_report": "https://official.nba.com/l2m/json/0022400648.json",
+      "official_clip_id": "2166",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "3824",
+      "game_id": "0022400532",
+      "home_team": "ATL",
+      "away_team": "HOU",
+      "game_date": "January 28, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Onyeka Okongwu",
+      "official_disadvantaged_player": "Amen Thompson",
+      "official_report": "https://official.nba.com/l2m/json/0022400532.json",
+      "official_clip_id": "2132",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "640",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        642,
+        645
+      ],
+      "observed_free_throw_points": 2,
+      "case": {
+        "l2m_record": "3824",
+        "game_id": "0022400532",
+        "affected_team": "home",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400532.json (official clip reference 2132)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 640 align on period, clock and player. The selected free throws added 2 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400532, Q4 01:38.1.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 98.0,
+          "home_score": 91,
+          "away_score": 98
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 98.0,
+              "home_score": 91,
+              "away_score": 96
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "3846",
+      "game_id": "0022400670",
+      "home_team": "NOP",
+      "away_team": "DAL",
+      "game_date": "January 29, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Kessler Edwards",
+      "official_disadvantaged_player": "Dejounte Murray",
+      "official_report": "https://official.nba.com/l2m/json/0022400670.json",
+      "official_clip_id": "2128",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "639",
+      "video_review": "pending",
+      "disposition": "requires_player_foul_context",
+      "reason": "The report assigns the foul to a different defender on the same team. Evaluate personal-foul count, disqualification and substitution context."
+    },
+    {
+      "l2m_record": "3886",
+      "game_id": "0022400683",
+      "home_team": "NOP",
+      "away_team": "BOS",
+      "game_date": "January 31, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Derrick White",
+      "official_disadvantaged_player": "Trey Murphy III",
+      "official_report": "https://official.nba.com/l2m/json/0022400683.json",
+      "official_clip_id": "2099",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "635",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Observed and-one free throw missed. Compare the actual restart after the miss with the restart after the made basket without a foul."
+    },
+    {
+      "l2m_record": "4024",
+      "game_id": "0022400707",
+      "home_team": "UTA",
+      "away_team": "IND",
+      "game_date": "February 03, 2025",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Andrew Nembhard",
+      "official_disadvantaged_player": "John Collins",
+      "official_report": "https://official.nba.com/l2m/json/0022400707.json",
+      "official_clip_id": "2207",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "4039",
+      "game_id": "0022400708",
+      "home_team": "GSW",
+      "away_team": "ORL",
+      "game_date": "February 03, 2025",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Draymond Green",
+      "official_disadvantaged_player": "Paolo Banchero",
+      "official_report": "https://official.nba.com/l2m/json/0022400708.json",
+      "official_clip_id": "2096",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "700",
+      "video_review": "pending",
+      "disposition": "scored_existing_scenarios",
+      "case": {
+        "l2m_record": "4039",
+        "game_id": "0022400708",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400708.json (official clip reference 2096)",
+        "verification_notes": "Official Q4 IC at 50.6 s identifies Green and Banchero. NBA CDN play-by-play action 700 confirms Green's foul and the clock, with Orlando trailing 94–99. The next shot was recorded at 44.3 s, with no intervening free throws. Independent video review pending.",
+        "rule_reference": "NBA L2M ruling for game 0022400708 at Q4 50.6 s says continuation should have been awarded. NBA Rule 12-B, Section I covers free throws for an unsuccessful shooting attempt.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 50.6,
+          "home_score": 99,
+          "away_score": 94
+        },
+        "alternatives": [
+          {
+            "assumption": "Conditional on an unsuccessful two-point attempt with continuation awarded and two free throws, Banchero makes neither. Use the foul clock.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 50.6,
+              "home_score": 99,
+              "away_score": 94
+            }
+          },
+          {
+            "assumption": "Under the same shooting-foul scenario, Banchero makes one of two free throws.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 50.6,
+              "home_score": 99,
+              "away_score": 95
+            }
+          },
+          {
+            "assumption": "Under the same shooting-foul scenario, Banchero makes both free throws.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 50.6,
+              "home_score": 99,
+              "away_score": 96
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "4472",
+      "game_id": "0022400786",
+      "home_team": "DAL",
+      "away_team": "MIA",
+      "game_date": "February 13, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Dante Exum",
+      "official_disadvantaged_player": "Tyler Herro",
+      "official_report": "https://official.nba.com/l2m/json/0022400786.json",
+      "official_clip_id": "2142",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "619",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        621
+      ],
+      "observed_free_throw_points": 1,
+      "case": {
+        "l2m_record": "4472",
+        "game_id": "0022400786",
+        "affected_team": "home",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400786.json (official clip reference 2142)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 619 align on period, clock and player. The selected free throws added 1 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400786, Q4 01:41.1.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 101.0,
+          "home_score": 112,
+          "away_score": 108
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 101.0,
+              "home_score": 112,
+              "away_score": 107
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "4652",
+      "game_id": "0022400814",
+      "home_team": "ATL",
+      "away_team": "DET",
+      "game_date": "February 23, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Dyson Daniels",
+      "official_disadvantaged_player": "Malik Beasley",
+      "official_report": "https://official.nba.com/l2m/json/0022400814.json",
+      "official_clip_id": "2131",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "724",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        727,
+        728
+      ],
+      "observed_free_throw_points": 2,
+      "case": {
+        "l2m_record": "4652",
+        "game_id": "0022400814",
+        "affected_team": "home",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400814.json (official clip reference 2131)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 724 align on period, clock and player. The selected free throws added 2 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400814, Q4 00:23.3.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 23.4,
+          "home_score": 140,
+          "away_score": 144
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 23.4,
+              "home_score": 140,
+              "away_score": 142
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "4657",
+      "game_id": "0022400814",
+      "home_team": "ATL",
+      "away_team": "DET",
+      "game_date": "February 23, 2025",
+      "official_call_type": "Turnover: Lane Violation",
+      "official_committing_player": "Isaiah Stewart",
+      "official_disadvantaged_player": "Trae Young",
+      "official_report": "https://official.nba.com/l2m/json/0022400814.json",
+      "official_clip_id": "2136",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "809",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Double lane violation changes the applicable restart. Check sequence and resulting possession."
+    },
+    {
+      "l2m_record": "4670",
+      "game_id": "0022400819",
+      "home_team": "CLE",
+      "away_team": "MEM",
+      "game_date": "February 23, 2025",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Max Strus",
+      "official_disadvantaged_player": "Jaren Jackson Jr.",
+      "official_report": "https://official.nba.com/l2m/json/0022400819.json",
+      "official_clip_id": "2126",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "784",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Replace the defensive foul with an offensive foul. Both observed free throws missed and the corrected restart remains to be reconstructed."
+    },
+    {
+      "l2m_record": "4916",
+      "game_id": "0022400864",
+      "home_team": "PHI",
+      "away_team": "GSW",
+      "game_date": "March 01, 2025",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Gui Santos",
+      "official_disadvantaged_player": "Paul George",
+      "official_report": "https://official.nba.com/l2m/json/0022400864.json",
+      "official_clip_id": "2160",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "4975",
+      "game_id": "0022400867",
+      "home_team": "CLE",
+      "away_team": "POR",
+      "game_date": "March 02, 2025",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Evan Mobley",
+      "official_disadvantaged_player": "Anfernee Simons",
+      "official_report": "https://official.nba.com/l2m/json/0022400867.json",
+      "official_clip_id": "2214",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "4987",
+      "game_id": "0022400867",
+      "home_team": "CLE",
+      "away_team": "POR",
+      "game_date": "March 02, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Max Strus",
+      "official_disadvantaged_player": "Anfernee Simons",
+      "official_report": "https://official.nba.com/l2m/json/0022400867.json",
+      "official_clip_id": "2226",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "747",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        749,
+        754
+      ],
+      "observed_free_throw_points": 2,
+      "case": {
+        "l2m_record": "4987",
+        "game_id": "0022400867",
+        "affected_team": "home",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400867.json (official clip reference 2226)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 747 align on period, clock and player. The selected free throws added 2 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400867, Q4 00:01.1.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 1.1,
+          "home_score": 119,
+          "away_score": 119
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 1.1,
+              "home_score": 119,
+              "away_score": 117
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "5004",
+      "game_id": "0022400870",
+      "home_team": "ORL",
+      "away_team": "TOR",
+      "game_date": "March 02, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Orlando Robinson",
+      "official_disadvantaged_player": "Paolo Banchero",
+      "official_report": "https://official.nba.com/l2m/json/0022400870.json",
+      "official_clip_id": "2079",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "683",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        685,
+        687
+      ],
+      "observed_free_throw_points": 1,
+      "case": {
+        "l2m_record": "5004",
+        "game_id": "0022400870",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400870.json (official clip reference 2079)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 683 align on period, clock and player. The selected free throws added 1 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400870, Q4 01:53.9.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 113.0,
+          "home_score": 95,
+          "away_score": 104
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 113.0,
+              "home_score": 94,
+              "away_score": 104
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "5054",
+      "game_id": "0022400884",
+      "home_team": "ATL",
+      "away_team": "MIL",
+      "game_date": "March 04, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Brook Lopez",
+      "official_disadvantaged_player": "Mouhamed Gueye",
+      "official_report": "https://official.nba.com/l2m/json/0022400884.json",
+      "official_clip_id": "2145",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "643",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        645,
+        646
+      ],
+      "observed_free_throw_points": 1,
+      "case": {
+        "l2m_record": "5054",
+        "game_id": "0022400884",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400884.json (official clip reference 2145)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 643 align on period, clock and player. The selected free throws added 1 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400884, Q4 01:35.5.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 95.0,
+          "home_score": 116,
+          "away_score": 121
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 95.0,
+              "home_score": 115,
+              "away_score": 121
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "5133",
+      "game_id": "0022400901",
+      "home_team": "BKN",
+      "away_team": "GSW",
+      "game_date": "March 06, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Nic Claxton",
+      "official_disadvantaged_player": "Draymond Green",
+      "official_report": "https://official.nba.com/l2m/json/0022400901.json",
+      "official_clip_id": "2142",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "657",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        659,
+        660
+      ],
+      "observed_free_throw_points": 2,
+      "case": {
+        "l2m_record": "5133",
+        "game_id": "0022400901",
+        "affected_team": "home",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400901.json (official clip reference 2142)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 657 align on period, clock and player. The selected free throws added 2 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400901, Q4 01:36.5.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 96.0,
+          "home_score": 107,
+          "away_score": 116
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 96.0,
+              "home_score": 107,
+              "away_score": 114
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "5143",
+      "game_id": "0022400901",
+      "home_team": "BKN",
+      "away_team": "GSW",
+      "game_date": "March 06, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Gui Santos",
+      "official_disadvantaged_player": "Cameron Johnson",
+      "official_report": "https://official.nba.com/l2m/json/0022400901.json",
+      "official_clip_id": "2151",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "677",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        679
+      ],
+      "observed_free_throw_points": 1,
+      "case": {
+        "l2m_record": "5143",
+        "game_id": "0022400901",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400901.json (official clip reference 2151)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 677 align on period, clock and player. The selected free throws added 1 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400901, Q4 00:47.7.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 47.8,
+          "home_score": 114,
+          "away_score": 119
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 47.8,
+              "home_score": 113,
+              "away_score": 119
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "5151",
+      "game_id": "0022400903",
+      "home_team": "LAL",
+      "away_team": "NYK",
+      "game_date": "March 06, 2025",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Luka Dončić",
+      "official_disadvantaged_player": "Jalen Brunson",
+      "official_report": "https://official.nba.com/l2m/json/0022400903.json",
+      "official_clip_id": "2173",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "632",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "5176",
+      "game_id": "0022400904",
+      "home_team": "CHA",
+      "away_team": "CLE",
+      "game_date": "March 07, 2025",
+      "official_call_type": "Turnover: Lost Ball Out of Bounds",
+      "official_committing_player": "Miles Bridges",
+      "official_disadvantaged_player": "Jarrett Allen",
+      "official_report": "https://official.nba.com/l2m/json/0022400904.json",
+      "official_clip_id": "2194",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "5186",
+      "game_id": "0022400904",
+      "home_team": "CHA",
+      "away_team": "CLE",
+      "game_date": "March 07, 2025",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Moussa Diabaté",
+      "official_disadvantaged_player": "Donovan Mitchell",
+      "official_report": "https://official.nba.com/l2m/json/0022400904.json",
+      "official_clip_id": "2204",
+      "pbp_status": "multiple_clock_type_candidates",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "5220",
+      "game_id": "0022400907",
+      "home_team": "MIA",
+      "away_team": "MIN",
+      "game_date": "March 07, 2025",
+      "official_call_type": "Turnover: Out of Bounds – Bad Pass Turn",
+      "official_committing_player": "Anthony Edwards",
+      "official_disadvantaged_player": "Haywood Highsmith",
+      "official_report": "https://official.nba.com/l2m/json/0022400907.json",
+      "official_clip_id": "2162",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "635",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "5521",
+      "game_id": "0022400942",
+      "home_team": "IND",
+      "away_team": "MIL",
+      "game_date": "March 11, 2025",
+      "official_call_type": "Turnover: Traveling",
+      "official_committing_player": "Tyrese Haliburton",
+      "official_disadvantaged_player": "Bucks",
+      "official_report": "https://official.nba.com/l2m/json/0022400942.json",
+      "official_clip_id": "2124",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "602",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "5536",
+      "game_id": "0022400953",
+      "home_team": "POR",
+      "away_team": "NYK",
+      "game_date": "March 12, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Miles McBride",
+      "official_disadvantaged_player": "Scoot Henderson",
+      "official_report": "https://official.nba.com/l2m/json/0022400953.json",
+      "official_clip_id": "2168",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "644",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        646
+      ],
+      "observed_free_throw_points": 1,
+      "case": {
+        "l2m_record": "5536",
+        "game_id": "0022400953",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400953.json (official clip reference 2168)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 644 align on period, clock and player. The selected free throws added 1 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400953, Q4 00:40.5.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 40.5,
+          "home_score": 104,
+          "away_score": 106
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 40.5,
+              "home_score": 103,
+              "away_score": 106
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "5758",
+      "game_id": "0022400986",
+      "home_team": "MIN",
+      "away_team": "IND",
+      "game_date": "March 17, 2025",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Donte DiVincenzo",
+      "official_disadvantaged_player": "Pacers",
+      "official_report": "https://official.nba.com/l2m/json/0022400986.json",
+      "official_clip_id": "2160",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "5780",
+      "game_id": "0022400985",
+      "home_team": "HOU",
+      "away_team": "PHI",
+      "game_date": "March 17, 2025",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Jae'Sean Tate",
+      "official_disadvantaged_player": "Jared Butler",
+      "official_report": "https://official.nba.com/l2m/json/0022400985.json",
+      "official_clip_id": "2150",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "685",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        687,
+        688
+      ],
+      "observed_free_throw_points": 2,
+      "case": {
+        "l2m_record": "5780",
+        "game_id": "0022400985",
+        "affected_team": "home",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022400985.json (official clip reference 2150)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 685 align on period, clock and player. The selected free throws added 2 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022400985, Q4 00:25.1.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 25.1,
+          "home_score": 126,
+          "away_score": 131
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 25.1,
+              "home_score": 126,
+              "away_score": 129
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "5786",
+      "game_id": "0022400985",
+      "home_team": "HOU",
+      "away_team": "PHI",
+      "game_date": "March 17, 2025",
+      "official_call_type": "Turnover: Traveling",
+      "official_committing_player": "Alperen Sengun",
+      "official_disadvantaged_player": "76ers",
+      "official_report": "https://official.nba.com/l2m/json/0022400985.json",
+      "official_clip_id": "2156",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "763",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "5946",
+      "game_id": "0022401027",
+      "home_team": "SAC",
+      "away_team": "MIL",
+      "game_date": "March 22, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Giannis Antetokounmpo",
+      "official_disadvantaged_player": "Zach LaVine",
+      "official_report": "https://official.nba.com/l2m/json/0022401027.json",
+      "official_clip_id": "2124",
+      "pbp_status": "multiple_clock_type_candidates",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Invalid shooting foul after a legal block. Resolve the action link and verify the live-ball sequence and penalty."
+    },
+    {
+      "l2m_record": "5965",
+      "game_id": "0022401035",
+      "home_team": "HOU",
+      "away_team": "DEN",
+      "game_date": "March 23, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Aaron Gordon",
+      "official_disadvantaged_player": "Jalen Green",
+      "official_report": "https://official.nba.com/l2m/json/0022401035.json",
+      "official_clip_id": "2204",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "734",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        736,
+        738,
+        741
+      ],
+      "observed_free_throw_points": 1,
+      "case": {
+        "l2m_record": "5965",
+        "game_id": "0022401035",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0022401035.json (official clip reference 2204)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 734 align on period, clock and player. The selected free throws added 1 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0022401035, Q4 00:09.7.",
+        "observed": {
+          "period": 4,
+          "seconds_remaining": 9.7,
+          "home_score": 109,
+          "away_score": 114
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 4,
+              "seconds_remaining": 9.7,
+              "home_score": 108,
+              "away_score": 114
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "6287",
+      "game_id": "0022401102",
+      "home_team": "DEN",
+      "away_team": "MIN",
+      "game_date": "April 01, 2025",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Julius Randle",
+      "official_disadvantaged_player": "Nuggets",
+      "official_report": "https://official.nba.com/l2m/json/0022401102.json",
+      "official_clip_id": "2248",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "6323",
+      "game_id": "0022401114",
+      "home_team": "MIA",
+      "away_team": "MEM",
+      "game_date": "April 03, 2025",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Scotty Pippen Jr.",
+      "official_disadvantaged_player": "Kel'el Ware",
+      "official_report": "https://official.nba.com/l2m/json/0022401114.json",
+      "official_clip_id": "2185",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "6403",
+      "game_id": "0022401131",
+      "home_team": "MIA",
+      "away_team": "MIL",
+      "game_date": "April 05, 2025",
+      "official_call_type": "Turnover: Traveling",
+      "official_committing_player": "Duncan Robinson",
+      "official_disadvantaged_player": "Bucks",
+      "official_report": "https://official.nba.com/l2m/json/0022401131.json",
+      "official_clip_id": "2114",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "675",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "6525",
+      "game_id": "0022401163",
+      "home_team": "GSW",
+      "away_team": "SAS",
+      "game_date": "April 09, 2025",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Keldon Johnson",
+      "official_disadvantaged_player": "Moses Moody",
+      "official_report": "https://official.nba.com/l2m/json/0022401163.json",
+      "official_clip_id": "2114",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "6722",
+      "game_id": "0052400121",
+      "home_team": "GSW",
+      "away_team": "MEM",
+      "game_date": "April 15, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Brandin Podziemski",
+      "official_disadvantaged_player": "Scotty Pippen Jr.",
+      "official_report": "https://official.nba.com/l2m/json/0052400121.json",
+      "official_clip_id": "2179",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Invalid shooting foul. Reconstruct the penalty and score from the play-in feed or video."
+    },
+    {
+      "l2m_record": "6727",
+      "game_id": "0052400121",
+      "home_team": "GSW",
+      "away_team": "MEM",
+      "game_date": "April 15, 2025",
+      "official_call_type": "Stoppage: Out-of-Bounds",
+      "official_committing_player": "Ja Morant",
+      "official_disadvantaged_player": "Stephen Curry",
+      "official_report": "https://official.nba.com/l2m/json/0052400121.json",
+      "official_clip_id": "2184",
+      "pbp_status": "no_clock_type_candidate",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_possession_or_restart",
+      "reason": "Correction depends on possession or live-ball restart. The score-clock baseline cannot estimate that component. Verify the restart against footage."
+    },
+    {
+      "l2m_record": "6998",
+      "game_id": "0042400135",
+      "home_team": "IND",
+      "away_team": "MIL",
+      "game_date": "April 29, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "AJ Green",
+      "official_disadvantaged_player": "Tyrese Haliburton",
+      "official_report": "https://official.nba.com/l2m/json/0042400135.json",
+      "official_clip_id": "2209",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "685",
+      "video_review": "pending",
+      "disposition": "scored_free_throw_component",
+      "free_throw_action_ids": [
+        687
+      ],
+      "observed_free_throw_points": 1,
+      "case": {
+        "l2m_record": "6998",
+        "game_id": "0042400135",
+        "affected_team": "away",
+        "evidence_status": "official_report_and_pbp",
+        "video_reference": "https://official.nba.com/l2m/json/0042400135.json (official clip reference 2209)",
+        "verification_notes": "Official IC and archived NBA play-by-play foul action 685 align on period, clock and player. The selected free throws added 1 points to the opponent. Independent video review pending.",
+        "rule_reference": "Official L2M assessment for 0042400135, Q5 00:17.1.",
+        "observed": {
+          "period": 5,
+          "seconds_remaining": 17.1,
+          "home_score": 117,
+          "away_score": 118
+        },
+        "alternatives": [
+          {
+            "assumption": "Remove only points from the free throws awarded on the incorrect whistle. Hold all other points and the clock fixed. Live-ball play and possession remain outside this component estimate.",
+            "state": {
+              "period": 5,
+              "seconds_remaining": 17.1,
+              "home_score": 116,
+              "away_score": 118
+            }
+          }
+        ]
+      }
+    },
+    {
+      "l2m_record": "7013",
+      "game_id": "0042400165",
+      "home_team": "LAL",
+      "away_team": "MIN",
+      "game_date": "April 30, 2025",
+      "official_call_type": "Foul: Personal",
+      "official_committing_player": "Julius Randle",
+      "official_disadvantaged_player": "LeBron James",
+      "official_report": "https://official.nba.com/l2m/json/0042400165.json",
+      "official_clip_id": "2227",
+      "pbp_status": "multiple_clock_type_candidates",
+      "pbp_candidate_action": "",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Invalid personal foul. Resolve the action link and reconstruct the subsequent game state."
+    },
+    {
+      "l2m_record": "7163",
+      "game_id": "0042400205",
+      "home_team": "CLE",
+      "away_team": "IND",
+      "game_date": "May 13, 2025",
+      "official_call_type": "Foul: Shooting",
+      "official_committing_player": "Tyrese Haliburton",
+      "official_disadvantaged_player": "Evan Mobley",
+      "official_report": "https://official.nba.com/l2m/json/0042400205.json",
+      "official_clip_id": "2188",
+      "pbp_status": "unique_clock_type_candidate_unverified",
+      "pbp_candidate_action": "727",
+      "video_review": "pending",
+      "disposition": "requires_case_reconstruction",
+      "reason": "Observed and-one free throw missed. A valid comparison requires the corrected restart and possession."
+    }
+  ]
+}

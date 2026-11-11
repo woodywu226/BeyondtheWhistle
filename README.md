@@ -67,14 +67,15 @@ Original large source downloads are not redistributed. The audit includes source
 | Step 2 | Temporal WP dataset, model, robustness, safe frozen inference and handoff | **Complete as predictive baseline; NOT a causal officiating model** |
 | Step 3 | Independent video pilot comparing matched Q4 windows before and after 2:00 | Planned |
 | Step 4 | Opportunity-adjusted team, player and star-status comparisons | Planned |
-| Step 5 | Rule-supported win-probability scenarios for verified errors | IC scenario tool and two worked real-game examples. Independent video review pending |
+| Step 5 | Rule-supported win-probability scenarios for verified errors | All 66 IC records reviewed against official reports. 20 scored under explicit assumptions. Independent video review pending |
 
 The [48-case L2M queue](data/validated/step1_review_queue_2025.csv) is available for calibration. The formal pilot requires new, independently reviewed video from both sides of 2:00. Whistle frequency and accuracy are separate outcomes. A difference across the boundary alone cannot identify the effect of public scrutiny because tactics and game state also change late in games.
 
 The [incorrect-call scenario tool](docs/incorrect_call_win_probability.md)
 inventories the 66 official IC cases and compares user-supplied observed and
-corrected score-clock states using the frozen Step 2 model. The first two
-worked cases use official reports and play-by-play.
+corrected score-clock states using the frozen Step 2 model. The
+[batch results](data/validated/ic_wp_2024_25.csv) record an estimate or a
+case-specific disposition for every official IC.
 
 ## Project structure
 
