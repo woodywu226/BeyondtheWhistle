@@ -1,0 +1,24 @@
+{
+  "l2m_record": "4039",
+  "game_id": "0022400708",
+  "affected_team": "away",
+  "evidence_status": "official_report_and_pbp",
+  "video_reference": "https://official.nba.com/l2m/json/0022400708.json (official clip reference 2096)",
+  "verification_notes": "Official Q4 IC at 50.6 s identifies Green and Banchero. NBA CDN play-by-play action 700 confirms Green's foul and the clock, with Orlando trailing 94–99. The next shot was recorded at 44.3 s, with no intervening free throws. Independent video review pending.",
+  "rule_reference": "NBA L2M ruling for game 0022400708 at Q4 50.6 s says continuation should have been awarded. NBA Rule 12-B, Section I covers free throws for an unsuccessful shooting attempt.",
+  "observed": {"period": 4, "seconds_remaining": 50.6, "home_score": 99, "away_score": 94},
+  "alternatives": [
+    {
+      "assumption": "Conditional on an unsuccessful two-point attempt with continuation awarded and two free throws, Banchero makes neither. Use the foul clock.",
+      "state": {"period": 4, "seconds_remaining": 50.6, "home_score": 99, "away_score": 94}
+    },
+    {
+      "assumption": "Under the same shooting-foul scenario, Banchero makes one of two free throws.",
+      "state": {"period": 4, "seconds_remaining": 50.6, "home_score": 99, "away_score": 95}
+    },
+    {
+      "assumption": "Under the same shooting-foul scenario, Banchero makes both free throws.",
+      "state": {"period": 4, "seconds_remaining": 50.6, "home_score": 99, "away_score": 96}
+    }
+  ]
+}

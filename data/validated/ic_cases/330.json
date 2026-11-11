@@ -1,0 +1,20 @@
+{
+  "l2m_record": "330",
+  "game_id": "0022400103",
+  "affected_team": "away",
+  "evidence_status": "official_report_and_pbp",
+  "video_reference": "https://official.nba.com/l2m/json/0022400103.json (official clip reference 2163)",
+  "verification_notes": "Official Q4 IC at 41.9 s identifies George and Johnson. NBA CDN play-by-play action 679 identifies the same players, foul, and clock. Johnson made both free throws (681–682). Independent video review pending.",
+  "rule_reference": "NBA L2M ruling for game 0022400103 at Q4 41.9 s. The league classified the contact as incidental.",
+  "observed": {"period": 4, "seconds_remaining": 41.9, "home_score": 114, "away_score": 118},
+  "alternatives": [
+    {
+      "assumption": "No foul. Atlanta scores no points on the drive. Compare immediately at the foul clock, holding time fixed to isolate the score difference.",
+      "state": {"period": 4, "seconds_remaining": 41.9, "home_score": 112, "away_score": 118}
+    },
+    {
+      "assumption": "No foul. Atlanta completes the drive for two points. Compare at the same clock under a fixed-clock sensitivity assumption.",
+      "state": {"period": 4, "seconds_remaining": 41.9, "home_score": 114, "away_score": 118}
+    }
+  ]
+}

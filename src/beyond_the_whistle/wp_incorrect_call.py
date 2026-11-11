@@ -23,10 +23,14 @@ def load_incorrect_calls(path: Path) -> dict[str, dict]:
 
 def compare_scenarios(bundle: dict, case: dict, records: dict[str, dict], version: str) -> dict:
     record = None
+    evidence_status = "hypothetical"
     if case.get("hypothetical") is not True:
         record = records.get(str(case.get("l2m_record")))
         if record is None or case.get("game_id") != record["game_id"]:
             raise ValueError("A real case must identify an official IC record and its game")
+        evidence_status = case.get("evidence_status", "reviewer_documented")
+        if evidence_status not in ("reviewer_documented", "official_report_and_pbp"):
+            raise ValueError("Unsupported evidence_status for a real case")
         for field in ("video_reference", "verification_notes", "rule_reference"):
             if not str(case.get(field) or "").strip():
                 raise ValueError(f"A real case requires {field}")
@@ -61,6 +65,7 @@ def compare_scenarios(bundle: dict, case: dict, records: dict[str, dict], versio
     return {
         "case": {key: value for key, value in case.items() if key != "alternatives"},
         "official_record": record,
+        "evidence_status": evidence_status,
         "probability_version": version,
         "observed_win_probability": observed_wp,
         "alternatives": branches,
