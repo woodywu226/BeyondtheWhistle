@@ -65,12 +65,26 @@ inputs, and track missing context for a future model.
 ## Full 2024–25 review
 
 The [possession model pilot](out_of_bounds_possession_win_probability.md) adds
-exploratory estimates for 14 out-of-bounds cases in this inventory.
+exploratory estimates for 16 out-of-bounds cases in this inventory.
+The [combined case table](../data/validated/ic_all_scenarios_2024_25.csv)
+includes 36 estimated and 30 pending cases. Observed and alternative
+probabilities use the perspective of the `affected_team` column. The
+out-of-bounds rows use the possession model. The score-clock rows use the
+frozen baseline and derive alternative bounds from the observed estimate
+and the signed changes, with rounding at six decimal places. The
+evidence and pending reason columns describe the basis for each row.
+
+```bash
+python -m beyond_the_whistle.ic_coverage \
+  --score-clock data/validated/ic_wp_2024_25.csv \
+  --possession data/validated/ic_oob_possession_results.json \
+  --output data/validated/ic_all_scenarios_2024_25.csv
+```
 
 The [review inputs](../data/validated/ic_review_2024_25.json) identify each
 official report, affected teams or players where supplied, clip reference, and
 original play-by-play candidate status. The [results CSV](../data/validated/ic_wp_2024_25.csv)
-covers all 66 records.
+covers all 66 records in the original score-clock review.
 
 | Disposition | Cases |
 | --- | ---: |

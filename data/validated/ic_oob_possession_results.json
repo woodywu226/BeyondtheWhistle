@@ -221,6 +221,31 @@
       "delta_pp": 7.748124
     },
     {
+      "l2m_record": "1948",
+      "game_id": "0022400050",
+      "home_team": "CHA",
+      "away_team": "PHI",
+      "period": 4,
+      "seconds_remaining": 36.5,
+      "official_report": "https://official.nba.com/l2m/json/0022400050.json",
+      "official_clip_id": "2177",
+      "home_score": 102,
+      "away_score": 102,
+      "observed_possession": "PHI",
+      "corrected_possession": "CHA",
+      "pbp_before_action": 634,
+      "pbp_before_clock": "PT00M44.00S",
+      "pbp_after_action": 641,
+      "pbp_after_clock": "PT00M29.70S",
+      "evidence": "The official L2M record lists PHI possession and specifies a CHA award. The archive has a PHI timeout at 102\u2013102 followed by a PHI made layup, which is the next score change. The archive omits the award at 36.5 seconds.",
+      "evidence_status": "official_report_and_pbp_bracket",
+      "independent_video_review": "pending",
+      "estimated_team": "CHA",
+      "observed_wp_pct": 43.521413,
+      "corrected_wp_pct": 57.397837,
+      "delta_pp": 13.876425
+    },
+    {
       "l2m_record": "2350",
       "game_id": "0022400376",
       "home_team": "SAC",
@@ -449,6 +474,31 @@
       "observed_wp_pct": 76.246509,
       "corrected_wp_pct": 86.944164,
       "delta_pp": 10.697655
+    },
+    {
+      "l2m_record": "6525",
+      "game_id": "0022401163",
+      "home_team": "GSW",
+      "away_team": "SAS",
+      "period": 4,
+      "seconds_remaining": 68.0,
+      "official_report": "https://official.nba.com/l2m/json/0022401163.json",
+      "official_clip_id": "2114",
+      "home_score": 107,
+      "away_score": 107,
+      "observed_possession": "GSW",
+      "corrected_possession": "SAS",
+      "pbp_before_action": 656,
+      "pbp_before_clock": "PT01M12.00S",
+      "pbp_after_action": 658,
+      "pbp_after_clock": "PT00M54.40S",
+      "evidence": "The official L2M record lists GSW possession and specifies an SAS award. The archive has a GSW defensive rebound followed by a GSW turnover with the score at 107\u2013107 throughout. The archive omits the award at 68 seconds.",
+      "evidence_status": "official_report_and_pbp_bracket",
+      "independent_video_review": "pending",
+      "estimated_team": "SAS",
+      "observed_wp_pct": 43.379352,
+      "corrected_wp_pct": 53.451494,
+      "delta_pp": 10.072142
     }
   ],
   "pending_cases": [
@@ -464,17 +514,6 @@
       "reason": "Official report says the ball never went out. A corrected live-ball path is outside the restart model."
     },
     {
-      "l2m_record": "1948",
-      "game_id": "0022400050",
-      "home_team": "CHA",
-      "away_team": "PHI",
-      "period": 4,
-      "seconds_remaining": 36.5,
-      "official_report": "https://official.nba.com/l2m/json/0022400050.json",
-      "official_clip_id": "2177",
-      "reason": "No distinct play-by-play action within the clock tolerance. The restart needs a video anchor."
-    },
-    {
       "l2m_record": "6287",
       "game_id": "0022401102",
       "home_team": "DEN",
@@ -484,17 +523,6 @@
       "official_report": "https://official.nba.com/l2m/json/0022401102.json",
       "official_clip_id": "2248",
       "reason": "The next recorded restart is a jump ball. A fixed two-team possession swap would omit the tip outcome."
-    },
-    {
-      "l2m_record": "6525",
-      "game_id": "0022401163",
-      "home_team": "GSW",
-      "away_team": "SAS",
-      "period": 4,
-      "seconds_remaining": 68.0,
-      "official_report": "https://official.nba.com/l2m/json/0022401163.json",
-      "official_clip_id": "2114",
-      "reason": "No distinct play-by-play action at the report clock. The restart needs a video anchor."
     },
     {
       "l2m_record": "6727",

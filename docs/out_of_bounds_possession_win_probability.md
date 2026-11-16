@@ -38,9 +38,20 @@ The case inventory covers all 19 official IC records with an out-of-bounds
 category. Fourteen have an official correction, an archived score-clock
 anchor within one second and subsequent play-by-play that corroborates the
 actual recipient. The notes record which actions were used for each check.
-The official clock is used for modeling. Five cases remain pending because
-of an ambiguous or missing play-by-play anchor, a jump ball, or a corrected
-live-ball path outside this comparison.
+Two further scenarios use the official event clock and adjacent archive
+actions that support the score and observed possession. Their evidence is
+marked `official_report_and_pbp_bracket` because the archived feed does not
+show the award at the exact clock. Both await independent video review.
+
+| L2M record | State at official clock | Observed → corrected award | Estimated team | Observed WP | Alternative WP | Change |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| [1948](https://official.nba.com/l2m/json/0022400050.json) | Q4 0:36.5, 102–102 | PHI → CHA | CHA | 43.52% | 57.40% | +13.88 pp |
+| [6525](https://official.nba.com/l2m/json/0022401163.json) | Q4 1:08.0, 107–107 | GSW → SAS | SAS | 43.38% | 53.45% | +10.07 pp |
+
+Three out-of-bounds records remain pending. The corrected path for 1219
+stays live, the observed restart for 6287 is a jump ball, and the available
+feed for Play-In case 6727 lacks a direct restart anchor. Model evaluation
+uses regular-season data.
 
 The model was fitted on out-of-bounds turnovers. Some reviewed events are
 deflections where the offense retained possession. Inbound location,
