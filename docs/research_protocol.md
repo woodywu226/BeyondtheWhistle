@@ -34,4 +34,4 @@ RQ3 is the primary pilot. RQ1 and RQ4 are descriptive or exploratory initially. 
 
 The [L2M reconciliation](step1_results.md) and [post-action win-probability baseline](step2_complete.md) are complete. The baseline lacks possession and pending free throws. No independent video accuracy comparison, team/player disparity estimate, star effect or officiating-induced outcome estimate has been produced under this protocol.
 
-Next deliverable: freeze the sampling frame and codebook, calibrate two reviewers, then produce a feasibility report with pre/post-2:00 coverage, agreement, review time and explicit denominators.
+The [Step 3 pilot package](step3_video_pilot.md) contains the fixed sample, codebook, worksheets and descriptive PBP baseline. Calibrate two independent reviewers and use their recorded labels to produce the feasibility report with pre/post-2:00 coverage, agreement, review time and explicit denominators.

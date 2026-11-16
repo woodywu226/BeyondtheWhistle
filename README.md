@@ -65,7 +65,7 @@ Original large source downloads are not redistributed. The audit includes source
 | Step 1 | Real L2M / PBP source integration and official report reconciliation | **Complete at game-level and official-label level** |
 | Step 1 research QA | Video-confirmed same-event matching and reviewer agreement | **Not yet done** |
 | Step 2 | Temporal WP dataset, model, robustness, safe frozen inference and handoff | **Complete as predictive baseline; NOT a causal officiating model** |
-| Step 3 | Independent video pilot comparing matched Q4 windows before and after 2:00 | Planned |
+| Step 3 | Independent video pilot comparing matched Q4 windows before and after 2:00 | [Sampling, worksheets and baseline ready](docs/step3_video_pilot.md). Independent review pending |
 | Step 4 | Opportunity-adjusted team, player and star-status comparisons | Planned |
 | Step 5 | Rule-supported win-probability scenarios for verified errors | All 66 IC records reviewed against official reports. 61 have conditional scenario estimates. Five corrected effects are unidentifiable with available data and models. Independent video review pending |
 

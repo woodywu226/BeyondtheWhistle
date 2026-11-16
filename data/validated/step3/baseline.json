@@ -1,0 +1,28 @@
+{
+  "archive": "https://raw.githubusercontent.com/shufinskiy/nba_data/main/datasets/cdnnba_2024.tar.xz",
+  "archive_sha256": "35a82e6b29821adb22b8474dea8c51e08847d8e00690d1d5ffde7d000e0087d1",
+  "sampling_salt": "btw-step3-pilot-v1",
+  "games": 10,
+  "review_segments": 200,
+  "pbp_locator_rows": 68,
+  "unverified_candidate_locators": 224,
+  "incident_target": [
+    150,
+    250
+  ],
+  "required_independent_reviewers": 2,
+  "game_clock_minutes_per_window": 20,
+  "pbp_action_rows": {
+    "pre": {
+      "foul": 17,
+      "violation": 0,
+      "turnover": 9
+    },
+    "post": {
+      "foul": 32,
+      "violation": 0,
+      "turnover": 10
+    }
+  },
+  "limitation": "PBP action rows are recording counts, not video-observed whistles or errors."
+}
