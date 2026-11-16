@@ -1,0 +1,1378 @@
+[
+  {
+    "l2m_record": "67",
+    "game_id": "0022400071",
+    "period": 4,
+    "official_clock": "01:27.3",
+    "home_team": "LAC",
+    "away_team": "PHX",
+    "affected_team": "PHX",
+    "official_report": "https://official.nba.com/l2m/json/0022400071.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400071&eventNum=2185",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      700,
+      702,
+      703,
+      704
+    ],
+    "rules": [
+      "3.I",
+      "12B.I"
+    ],
+    "scope": "unidentifiable",
+    "model": "score_clock",
+    "observed": {
+      "home_score": 99,
+      "away_score": 101,
+      "possession": "LAC",
+      "seconds_remaining": 87.3,
+      "assumption": "LAC retained control and Booker was disqualified on his sixth personal foul."
+    },
+    "alternatives": [],
+    "interpretation": "A no-call preserves live play and Booker’s eligibility. No estimated replacement lineup or player-value effect.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "173",
+    "game_id": "0022400087",
+    "period": 4,
+    "official_clock": "01:18.7",
+    "home_team": "DEN",
+    "away_team": "LAC",
+    "affected_team": "LAC",
+    "official_report": "https://official.nba.com/l2m/json/0022400087.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400087&eventNum=2122",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      625,
+      627,
+      628
+    ],
+    "rules": [
+      "12B.VII"
+    ],
+    "scope": "rule_context_supported",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 101,
+      "away_score": 100,
+      "possession": "DEN",
+      "seconds_remaining": 78.7,
+      "assumption": "The offensive foul transferred possession to Denver."
+    },
+    "alternatives": [
+      {
+        "home_score": 101,
+        "away_score": 100,
+        "possession": "LAC",
+        "seconds_remaining": 78.7,
+        "assumption": "With no whistle for mutual marginal contact, the Clippers retain live possession at the event clock."
+      }
+    ],
+    "interpretation": "Possession proxy compares an observed inbound with the Clippers’ live offense. It omits the shot clock and court position.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "293",
+    "game_id": "0022400109",
+    "period": 4,
+    "official_clock": "00:10.3",
+    "home_team": "SAS",
+    "away_team": "HOU",
+    "affected_team": "SAS",
+    "official_report": "https://official.nba.com/l2m/json/0022400109.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400109&eventNum=2153",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      619,
+      654,
+      663,
+      664,
+      666,
+      667,
+      668
+    ],
+    "rules": [
+      "12B.V",
+      "12B.VIII"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 99,
+      "away_score": 106,
+      "possession": "SAS",
+      "seconds_remaining": 10.3,
+      "assumption": "Houston made both awarded free throws. San Antonio received the ball."
+    },
+    "alternatives": [
+      {
+        "home_score": 99,
+        "away_score": 104,
+        "possession": "HOU",
+        "seconds_remaining": 10.3,
+        "assumption": "Sochan shoots the two penalty free throws and makes 0. Houston controls the miss."
+      },
+      {
+        "home_score": 99,
+        "away_score": 104,
+        "possession": "SAS",
+        "seconds_remaining": 10.3,
+        "assumption": "Sochan shoots the two penalty free throws and makes 0. San Antonio controls the miss."
+      },
+      {
+        "home_score": 100,
+        "away_score": 104,
+        "possession": "HOU",
+        "seconds_remaining": 10.3,
+        "assumption": "Sochan shoots the two penalty free throws and makes 1. Houston inbounds after a made final attempt or controls the miss."
+      },
+      {
+        "home_score": 100,
+        "away_score": 104,
+        "possession": "SAS",
+        "seconds_remaining": 10.3,
+        "assumption": "Sochan shoots the two penalty free throws and makes 1. San Antonio controls the missed final attempt."
+      },
+      {
+        "home_score": 101,
+        "away_score": 104,
+        "possession": "HOU",
+        "seconds_remaining": 10.3,
+        "assumption": "Sochan shoots the two penalty free throws and makes 2. Houston inbounds after the second make."
+      }
+    ],
+    "interpretation": "Houston was already in the penalty. The branches cover makes and both teams recovering a missed final attempt. Rebound branches freeze the event clock.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "378",
+    "game_id": "0022400119",
+    "period": 4,
+    "official_clock": "01:59.0",
+    "home_team": "IND",
+    "away_team": "BOS",
+    "affected_team": "IND",
+    "official_report": "https://official.nba.com/l2m/json/0022400119.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400119&eventNum=2139",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      580,
+      587,
+      656,
+      673,
+      683,
+      684
+    ],
+    "rules": [
+      "12B.V"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 122,
+      "away_score": 113,
+      "possession": "BOS",
+      "seconds_remaining": 119.0,
+      "assumption": "Traveling gave Boston the ball."
+    },
+    "alternatives": [
+      {
+        "home_score": 122,
+        "away_score": 113,
+        "possession": "BOS",
+        "seconds_remaining": 119.0,
+        "assumption": "White’s defensive foul sends Siakam to the line for two penalty shots. He makes 0. Boston controls the miss."
+      },
+      {
+        "home_score": 122,
+        "away_score": 113,
+        "possession": "IND",
+        "seconds_remaining": 119.0,
+        "assumption": "White’s defensive foul sends Siakam to the line for two penalty shots. He makes 0. Indiana controls the miss."
+      },
+      {
+        "home_score": 123,
+        "away_score": 113,
+        "possession": "BOS",
+        "seconds_remaining": 119.0,
+        "assumption": "White’s defensive foul sends Siakam to the line for two penalty shots. He makes 1. Boston inbounds after a made final attempt or controls the miss."
+      },
+      {
+        "home_score": 123,
+        "away_score": 113,
+        "possession": "IND",
+        "seconds_remaining": 119.0,
+        "assumption": "White’s defensive foul sends Siakam to the line for two penalty shots. He makes 1. Indiana controls the missed final attempt."
+      },
+      {
+        "home_score": 124,
+        "away_score": 113,
+        "possession": "BOS",
+        "seconds_remaining": 119.0,
+        "assumption": "White’s defensive foul sends Siakam to the line for two penalty shots. He makes 2. Boston inbounds after the second make."
+      }
+    ],
+    "interpretation": "Four Boston team fouls precede the incident in Q4. A corrected fifth team foul triggers two penalty attempts.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "863",
+    "game_id": "0022400200",
+    "period": 4,
+    "official_clock": "00:46.2",
+    "home_team": "LAC",
+    "away_team": "TOR",
+    "affected_team": "LAC",
+    "official_report": "https://official.nba.com/l2m/json/0022400200.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400200&eventNum=2098",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      634,
+      637
+    ],
+    "rules": [
+      "10.IV"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 102,
+      "away_score": 99,
+      "possession": "TOR",
+      "seconds_remaining": 46.2,
+      "assumption": "The kicked-ball whistle awarded Toronto the inbound."
+    },
+    "alternatives": [
+      {
+        "home_score": 102,
+        "away_score": 99,
+        "possession": "TOR",
+        "seconds_remaining": 46.2,
+        "assumption": "No whistle for accidental contact. TOR controls the live ball at the reference clock."
+      },
+      {
+        "home_score": 102,
+        "away_score": 99,
+        "possession": "LAC",
+        "seconds_remaining": 46.2,
+        "assumption": "No whistle for accidental contact. LAC controls the live ball at the reference clock."
+      }
+    ],
+    "interpretation": "The official report also says the timeout request was rescinded. Control after incidental contact is varied, with no later scoring carried over.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "944",
+    "game_id": "0022400205",
+    "period": 5,
+    "official_clock": "00:05.0",
+    "home_team": "PHI",
+    "away_team": "CHA",
+    "affected_team": "CHA",
+    "official_report": "https://official.nba.com/l2m/json/0022400205.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400205&eventNum=2253",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      715,
+      716,
+      718,
+      720,
+      721
+    ],
+    "rules": [
+      "6.IV",
+      "12B.VIII"
+    ],
+    "scope": "rule_context_supported",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 105,
+      "away_score": 104,
+      "possession": "PHI",
+      "seconds_remaining": 2.5,
+      "assumption": "Philadelphia recovered the second missed free throw with 2.5 seconds remaining."
+    },
+    "alternatives": [
+      {
+        "home_score": 105,
+        "away_score": 104,
+        "possession": "CHA",
+        "seconds_remaining": 5.0,
+        "assumption": "The official report describes a clean Curry steal. Charlotte controls the live ball at the event clock."
+      }
+    ],
+    "interpretation": "Uses the actual clock at the first recorded live recovery and the official clock for the corrected immediate steal.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "1108",
+    "game_id": "0022400223",
+    "period": 4,
+    "official_clock": "00:01.0",
+    "home_team": "MIL",
+    "away_team": "DET",
+    "affected_team": "DET",
+    "official_report": "https://official.nba.com/l2m/json/0022400223.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400223&eventNum=2214",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      637,
+      640,
+      642,
+      644,
+      647
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "unidentifiable",
+    "model": "score_clock",
+    "observed": {
+      "home_score": 111,
+      "away_score": 111,
+      "possession": "DET",
+      "seconds_remaining": 0.9,
+      "assumption": "Detroit missed both free throws and recovered the final miss with 0.9 seconds remaining."
+    },
+    "alternatives": [],
+    "interpretation": "Without the whistle after the clean block, regulation could expire tied. The possession model has insufficient support for a no-call comparison at this clock, and it does not model the transition into overtime.",
+    "video_review": "independent_review_pending",
+    "clip_check": "Public clip shows the block and the broadcast clock reaching zero while the score remains tied. Play after the whistle cannot establish a no-whistle outcome."
+  },
+  {
+    "l2m_record": "1109",
+    "game_id": "0022400217",
+    "period": 4,
+    "official_clock": "01:51.4",
+    "home_team": "ORL",
+    "away_team": "IND",
+    "affected_team": "IND",
+    "official_report": "https://official.nba.com/l2m/json/0022400217.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400217&eventNum=2090",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      639,
+      640,
+      642
+    ],
+    "rules": [
+      "12B.I"
+    ],
+    "scope": "unidentifiable",
+    "model": "score_clock",
+    "observed": {
+      "home_score": 90,
+      "away_score": 86,
+      "possession": "ORL",
+      "seconds_remaining": 111.4,
+      "assumption": "Mathurin made the basket and his one free throw. Orlando next controls."
+    },
+    "alternatives": [],
+    "interpretation": "Changing the charged Orlando player from Suggs to Black preserves the basket, shooter, penalty and restart. Any player-level effect is unresolved.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "1219",
+    "game_id": "0022400231",
+    "period": 4,
+    "official_clock": "01:33.8",
+    "home_team": "NOP",
+    "away_team": "LAL",
+    "affected_team": "NOP",
+    "official_report": "https://official.nba.com/l2m/json/0022400231.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400231&eventNum=2132",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      602,
+      604
+    ],
+    "rules": [
+      "6.IV",
+      "10.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 97,
+      "away_score": 98,
+      "possession": "LAL",
+      "seconds_remaining": 93.8,
+      "assumption": "LAL control and the score are bracketed by Knecht’s rebound and the ensuing Christie shot."
+    },
+    "alternatives": [
+      {
+        "home_score": 97,
+        "away_score": 98,
+        "possession": "LAL",
+        "seconds_remaining": 93.8,
+        "assumption": "With no out-of-bounds whistle, LAL controls the ball after the deflection."
+      },
+      {
+        "home_score": 97,
+        "away_score": 98,
+        "possession": "NOP",
+        "seconds_remaining": 93.8,
+        "assumption": "With no out-of-bounds whistle, NOP controls the ball after the deflection."
+      }
+    ],
+    "interpretation": "The ball remained in bounds. A New Orleans inbound would correct the award conditional on keeping the whistle, a distinct scenario not modeled as the legal live-ball path.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "1241",
+    "game_id": "0022400229",
+    "period": 4,
+    "official_clock": "00:07.3",
+    "home_team": "CHA",
+    "away_team": "MIL",
+    "affected_team": "MIL",
+    "official_report": "https://official.nba.com/l2m/json/0022400229.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400229&eventNum=2163",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      663,
+      665,
+      666,
+      667
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 115,
+      "away_score": 114,
+      "possession": "MIL",
+      "seconds_remaining": 7.3,
+      "assumption": "Ball made both penalty free throws and Milwaukee received the ball."
+    },
+    "alternatives": [
+      {
+        "home_score": 113,
+        "away_score": 114,
+        "possession": "CHA",
+        "seconds_remaining": 7.3,
+        "assumption": "No whistle and no awarded free throws. CHA controls the live ball."
+      },
+      {
+        "home_score": 113,
+        "away_score": 114,
+        "possession": "MIL",
+        "seconds_remaining": 7.3,
+        "assumption": "No whistle and no awarded free throws. MIL controls the live ball."
+      }
+    ],
+    "interpretation": "The report says Ball lost his footing. The branches vary immediate control, with no assumed shot or later score.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "1744",
+    "game_id": "0022400040",
+    "period": 4,
+    "official_clock": "01:17.6",
+    "home_team": "CHA",
+    "away_team": "NYK",
+    "affected_team": "CHA",
+    "official_report": "https://official.nba.com/l2m/json/0022400040.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400040&eventNum=2150",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      583,
+      584
+    ],
+    "rules": [
+      "10.IV"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 90,
+      "away_score": 94,
+      "possession": "NYK",
+      "seconds_remaining": 77.6,
+      "assumption": "The kicked-ball whistle gave New York an inbound."
+    },
+    "alternatives": [
+      {
+        "home_score": 90,
+        "away_score": 94,
+        "possession": "NYK",
+        "seconds_remaining": 77.6,
+        "assumption": "No whistle for accidental contact. NYK controls the live ball at the reference clock."
+      },
+      {
+        "home_score": 90,
+        "away_score": 94,
+        "possession": "CHA",
+        "seconds_remaining": 77.6,
+        "assumption": "No whistle for accidental contact. CHA controls the live ball at the reference clock."
+      }
+    ],
+    "interpretation": "A planted foot does not establish who would control the now-live ball. Neither branch carries the later Brunson free throws forward.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "2446",
+    "game_id": "0022400399",
+    "period": 4,
+    "official_clock": "00:47.4",
+    "home_team": "MEM",
+    "away_team": "LAC",
+    "affected_team": "MEM",
+    "official_report": "https://official.nba.com/l2m/json/0022400399.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400399&eventNum=2153",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      700,
+      703,
+      742,
+      744,
+      746,
+      749
+    ],
+    "rules": [
+      "12B.I"
+    ],
+    "scope": "unidentifiable",
+    "model": "score_clock",
+    "observed": {
+      "home_score": 108,
+      "away_score": 108,
+      "possession": "LAC",
+      "seconds_remaining": 47.4,
+      "assumption": "Jackson Jr. split two foul shots and the Clippers received the ball."
+    },
+    "alternatives": [],
+    "interpretation": "The corrected charge would be Harden’s fifth personal foul instead of Zubac’s third. The shooter, penalty and restart stay mechanically the same.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "2737",
+    "game_id": "0022400436",
+    "period": 4,
+    "official_clock": "01:18.1",
+    "home_team": "ORL",
+    "away_team": "BKN",
+    "affected_team": "BKN",
+    "official_report": "https://official.nba.com/l2m/json/0022400436.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400436&eventNum=2090",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      633,
+      634,
+      636,
+      640,
+      641
+    ],
+    "rules": [
+      "12B.VII"
+    ],
+    "scope": "rule_context_supported",
+    "model": "score_clock",
+    "observed": {
+      "home_score": 96,
+      "away_score": 99,
+      "possession": "BKN",
+      "seconds_remaining": 78.1,
+      "assumption": "Da Silva’s layup and made and-one counted. Brooklyn received the ball."
+    },
+    "alternatives": [
+      {
+        "home_score": 93,
+        "away_score": 99,
+        "possession": "BKN",
+        "seconds_remaining": 78.1,
+        "assumption": "Charge the offensive foul to da Silva, wipe out his layup and and-one, and award Brooklyn the inbound."
+      }
+    ],
+    "interpretation": "Same clock and recipient. Scores capture the immediate three-point correction. The frozen score-clock baseline omits downstream lineup effects.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "3130",
+    "game_id": "0022400512",
+    "period": 4,
+    "official_clock": "00:07.6",
+    "home_team": "PHI",
+    "away_team": "WAS",
+    "affected_team": "PHI",
+    "official_report": "https://official.nba.com/l2m/json/0022400512.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400512&eventNum=2180",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      644,
+      646,
+      649,
+      650
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 109,
+      "away_score": 103,
+      "possession": "WAS",
+      "seconds_remaining": 7.6,
+      "assumption": "The take foul yielded two made bonus free throws. The dunk was not counted."
+    },
+    "alternatives": [
+      {
+        "home_score": 109,
+        "away_score": 103,
+        "possession": "WAS",
+        "seconds_remaining": 7.6,
+        "assumption": "Count the dunk. Yabusele misses the and-one, Washington recovers."
+      },
+      {
+        "home_score": 109,
+        "away_score": 103,
+        "possession": "PHI",
+        "seconds_remaining": 7.6,
+        "assumption": "Count the dunk. Yabusele misses the and-one, Philadelphia recovers."
+      },
+      {
+        "home_score": 110,
+        "away_score": 103,
+        "possession": "WAS",
+        "seconds_remaining": 7.6,
+        "assumption": "Count the dunk and a made and-one. Washington inbounds."
+      }
+    ],
+    "interpretation": "The public clip shows the two-point dunk. The official report establishes continuation. The alternate single free throw may be made or missed. A missed free throw uses the event clock as a reference.",
+    "video_review": "independent_review_pending",
+    "clip_check": "Public clip frames around 11.1–11.6 s show the dunk and the ball below the net."
+  },
+  {
+    "l2m_record": "3742",
+    "game_id": "0022400650",
+    "period": 4,
+    "official_clock": "00:15.5",
+    "home_team": "BOS",
+    "away_team": "HOU",
+    "affected_team": "HOU",
+    "official_report": "https://official.nba.com/l2m/json/0022400650.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400650&eventNum=2160",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      638,
+      639,
+      643
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 108,
+      "away_score": 110,
+      "possession": "BOS",
+      "seconds_remaining": 15.5,
+      "assumption": "The common foul gave Boston an inbound with no immediate free throws."
+    },
+    "alternatives": [
+      {
+        "home_score": 108,
+        "away_score": 110,
+        "possession": "BOS",
+        "seconds_remaining": 15.5,
+        "assumption": "No whistle after the clean deflection. BOS controls the live ball."
+      },
+      {
+        "home_score": 108,
+        "away_score": 110,
+        "possession": "HOU",
+        "seconds_remaining": 15.5,
+        "assumption": "No whistle after the clean deflection. HOU controls the live ball."
+      }
+    ],
+    "interpretation": "Control after the legal deflection is varied. Brown’s later foul shots are excluded from both immediate states.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "3846",
+    "game_id": "0022400670",
+    "period": 4,
+    "official_clock": "01:13.5",
+    "home_team": "NOP",
+    "away_team": "DAL",
+    "affected_team": "NOP",
+    "official_report": "https://official.nba.com/l2m/json/0022400670.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400670&eventNum=2128",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      263,
+      598,
+      639,
+      641,
+      644,
+      656
+    ],
+    "rules": [
+      "12B.I"
+    ],
+    "scope": "unidentifiable",
+    "model": "score_clock",
+    "observed": {
+      "home_score": 125,
+      "away_score": 133,
+      "possession": "DAL",
+      "seconds_remaining": 73.5,
+      "assumption": "Murray made both awarded shots. Dallas received the ball."
+    },
+    "alternatives": [],
+    "interpretation": "The corrected charge would be Grimes’s third instead of Edwards’s third. The same player shoots the same penalty. Any lineup response is unresolved.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "3886",
+    "game_id": "0022400683",
+    "period": 4,
+    "official_clock": "01:37.6",
+    "home_team": "NOP",
+    "away_team": "BOS",
+    "affected_team": "BOS",
+    "official_report": "https://official.nba.com/l2m/json/0022400683.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400683&eventNum=2099",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      633,
+      635,
+      637,
+      638
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "rule_context_supported",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 114,
+      "away_score": 114,
+      "possession": "BOS",
+      "seconds_remaining": 94,
+      "assumption": "The and-one missed and Brown controlled the rebound at the archived 1:34."
+    },
+    "alternatives": [
+      {
+        "home_score": 114,
+        "away_score": 114,
+        "possession": "BOS",
+        "seconds_remaining": 97.6,
+        "assumption": "Keep the made basket, remove the and-one, and give Boston a baseline inbound at the official incident clock."
+      }
+    ],
+    "interpretation": "Compares the actual rebound with the correct baseline inbound. The estimated difference reflects the clock proxy, with no inbound-location or transition feature.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "4657",
+    "game_id": "0022400814",
+    "period": 4,
+    "official_clock": "00:06.9",
+    "home_team": "ATL",
+    "away_team": "DET",
+    "affected_team": "ATL",
+    "official_report": "https://official.nba.com/l2m/json/0022400814.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400814&eventNum=2136",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      765,
+      767,
+      809,
+      774
+    ],
+    "rules": [
+      "6.V",
+      "9.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 142,
+      "away_score": 146,
+      "possession": "ATL",
+      "seconds_remaining": 6.9,
+      "assumption": "Single lane violation awarded Atlanta the ball after the missed final free throw."
+    },
+    "alternatives": [
+      {
+        "home_score": 142,
+        "away_score": 146,
+        "possession": "ATL",
+        "seconds_remaining": 6.9,
+        "assumption": "Midcourt jump ball under the double-violation rule. ATL gains control."
+      },
+      {
+        "home_score": 142,
+        "away_score": 146,
+        "possession": "DET",
+        "seconds_remaining": 6.9,
+        "assumption": "Midcourt jump ball under the double-violation rule. DET gains control."
+      }
+    ],
+    "interpretation": "The endpoints vary the tip winner without assuming equal chances. The clock is fixed at the restart.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "4670",
+    "game_id": "0022400819",
+    "period": 4,
+    "official_clock": "00:23.3",
+    "home_team": "CLE",
+    "away_team": "MEM",
+    "affected_team": "CLE",
+    "official_report": "https://official.nba.com/l2m/json/0022400819.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400819&eventNum=2126",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      784,
+      786,
+      792,
+      793
+    ],
+    "rules": [
+      "12B.VII"
+    ],
+    "scope": "rule_context_supported",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 125,
+      "away_score": 121,
+      "possession": "CLE",
+      "seconds_remaining": 20.6,
+      "assumption": "Both Memphis shots missed. Cleveland recovered at 20.6 seconds."
+    },
+    "alternatives": [
+      {
+        "home_score": 125,
+        "away_score": 121,
+        "possession": "CLE",
+        "seconds_remaining": 23.3,
+        "assumption": "Call the offensive foul on Jackson Jr. Cleveland receives an inbound with 23.3 seconds remaining."
+      }
+    ],
+    "interpretation": "Clock and restart differ, even though the same team ends up with control. This conditions on the observed misses and rebound.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "5151",
+    "game_id": "0022400903",
+    "period": 4,
+    "official_clock": "01:39.8",
+    "home_team": "LAL",
+    "away_team": "NYK",
+    "affected_team": "LAL",
+    "official_report": "https://official.nba.com/l2m/json/0022400903.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400903&eventNum=2173",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      632,
+      634,
+      636
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 96,
+      "away_score": 96,
+      "possession": "NYK",
+      "seconds_remaining": 99.8,
+      "assumption": "The foul sent New York to a sideline restart with no immediate free throws."
+    },
+    "alternatives": [
+      {
+        "home_score": 96,
+        "away_score": 96,
+        "possession": "NYK",
+        "seconds_remaining": 99.8,
+        "assumption": "No whistle after the clean deflection. NYK controls the live ball."
+      },
+      {
+        "home_score": 96,
+        "away_score": 96,
+        "possession": "LAL",
+        "seconds_remaining": 99.8,
+        "assumption": "No whistle after the clean deflection. LAL controls the live ball."
+      }
+    ],
+    "interpretation": "The branches vary recovery only. Player foul count and live-ball court position are outside the proxy.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "5186",
+    "game_id": "0022400904",
+    "period": 4,
+    "official_clock": "00:15.3",
+    "home_team": "CHA",
+    "away_team": "CLE",
+    "affected_team": "CHA",
+    "official_report": "https://official.nba.com/l2m/json/0022400904.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400904&eventNum=2204",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      734,
+      736,
+      741,
+      742
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 112,
+      "away_score": 116,
+      "possession": "CHA",
+      "seconds_remaining": 15.3,
+      "assumption": "Mitchell made both penalty free throws and Charlotte received the ball."
+    },
+    "alternatives": [
+      {
+        "home_score": 112,
+        "away_score": 114,
+        "possession": "CLE",
+        "seconds_remaining": 15.3,
+        "assumption": "No foul or penalty shots. CLE controls the ball after the legal strip."
+      },
+      {
+        "home_score": 112,
+        "away_score": 114,
+        "possession": "CHA",
+        "seconds_remaining": 15.3,
+        "assumption": "No foul or penalty shots. CHA controls the ball after the legal strip."
+      }
+    ],
+    "interpretation": "Official clock and correct play match Diabaté’s action 734. Bridges’s separate 16.3-second foul and free throws remain in the score.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "5521",
+    "game_id": "0022400942",
+    "period": 4,
+    "official_clock": "01:26.3",
+    "home_team": "IND",
+    "away_team": "MIL",
+    "affected_team": "IND",
+    "official_report": "https://official.nba.com/l2m/json/0022400942.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400942&eventNum=2124",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      600,
+      602,
+      603
+    ],
+    "rules": [
+      "10.XIII"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 110,
+      "away_score": 109,
+      "possession": "MIL",
+      "seconds_remaining": 86.3,
+      "assumption": "The traveling call gave Milwaukee the ball."
+    },
+    "alternatives": [
+      {
+        "home_score": 110,
+        "away_score": 109,
+        "possession": "IND",
+        "seconds_remaining": 86.3,
+        "assumption": "No travel. At the fixed reference clock IND controls the continuation with no added points."
+      },
+      {
+        "home_score": 110,
+        "away_score": 109,
+        "possession": "MIL",
+        "seconds_remaining": 86.3,
+        "assumption": "No travel. At the fixed reference clock MIL controls the continuation with no added points."
+      }
+    ],
+    "interpretation": "The official clip shows Haliburton bringing the ball down after the whistle. The branches isolate immediate control and leave the potential continuation shot unmodeled.",
+    "video_review": "independent_review_pending",
+    "clip_check": "Public clip frames around 11–12 s show the motion interrupted before a released shot."
+  },
+  {
+    "l2m_record": "5786",
+    "game_id": "0022400985",
+    "period": 5,
+    "official_clock": "01:51.7",
+    "home_team": "HOU",
+    "away_team": "PHI",
+    "affected_team": "HOU",
+    "official_report": "https://official.nba.com/l2m/json/0022400985.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022400985&eventNum=2156",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      763,
+      764
+    ],
+    "rules": [
+      "10.XIII"
+    ],
+    "scope": "rule_context_supported",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 140,
+      "away_score": 137,
+      "possession": "PHI",
+      "seconds_remaining": 111.7,
+      "assumption": "Traveling gave Philadelphia the ball."
+    },
+    "alternatives": [
+      {
+        "home_score": 140,
+        "away_score": 137,
+        "possession": "HOU",
+        "seconds_remaining": 111.7,
+        "assumption": "Sengun legally recovered the deflected ball and Houston continues on offense."
+      }
+    ],
+    "interpretation": "Official correction establishes recovery. The model treats live control as a possession proxy.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "5946",
+    "game_id": "0022401027",
+    "period": 4,
+    "official_clock": "00:23.6",
+    "home_team": "SAC",
+    "away_team": "MIL",
+    "affected_team": "SAC",
+    "official_report": "https://official.nba.com/l2m/json/0022401027.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022401027&eventNum=2124",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      592,
+      593,
+      595,
+      597,
+      598
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 108,
+      "away_score": 113,
+      "possession": "MIL",
+      "seconds_remaining": 22.6,
+      "assumption": "Both Sacramento free throws missed. Milwaukee controlled the miss at 22.6 seconds."
+    },
+    "alternatives": [
+      {
+        "home_score": 108,
+        "away_score": 113,
+        "possession": "SAC",
+        "seconds_remaining": 23.6,
+        "assumption": "No free throws. SAC gains live control after the legal block at the reference clock."
+      },
+      {
+        "home_score": 108,
+        "away_score": 113,
+        "possession": "MIL",
+        "seconds_remaining": 23.6,
+        "assumption": "No free throws. MIL gains live control after the legal block at the reference clock."
+      }
+    ],
+    "interpretation": "The matching foul is action 593, verified by player, action time and two LaVine attempts. The block itself does not establish recovery.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "6287",
+    "game_id": "0022401102",
+    "period": 6,
+    "official_clock": "00:19.5",
+    "home_team": "DEN",
+    "away_team": "MIN",
+    "affected_team": "DEN",
+    "official_report": "https://official.nba.com/l2m/json/0022401102.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022401102&eventNum=2248",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      763,
+      764,
+      767
+    ],
+    "rules": [
+      "6.VII",
+      "10.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 138,
+      "away_score": 138,
+      "possession": "DEN",
+      "seconds_remaining": 19.5,
+      "assumption": "Denver actually won the jump ball at 19.5 seconds."
+    },
+    "alternatives": [
+      {
+        "home_score": 138,
+        "away_score": 138,
+        "possession": "DEN",
+        "seconds_remaining": 19.5,
+        "assumption": "The correct call guarantees a Denver inbound. Compare with the realized Denver tip win."
+      },
+      {
+        "home_score": 138,
+        "away_score": 138,
+        "possession": "DEN",
+        "seconds_remaining": 19.5,
+        "assumption": "The correct call guarantees a Denver inbound. Compare with a Minnesota tip-win branch before the actual tip.",
+        "observed_override": {
+          "home_score": 138,
+          "away_score": 138,
+          "seconds_remaining": 19.5,
+          "possession": "MIN"
+        }
+      }
+    ],
+    "interpretation": "The observed post-tip estimate conditions on the actual winner. The alternative minus pre-tip range varies the unknown chance of Denver winning the tip. No tip probability is assumed.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "6403",
+    "game_id": "0022401131",
+    "period": 5,
+    "official_clock": "00:09.6",
+    "home_team": "MIA",
+    "away_team": "MIL",
+    "affected_team": "MIA",
+    "official_report": "https://official.nba.com/l2m/json/0022401131.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0022401131&eventNum=2114",
+    "pbp_source": "cdnnba_2024.tar.xz",
+    "pbp_actions": [
+      672,
+      675,
+      678,
+      687
+    ],
+    "rules": [
+      "10.XIII"
+    ],
+    "scope": "rule_context_supported",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 115,
+      "away_score": 119,
+      "possession": "MIL",
+      "seconds_remaining": 9.6,
+      "assumption": "The traveling whistle gave Milwaukee the ball."
+    },
+    "alternatives": [
+      {
+        "home_score": 115,
+        "away_score": 119,
+        "possession": "MIA",
+        "seconds_remaining": 9.6,
+        "assumption": "Robinson legally kept his pivot foot after the catch. Miami continues on offense."
+      }
+    ],
+    "interpretation": "At the event clock the legal entry-pass catch preserves Miami’s possession. Subsequent scores are excluded.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "6722",
+    "game_id": "0052400121",
+    "period": 4,
+    "official_clock": "00:37.0",
+    "home_team": "GSW",
+    "away_team": "MEM",
+    "affected_team": "MEM",
+    "official_report": "https://official.nba.com/l2m/json/0052400121.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0052400121&eventNum=2179",
+    "pbp_source": "ESPN 401766459",
+    "pbp_actions": [
+      401766459707,
+      401766459709,
+      401766459710,
+      401766459711
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 117,
+      "away_score": 114,
+      "possession": "GSW",
+      "seconds_remaining": 36.1,
+      "assumption": "Pippen Jr. made the first free throw and missed the second. Golden State recovered."
+    },
+    "alternatives": [
+      {
+        "home_score": 117,
+        "away_score": 113,
+        "possession": "GSW",
+        "seconds_remaining": 37.0,
+        "assumption": "Remove the foul shots. GSW controls after the clean contact at the event clock."
+      },
+      {
+        "home_score": 117,
+        "away_score": 113,
+        "possession": "MEM",
+        "seconds_remaining": 37.0,
+        "assumption": "Remove the foul shots. MEM controls after the clean contact at the event clock."
+      }
+    ],
+    "interpretation": "ESPN matches the foul and both attempts. Recovery is varied. Play-In estimates transfer a model tested on regular-season games.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "6727",
+    "game_id": "0052400121",
+    "period": 4,
+    "official_clock": "00:07.3",
+    "home_team": "GSW",
+    "away_team": "MEM",
+    "affected_team": "MEM",
+    "official_report": "https://official.nba.com/l2m/json/0052400121.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0052400121&eventNum=2184",
+    "pbp_source": "ESPN 401766459",
+    "pbp_actions": [
+      401766459719,
+      401766459727
+    ],
+    "rules": [
+      "10.I"
+    ],
+    "scope": "rule_context_supported",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 117,
+      "away_score": 116,
+      "possession": "GSW",
+      "seconds_remaining": 7.3,
+      "assumption": "The report explicitly gives Golden State the actual award. Two ESPN actions bracket the unchanged score."
+    },
+    "alternatives": [
+      {
+        "home_score": 117,
+        "away_score": 116,
+        "possession": "MEM",
+        "seconds_remaining": 7.3,
+        "assumption": "Correct the out-of-bounds award to Memphis at 7.3 seconds with the score fixed."
+      }
+    ],
+    "interpretation": "The public clip shows 117–116 at 7.3 seconds. ESPN brackets the play without a dedicated award row. Play-In estimates transfer a model tested on regular-season games.",
+    "video_review": "independent_review_pending",
+    "clip_check": "Public clip frames around 11–14 s show the whistle and scoreboard at 117–116, 7.3 s."
+  },
+  {
+    "l2m_record": "7013",
+    "game_id": "0042400165",
+    "period": 4,
+    "official_clock": "00:37.5",
+    "home_team": "LAL",
+    "away_team": "MIN",
+    "affected_team": "MIN",
+    "official_report": "https://official.nba.com/l2m/json/0042400165.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0042400165&eventNum=2227",
+    "pbp_source": "cdnnba_po_2024.tar.xz",
+    "pbp_actions": [
+      697,
+      698,
+      700
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "scenario_range",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 94,
+      "away_score": 102,
+      "possession": "LAL",
+      "seconds_remaining": 37.5,
+      "assumption": "The foul gave the Lakers another inbound with no immediate free throws."
+    },
+    "alternatives": [
+      {
+        "home_score": 94,
+        "away_score": 102,
+        "possession": "LAL",
+        "seconds_remaining": 37.5,
+        "assumption": "No foul as James trips over his teammate. LAL controls the live ball."
+      },
+      {
+        "home_score": 94,
+        "away_score": 102,
+        "possession": "MIN",
+        "seconds_remaining": 37.5,
+        "assumption": "No foul as James trips over his teammate. MIN controls the live ball."
+      }
+    ],
+    "interpretation": "The proxy varies immediate control and does not assume James’s later layup would still occur. This playoff case is outside the model test competition.",
+    "video_review": "independent_review_pending"
+  },
+  {
+    "l2m_record": "7163",
+    "game_id": "0042400205",
+    "period": 4,
+    "official_clock": "00:43.7",
+    "home_team": "CLE",
+    "away_team": "IND",
+    "affected_team": "IND",
+    "official_report": "https://official.nba.com/l2m/json/0042400205.json",
+    "official_clip": "https://official.nba.com/last-two-minute-report/?gameNo=0042400205&eventNum=2188",
+    "pbp_source": "cdnnba_po_2024.tar.xz",
+    "pbp_actions": [
+      725,
+      726,
+      727,
+      729,
+      730
+    ],
+    "rules": [
+      "6.IV",
+      "12B.I"
+    ],
+    "scope": "rule_context_supported",
+    "model": "possession_proxy",
+    "observed": {
+      "home_score": 105,
+      "away_score": 111,
+      "possession": "IND",
+      "seconds_remaining": 41.6,
+      "assumption": "The recorded and-one missed and Indiana recovered at 41.6 seconds."
+    },
+    "alternatives": [
+      {
+        "home_score": 105,
+        "away_score": 111,
+        "possession": "IND",
+        "seconds_remaining": 43.7,
+        "assumption": "Retain Mobley’s made tip, omit the and-one, and give Indiana a baseline inbound at 43.7 seconds."
+      }
+    ],
+    "interpretation": "Conditional on the recorded basket remaining legal. The official report overturns the call without stating that the made basket should be canceled. Playoff transfer.",
+    "video_review": "independent_review_pending",
+    "clip_check": "Public clip and archived scoring support keeping the two-point field goal."
+  }
+]

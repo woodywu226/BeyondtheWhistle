@@ -1,5 +1,8 @@
 # Win probability after an out-of-bounds ruling
 
+See the [completed 66-case review](ic_final_review.md) for the updated results.
+The estimates on this page document an earlier stage of the analysis.
+
 This pilot compares the actual possession award with the possession
 specified in the official Last Two Minute (L2M) correction. Each comparison
 holds the score, period and game clock fixed. Win probability is reported

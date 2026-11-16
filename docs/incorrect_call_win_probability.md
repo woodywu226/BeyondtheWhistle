@@ -1,5 +1,8 @@
 # Incorrect-call win-probability scenarios
 
+See the [completed 66-case review](ic_final_review.md) for the updated results.
+The estimates on this page document an earlier stage of the analysis.
+
 The first version uses the frozen [Step 2 baseline](step2_complete.md) to compare
 a documented observed state with one or more rule-supported alternative states.
 The target is an official **incorrect call (IC)**. Incorrect non-calls (INC)
